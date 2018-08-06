@@ -1,0 +1,41 @@
+$brand-color: #5926a6;
+$brand-color-highlight: lighten($brand-color, 10%);
+
+$ui-excludes: 'calendar.list';
+
+@import '_variables', '_components';
+
+.pagination {
+	& > li {
+		& > a,
+		& > span {
+			border-radius: 5px;
+			margin: 0 .2em;
+		}
+	}
+
+	& > .active {
+		& > a,
+		& > span {
+			&,
+			&:hover,
+			&:focus {
+			    background-color: $brand-color;
+			    color: #fff;
+			}
+		}
+	}
+
+	& > .disabled {
+		a, span {
+			&,
+			&:focus,
+			&:hover {
+			    color: #777;
+			    cursor: not-allowed;
+			    background-color: #fff;
+			    border-color: #ddd;
+			}
+		}
+	}
+}
