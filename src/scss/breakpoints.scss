@@ -1,0 +1,77 @@
+// ~~~~
+// Responsive breakpoints, for displaying content differently on different
+// screen sizes.
+// ~~~~
+
+// The default breakpoints represent the _maximum_ size of the given device. For
+// example, phones have a maximum size of 600px.
+$breakpoint-phone: 600px !default;
+$breakpoint-tablet-portrait: 900px !default;
+$breakpoint-tablet-landscape: 1200px !default;
+$breakpoint-desktop: 1800px !default;
+
+@mixin phone-only {
+	@media (max-width: $breakpoint-phone) {
+		@content;
+	}
+}
+
+@mixin tablet-portrait-and-down {
+	@media (max-width: $breakpoint-tablet-portrait) {
+		@content;
+	}
+}
+
+@mixin tablet-portrait-only {
+	@media (min-width: $breakpoint-phone + 1) and (max-width: $breakpoint-tablet-portrait) {
+		@content;
+	}
+}
+
+@mixin tablet-portrait-and-up {
+	@media (min-width: $breakpoint-phone + 1) {
+		@content;
+	}
+}
+
+@mixin tablet-landscape-and-down {
+	@media (max-width: $breakpoint-tablet-landscape) {
+		@content;
+	}
+}
+
+@mixin tablet-landscape-only {
+	@media (min-width: $breakpoint-tablet-portrait + 1) and (max-width: $breakpoint-tablet-landscape) {
+		@content;
+	}
+}
+
+@mixin tablet-landscape-and-up {
+	@media (min-width: $breakpoint-tablet-portrait + 1) {
+		@content;
+	}
+}
+
+@mixin desktop-and-down {
+	@media (max-width: $breakpoint-desktop) {
+		@content;
+	}
+}
+
+@mixin desktop-only {
+	@media (min-width: $breakpoint-tablet-landscape + 1) and (max-width: $breakpoint-desktop) {
+		@content;
+	}
+}
+
+@mixin desktop-and-up {
+	@media (min-width: $breakpoint-tablet-landscape + 1) {
+		@content;
+	}
+}
+
+@mixin mammoth-only {
+	@media (min-width: $breakpoint-desktop + 1) {
+		@content;
+	}
+}
