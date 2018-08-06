@@ -1,0 +1,12 @@
+language: node_js
+sudo: required
+dist: trusty
+node_js:
+  - "8"
+cache:
+  directories:
+    - $HOME/.npm
+install:
+  - npm install
+script: "npm run test:coverage"
+after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"

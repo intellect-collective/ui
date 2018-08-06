@@ -31,6 +31,7 @@
     "babel-preset-es2017": "6.24.x",
     "babel-preset-react": "6.24.x",
     "babel-preset-stage-2": "6.24.x",
+    "coveralls": "3.0.2",
     "css-loader": "0.28.x",
     "enzyme": "3.3.x",
     "enzyme-adapter-react-16": "1.1.x",
@@ -71,6 +72,18 @@
     ],
     "moduleNameMapper": {
       "^.+\\.(css|scss|sass|less)$": "identity-obj-proxy"
-    }
+    },
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      ".*/stories.js",
+      "/.*\\.tests.js/"
+    ]
   }
 }
