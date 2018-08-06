@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio Should accept valid props 1`] = `
+<GroupContext
+  name="test"
+  onChange={[Function]}
+  value="fire"
+>
+  <FormContext
+    name="test"
+    onChange={[Function]}
+    value="fire"
+  >
+    <Changeable
+      checked={false}
+      name="test"
+      onChange={[Function]}
+      value="fire"
+    >
+      <Radio
+        checked={false}
+        name="test"
+        onChange={[Function]}
+        value="fire"
+      >
+        <input
+          checked={false}
+          name="test"
+          onChange={[Function]}
+          type="radio"
+          value="fire"
+        />
+      </Radio>
+    </Changeable>
+  </FormContext>
+</GroupContext>
+`;

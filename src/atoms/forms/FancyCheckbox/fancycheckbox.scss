@@ -1,0 +1,50 @@
+@if (null != index($ui-includes, 'form.fancycheckbox') and null == index($ui-excludes, 'form.fancycheckbox')) {
+    .fancycheck {
+        input[type="checkbox"] {
+            position: absolute;
+            visibility: hidden;
+        }
+
+        ins {
+            position: relative;
+
+            &:after {
+                position: absolute;
+                top: 2px;
+                left: 6px;
+                visibility: hidden;
+
+
+
+                content: "";
+                background-color: transparent;
+                width: 4px;
+                border-bottom: 3px solid white;
+                height: 8px;
+                border-right: 3px solid white;
+                transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+            }
+        }
+
+        input[type="checkbox"] + ins {
+            background-color: #fafafa;
+            border: 1px solid #cacece;
+            padding: 9px;
+            display: inline-block;
+            position: relative;
+        }
+
+        input[type="checkbox"]:checked + ins {
+            background-color: #26a69a;
+            border: 1px solid #26a69a;
+            color: #99a1a7;
+
+            &:after {
+                visibility: visible;
+            }
+        }
+    }
+}

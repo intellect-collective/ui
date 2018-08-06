@@ -1,0 +1,17 @@
+@if (null != index($ui-includes, 'form.label') and null == index($ui-excludes, 'form.label')) {
+	label:not(.browser-default) {
+	    color: #9e9e9e;
+	    cursor: text;
+	    //font-size: 1rem;
+	    font-size: .8rem;
+	    text-align: initial;
+	    
+	    &.error {
+	        color: $color-red;
+	    }
+	}
+
+	.input-field.col label {
+	    left: .75rem;
+	}
+}

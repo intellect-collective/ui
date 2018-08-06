@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Should accept valid props 1`] = `
+<FormContext
+  name="test"
+  onClick={[Function]}
+  type="submit"
+>
+  <Clickable
+    name="test"
+    onClick={[Function]}
+    type="submit"
+  >
+    <Button
+      name="test"
+      onClick={[Function]}
+      type="submit"
+      value=""
+    >
+      <button
+        name="test"
+        onClick={[Function]}
+        type="submit"
+        value=""
+      />
+    </Button>
+  </Clickable>
+</FormContext>
+`;
