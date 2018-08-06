@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`File Should accept valid props 1`] = `
+<FormContext
+  name="test"
+  onClick={[Function]}
+>
+  <Changeable
+    name="test"
+    onClick={[Function]}
+  >
+    <File
+      name="test"
+      onChange={[Function]}
+      onClick={[Function]}
+      value=""
+    >
+      <input
+        name="test"
+        onChange={[Function]}
+        onClick={[Function]}
+        type="file"
+        value=""
+      />
+    </File>
+  </Changeable>
+</FormContext>
+`;

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResetButton Should accept valid props 1`] = `
+<ResetButton
+  name="test"
+  onClick={[Function]}
+>
+  <FormContext
+    name="test"
+    onClick={[Function]}
+    type="reset"
+  >
+    <Clickable
+      name="test"
+      onClick={[Function]}
+      type="reset"
+    >
+      <Button
+        name="test"
+        onClick={[Function]}
+        type="reset"
+        value=""
+      >
+        <button
+          name="test"
+          onClick={[Function]}
+          type="reset"
+          value=""
+        />
+      </Button>
+    </Clickable>
+  </FormContext>
+</ResetButton>
+`;

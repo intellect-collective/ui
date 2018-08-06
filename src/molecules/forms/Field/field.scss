@@ -1,0 +1,12 @@
+@if (null != index($ui-includes, 'form.field') and null == index($ui-excludes, 'form.field')) {
+	label.browser-default {}
+
+	.field.error {
+		label {
+			color: red;
+		}
+	    span {
+	        @extend label:not(.browser-default);
+	    }
+	}
+}
