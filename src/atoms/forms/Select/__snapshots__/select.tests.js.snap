@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Basics Should accept valid props 1`] = `
+<FormContext
+  name="test"
+  onChange={[Function]}
+  options={
+    Object {
+      "burgers": "Burgers",
+      "hotdogs": "Hotdogs",
+      "sausages": "Sausages",
+    }
+  }
+  required={true}
+  value="sausages"
+>
+  <Changeable
+    name="test"
+    onChange={[Function]}
+    options={
+      Object {
+        "burgers": "Burgers",
+        "hotdogs": "Hotdogs",
+        "sausages": "Sausages",
+      }
+    }
+    required={true}
+    value="sausages"
+  >
+    <Select
+      name="test"
+      onChange={[Function]}
+      options={
+        Object {
+          "burgers": "Burgers",
+          "hotdogs": "Hotdogs",
+          "sausages": "Sausages",
+        }
+      }
+      required={true}
+      value="sausages"
+    >
+      <select
+        name="test"
+        onChange={[Function]}
+        required={true}
+        value="sausages"
+      >
+        <option
+          key="0"
+          value="hotdogs"
+        >
+          Hotdogs
+        </option>
+        <option
+          key="1"
+          value="sausages"
+        >
+          Sausages
+        </option>
+        <option
+          key="2"
+          value="burgers"
+        >
+          Burgers
+        </option>
+      </select>
+    </Select>
+  </Changeable>
+</FormContext>
+`;
