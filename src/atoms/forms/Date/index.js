@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import { format, toDate } from 'date-fns'
 import changeable from '../_decorators/changeable';
 import formContext from '../_decorators/formContext';
 
-const browserFormat = 'YYYY-MM-DD';
+const browserFormat = 'YYYY-MM-dd';
 
 const DateField = (props) => {
     let value;
     if (props.value) {
-        value = moment(props.value).format(browserFormat);
+    	value = format(toDate(props.value), browserFormat);
     }
     return (<input { ...props } type="date" value={ value } />);
 };
