@@ -1,4 +1,6 @@
 // Atoms
+export { default as PageOverlay } from './src/atoms/PageOverlay';
+
 export { default as Button } from './src/atoms/forms/Button';
 export { default as Checkbox } from './src/atoms/forms/Checkbox';
 export { default as DateField } from './src/atoms/forms/Date';
