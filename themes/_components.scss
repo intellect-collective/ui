@@ -1,5 +1,6 @@
 $ui-includes:
 	// Atoms
+	'pageoverlay',
     'form.button',
     'form.fancycheckbox',
     'form.label',
@@ -17,6 +18,7 @@ $ui-excludes: '' !default;
 @import '_partials/_field';
 
 // Import atoms
+@import '../src/atoms/PageOverlay/pageoverlay';
 @import '../src/atoms/forms/Button/button';
 @import '../src/atoms/forms/FancyCheckbox/fancycheckbox';
 @import '../src/atoms/forms/Label/label';
