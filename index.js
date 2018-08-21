@@ -26,7 +26,10 @@ export { default as Row } from './src/atoms/grid/Row';
 export { default as ModalHeader } from './src/atoms/modal/Header';
 export { default as ModalBody } from './src/atoms/modal/Body';
 export { default as ModalFooter } from './src/atoms/modal/Footer';
+export { default as ColumnHeader } from './src/atoms/table/ColumnHeader';
 
 // Molecules
-export { default as Field } from './src/molecules/forms/Field';
+export { default as DataTable } from './src/molecules/DataTable';
 export { default as Modal } from './src/molecules/Modal';
+export { default as Pagination } from './src/molecules/Pagination';
+export { default as Field } from './src/molecules/forms/Field';

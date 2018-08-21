@@ -105,6 +105,7 @@
     "no-useless-computed-key": "error",
     "no-unneeded-ternary": "error",
     "no-unsafe-negation": "error",
+    "no-plusplus": "off",
     "object-property-newline": "error",
     "no-extra-semi": "error",
     "block-spacing": "error",
