@@ -15,7 +15,7 @@ class Stateful extends React.Component {
 	    		<tbody>
 		    		<tr>
 		    			<td style={{ width: '50%' }}>
-		    				{ this.props.children(this.onChange, this.state, this) }
+		    				{ typeof this.props.children === 'function' ? this.props.children(this.onChange, this.state, this) : this.props.children }
 	    				</td>
     					<td style={{ maxWidth: '50vh', width: '50%' }}>
     						<pre>

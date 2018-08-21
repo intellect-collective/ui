@@ -1,0 +1,64 @@
+@if (null != index($ui-includes, 'datatable') and null == index($ui-excludes, 'datatable')) {
+	table {
+	    background-color: transparent;
+	    border-collapse: collapse;
+	    border-spacing: 0;
+	    margin-bottom: 20px;
+	    max-width: 100%;
+	    width: 100%;
+
+	    td, th {
+	    	padding: 0;
+	    	text-align: left;
+	    }
+
+		&.striped {
+
+		}
+	}
+
+	table.basic {
+		> caption + thead,
+		> colgroup + thead,
+		> thead:first-child {
+			> tr:first-child {
+				> th,
+				> td {
+	    			border-top: 0;
+				}
+			}
+		}
+
+		> thead,
+		> tbody,
+		> tfoot {
+			> tr {
+				> th,
+				> td {
+				    border-top: 1px solid #e7eaec;
+				    line-height: 1.42857;
+				    padding: 8px;
+				    vertical-align: top;
+				}
+			}
+		}
+		> thead > tr > th {
+		    border-bottom: 2px solid #ddd;
+		    vertical-align: bottom;
+		}
+
+		> thead,
+		> tbody,
+		> tfoot {
+			> tr {
+				> th,
+				> td {
+				    padding: 8px;
+				    line-height: 1.42857143;
+				    vertical-align: top;
+				    border-top: 1px solid #ddd;
+				}
+			}
+		}
+	}
+}

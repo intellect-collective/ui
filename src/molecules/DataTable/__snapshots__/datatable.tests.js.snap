@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataTable Can display 1`] = `
+<DataTable
+  HeaderCell={[Function]}
+  className="data-table"
+  classNames={
+    Object {
+      "noDataClass": "no-data",
+    }
+  }
+  columns={
+    Array [
+      Object {
+        "field": "id",
+        "title": "ID",
+      },
+      Object {
+        "field": "first_name",
+        "title": "First Name",
+      },
+      Object {
+        "field": "last_name",
+        "title": "Last Name",
+      },
+      Object {
+        "field": "email",
+        "title": "Email",
+      },
+      Object {
+        "field": "gender",
+        "title": "Gender",
+      },
+    ]
+  }
+  data={
+    Array [
+      Object {
+        "email": "cfilippozzi0@abc.net.au",
+        "first_name": "Cobbie",
+        "gender": "Male",
+        "id": 1,
+        "last_name": "Filippozzi",
+      },
+    ]
+  }
+  onRowClick={[Function]}
+>
+  <table
+    className="data-table"
+  >
+    <thead>
+      <tr>
+        <ColumnHeader
+          column={
+            Object {
+              "field": "id",
+              "title": "ID",
+            }
+          }
+          key="id"
+          onHeaderClick={[Function]}
+        >
+          <th
+            className="sortable"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="columnheader"
+            scope="col"
+            tabIndex="-1"
+          >
+            ID
+          </th>
+        </ColumnHeader>
+        <ColumnHeader
+          column={
+            Object {
+              "field": "first_name",
+              "title": "First Name",
+            }
+          }
+          key="first_name"
+          onHeaderClick={[Function]}
+        >
+          <th
+            className="sortable"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="columnheader"
+            scope="col"
+            tabIndex="-1"
+          >
+            First Name
+          </th>
+        </ColumnHeader>
+        <ColumnHeader
+          column={
+            Object {
+              "field": "last_name",
+              "title": "Last Name",
+            }
+          }
+          key="last_name"
+          onHeaderClick={[Function]}
+        >
+          <th
+            className="sortable"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="columnheader"
+            scope="col"
+            tabIndex="-1"
+          >
+            Last Name
+          </th>
+        </ColumnHeader>
+        <ColumnHeader
+          column={
+            Object {
+              "field": "email",
+              "title": "Email",
+            }
+          }
+          key="email"
+          onHeaderClick={[Function]}
+        >
+          <th
+            className="sortable"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="columnheader"
+            scope="col"
+            tabIndex="-1"
+          >
+            Email
+          </th>
+        </ColumnHeader>
+        <ColumnHeader
+          column={
+            Object {
+              "field": "gender",
+              "title": "Gender",
+            }
+          }
+          key="gender"
+          onHeaderClick={[Function]}
+        >
+          <th
+            className="sortable"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="columnheader"
+            scope="col"
+            tabIndex="-1"
+          >
+            Gender
+          </th>
+        </ColumnHeader>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        key="1"
+        onClick={[Function]}
+      >
+        <td
+          key="1id"
+        >
+          1
+        </td>
+        <td
+          key="1first_name"
+        >
+          Cobbie
+        </td>
+        <td
+          key="1last_name"
+        >
+          Filippozzi
+        </td>
+        <td
+          key="1email"
+        >
+          cfilippozzi0@abc.net.au
+        </td>
+        <td
+          key="1gender"
+        >
+          Male
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DataTable>
+`;
