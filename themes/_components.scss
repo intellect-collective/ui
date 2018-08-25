@@ -8,6 +8,7 @@ $ui-includes:
     'form.textarea',
 
     // Molecules
+    'modal',
     'form.field'
 
     !default;
@@ -24,4 +25,5 @@ $ui-excludes: '' !default;
 @import '../src/atoms/forms/Textarea/textarea';
 
 // Import molecules
+@import '../src/molecules/Modal/modal';
 @import '../src/molecules/forms/Field/field';

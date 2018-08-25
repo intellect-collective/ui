@@ -15,6 +15,10 @@ export { default as Select } from './src/atoms/forms/Select';
 export { default as SubmitButton } from './src/atoms/forms/SubmitButton';
 export { default as Text } from './src/atoms/forms/Text';
 export { default as Textarea } from './src/atoms/forms/Textarea';
+export { default as ModalHeader } from './src/atoms/modal/Header';
+export { default as ModalBody } from './src/atoms/modal/Body';
+export { default as ModalFooter } from './src/atoms/modal/Footer';
 
 // Molecules
 export { default as Field } from './src/molecules/forms/Field';
+export { default as Modal } from './src/molecules/Modal';
