@@ -29,12 +29,13 @@ export function padLeft(str, pad) {
  * pass the sorting function to this one, and have it wrap everything up nice
  * and neat.
  * @param {Function} func - The handler function to wrap
+ * @param {String[]} keys - The keys to watch for
  * @returns {Function} - An event-handler function that reacts to the enter and
  *         spacebar keystrokes.
  */
-export function onKeyDown(func) {
+export function onKeyDown(func, keys = ['Enter', ' ']) {
     return (ev) => {
-        if (['Enter', ' '].includes(ev.key)) {
+        if (keys.includes(ev.key)) {
             return func(ev);
         }
     };
