@@ -9,7 +9,7 @@ const test = (onClick = () => {}) => {
             </OutsideClickWatcher>
         </div>
     );
-}
+};
 
 describe('OutsideClickWatcher', () => {
     it('Should render unaltered children', () => {
@@ -47,7 +47,7 @@ describe('OutsideClickWatcher', () => {
             map[event] = cb;
         });
         const oldRemove = document.removeEventListener;
-        document.removeEventListener = jest.fn((event, cb) => {
+        document.removeEventListener = jest.fn((event) => {
             delete map[event];
         });
 

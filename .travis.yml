@@ -8,5 +8,7 @@ cache:
     - $HOME/.npm
 install:
   - npm install
-script: "npm run test:coverage"
+script:
+  - npm run lint
+  - npm run test:coverage
 after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
