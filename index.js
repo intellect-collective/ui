@@ -1,4 +1,5 @@
 // Atoms
+export { default as Avatar } from './src/atoms/Avatar';
 export { default as PageOverlay } from './src/atoms/PageOverlay';
 
 export { default as Button } from './src/atoms/forms/Button';
@@ -22,5 +23,6 @@ export { default as ModalBody } from './src/atoms/modal/Body';
 export { default as ModalFooter } from './src/atoms/modal/Footer';
 
 // Molecules
+export { default as Discussion } from './src/molecules/discussion/Discussion';
 export { default as Field } from './src/molecules/forms/Field';
 export { default as Modal } from './src/molecules/Modal';

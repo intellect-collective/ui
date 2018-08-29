@@ -1,0 +1,90 @@
+@if (null != index($ui-includes, 'discussion') and null == index($ui-excludes, 'discussion')) {
+    // Variables
+    $discussion-content-background-color: #eee !default;
+    $discussion-content-text-color: black !default;
+    $discussion-content-info-text-color: lighten($discussion-content-text-color, 10%) !default;
+    $discussion-avatar-background-color: $discussion-content-background-color !default;
+    $discussion-message-background-color: $discussion-content-background-color !default;
+
+    .discussion {
+        padding: 15px;
+        overflow-y: auto;
+
+        &-message {
+            $c: &;
+            overflow-y: hidden;
+
+            &:after {
+                clear: both;
+                content: ' ';
+                display: block;
+            }
+
+            &-inner {
+                padding: 1em;
+            }
+
+            img.avatar {
+                float: right;
+                height: 3em;
+                width: 3em;
+
+                &:after {
+                    background: $discussion-avatar-background-color;
+                    color: $discussion-content-text-color;
+                }
+            }
+
+            &-content {
+                background: $discussion-message-background-color;
+                border-radius: 4px;
+                color: $discussion-content-text-color;
+                display: inline-block;
+                float: right;
+                margin: 0 1em 0 0;
+                max-width: 85%;
+                padding: 1em;
+                text-align: right;
+            }
+
+            &-author {
+                color: $discussion-content-info-text-color;
+                font-size: .8em;
+            }
+
+            &-date {
+                color: $discussion-content-info-text-color;
+                font-size: .8em;
+                margin-left: 1em;
+            }
+
+            &-text {
+                color: $discussion-content-text-color;
+                display: block;
+                font-size: 1em;
+                margin-top: .5em;
+            }
+
+            &.me {
+                img.avatar {
+                    float: left;
+                }
+                #{$c}-content {
+                    float: left;
+                    margin: 0 0 0 1em;
+                    text-align: left;
+                }
+            }
+        }
+
+        &-form {
+            margin: 1em 5em;
+
+            body &-input {
+                border: 1px solid #aaa;
+                padding: .5em;
+                box-sizing: border-box;
+            }
+        }
+    }
+}
