@@ -8,7 +8,8 @@ const style = {
     'right': 0,
     'display': 'flex',
     'justifyContent': 'center',
-    'alignItems': 'center'
+    'alignItems': 'center',
+    'overflowY': 'scroll'
 };
 
 export default (story) => (

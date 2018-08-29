@@ -1,4 +1,11 @@
 import React from 'react';
+import primary from '../../themes/default.scss';
+import secondary from '../../themes/secondary.scss';
+
+const styles = {
+  primary,
+  secondary
+};
 
 const selectStyle = {
     'textAlign': 'center'
@@ -8,7 +15,7 @@ class Container extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      'sheet': 'default.css'
+      'sheet': 'primary'
     };
     this.onChange = this.onChange.bind(this);
 
@@ -22,21 +29,26 @@ class Container extends React.Component {
     });
   }
 
+  componentDidMount() {
+    styles[this.state.sheet].use();
+  }
+
   onChange (ev) {
-    this.setState({
-      sheet: ev.target.value,
-      time: new Date().getTime()
-    });
+    const sheet = ev.target.value;
+    Object.keys(styles)
+      .forEach((style) => (styles[style].unuse()));
+    this.setState({ sheet });
+    console.log('Using stylesheet ' + sheet);
+    styles[sheet].use();
   }
 
   render () {
     return (
       <div>
         <div style={ selectStyle }>
-            <link rel="stylesheet" href={ '/static/' + this.state.sheet + '?' + this.state.time } />
             <select style={ selectStyle } onChange={ this.onChange } className="browser-default">
-                <option>default.css</option>
-                <option>secondary.css</option>
+                <option>primary</option>
+                <option>secondary</option>
             </select>
         </div>
         <div>

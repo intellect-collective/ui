@@ -9,7 +9,7 @@
     "url": "https://github.com/intellectcollective/ui"
   },
   "scripts": {
-    "start": "start-storybook -p 3000 -c .storybook -s ./dist",
+    "start": "start-storybook -p 3000 -c .storybook",
     "lint": "eslint .",
     "test": "jest",
     "test:watch": "jest --watch",
