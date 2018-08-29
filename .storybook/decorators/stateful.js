@@ -17,7 +17,7 @@ class Stateful extends React.Component {
 		    			<td style={{ width: '50%' }}>
 		    				{ this.props.children(this.onChange, this.state, this) }
 	    				</td>
-    					<td style={{ width: '50%' }}>
+    					<td style={{ maxWidth: '50vh', width: '50%' }}>
     						<pre>
     						{ JSON.stringify(this.state, null, 4) }
     						</pre>
