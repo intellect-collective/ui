@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardBody Can display 1`] = `
+<CardBody>
+  <div
+    className="card-body"
+  >
+    test
+  </div>
+</CardBody>
+`;

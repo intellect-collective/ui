@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardFooter Can display 1`] = `
+<CardFooter
+  title="Test"
+>
+  <div
+    className="card-footer"
+  />
+</CardFooter>
+`;
