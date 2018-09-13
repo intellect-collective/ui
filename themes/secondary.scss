@@ -1,6 +1,11 @@
 $brand-color: #5926a6;
 $brand-color-highlight: lighten($brand-color, 10%);
 
+// Chat/Discussion
+$discussion-content-background-color: #26a659;
+$discussion-content-text-color: white;
+$discussion-content-info-text-color: lighten(#26a659, 50%);
+
 $ui-excludes: 'calendar.list';
 
 @import '_variables', '_components';
@@ -36,6 +41,22 @@ $ui-excludes: 'calendar.list';
 			    background-color: #fff;
 			    border-color: #ddd;
 			}
+		}
+	}
+}
+
+.discussion {
+	.me {
+		img.avatar {
+			&:after {
+				background: $brand-color;
+				color: white;
+			}
+		}
+		.discussion-message-content,
+		.discussion-message-content * {
+			background: $brand-color;
+			color: white;
 		}
 	}
 }
