@@ -1,0 +1,40 @@
+// The list of size suffixes to add to spacing classes, and their sizes
+$space-sizes: (
+    '-n': 0,
+    '-xxs': 1px,
+    '-xs': 5px,
+    '-sm': 10px,
+    '': 15px,
+    '-md': 20px,
+    '-lg': 30px,
+    '-xl': 40px
+) !default;
+
+// The list of spacing classes and their respective attributes
+$space-attributes: (
+    '.m-a': ('margin-bottom', 'margin-top', 'margin-left', 'margin-right'),
+    '.m-h': ('margin-bottom', 'margin-top'),
+    '.m-w': ('margin-left', 'margin-right'),
+    '.m-b': 'margin-bottom',
+    '.m-l': 'margin-left',
+    '.m-r': 'margin-right',
+    '.m-t': 'margin-top',
+    '.p-a': ('padding-bottom', 'padding-top', 'padding-left', 'padding-right'),
+    '.p-h': ('padding-bottom', 'padding-top'),
+    '.p-w': ('padding-left', 'padding-right'),
+    '.p-b': 'padding-bottom',
+    '.p-l': 'padding-left',
+    '.p-r': 'padding-right',
+    '.p-t': 'padding-top'
+);
+
+// The list of border clases and their respective attributes
+$border-attributes: (
+    '.b-a': ('border-bottom', 'border-top', 'border-left', 'border-right'),
+    '.b-v': ('border-left', 'border-right'),
+    '.b-h': ('border-bottom', 'border-top'),
+    '.b-b': 'border-bottom',
+    '.b-l': 'border-left',
+    '.b-r': 'border-right',
+    '.b-t': 'border-top'
+);
