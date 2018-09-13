@@ -29,6 +29,7 @@ $ui-excludes: '' !default;
 @import '../src/atoms/forms/LoadingButton/loadingbutton';
 @import '../src/atoms/forms/Select/select';
 @import '../src/atoms/forms/Textarea/textarea';
+@import '../src/atoms/grid/grid';
 
 // Import molecules
 @import '../src/molecules/Modal/modal';
