@@ -1,0 +1,58 @@
+@if (null != index($ui-includes, 'card') and null == index($ui-excludes, 'card')) {
+	$card-background-color: white !default;
+	$card-border-color: #e7eaec !default;
+
+	.card {
+	    background-color: $card-background-color;
+	    clear: both;
+	    margin-bottom: 25px;
+	    margin-top: 0;
+
+	    & > &-header,
+	    & > &-body,
+	    & > &-footer {
+	    	clear: both;
+		    color: inherit;
+		    padding: 1em;
+
+		    @extend .m-w-n;
+	    }
+
+	    & > &-header {
+		    h5 {
+			    display: inline-block;
+			    font-size: 14px;
+			    margin: 0;
+			    padding: 0;
+			    text-overflow: ellipsis;
+			}
+
+		    div[class*="col"] > & {
+				@extend .p-w-n;
+		    }
+
+		    + .card-body {
+		    	border-top: 1px solid $card-border-color;
+		    }
+		}
+
+		& > &-body {
+		    padding: 15px 20px 20px 20px;
+
+		    div[class*="col"] > & {
+				@extend .p-w-n;
+		    }
+
+		    + .card-footer {
+		    	border-top: 1px solid $card-border-color;
+		    }
+		}
+
+		&.p-w-n {
+			> .card-header,
+			> .card-body {
+				//@extend .p-w-n;
+			}
+		}
+	}
+}

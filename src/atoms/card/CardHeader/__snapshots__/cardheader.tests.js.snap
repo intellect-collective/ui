@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardHeader Can display 1`] = `
+<CardHeader
+  title="Test"
+>
+  <div
+    className="card-header"
+  >
+    <h5>
+      Test
+    </h5>
+  </div>
+</CardHeader>
+`;
