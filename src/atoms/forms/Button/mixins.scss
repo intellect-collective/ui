@@ -1,0 +1,65 @@
+@function alter-color($color, $amount: 10%) {
+    @if (lightness($color) > 50) {
+        @return darken($color, $amount);
+    }
+    @return lighten($color, $amount);
+}
+
+@mixin button-variant($color, $background, $border: $background) {
+    color: $color;
+    background-color: $background;
+    border-color: $border;
+
+    &:focus,
+    &.focus {
+        color: $color;
+        background-color: alter-color($background, 10%);
+        border-color: alter-color($border, 25%);
+    }
+    &:hover {
+        color: $color;
+        background-color: alter-color($background, 10%);
+        border-color: alter-color($border, 12%);
+    }
+    &:active,
+    &.active,
+    .open > .dropdown-toggle#{&} {
+        color: $color;
+        background-color: alter-color($background, 10%);
+        background-image: none;
+        border-color: alter-color($border, 12%);
+
+        &:hover,
+        &:focus,
+        &.focus {
+            color: $color;
+            background-color: alter-color($background, 17%);
+            border-color: alter-color($border, 25%);
+        }
+    }
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] &,
+    fieldset.disabled & {
+        color: lighten($color, 10%);
+        background-color: lighten($background, 10%)
+        &:hover,
+        &:focus,
+        &.focus {
+            background-color: $background;
+            border-color: $border;
+        }
+    }
+
+    .badge {
+        color: $background;
+        background-color: $color;
+    }
+}
+
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+    padding: $padding-vertical $padding-horizontal;
+    font-size: $font-size;
+    line-height: $line-height;
+    border-radius: $border-radius;
+}

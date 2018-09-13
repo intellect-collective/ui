@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import changeable from '../_decorators/changeable';
 import formContext from '../_decorators/formContext';
 import groupContext from '../_decorators/groupContext';
@@ -25,15 +26,21 @@ class FancyCheckbox extends React.Component {
 
     render() {
         const {
+            className,
+            inputClassName,
+            innerClassName,
             style,
             ...props
         } = this.props;
         return (
-            <div className="fancycheck">
+            <div className={ classnames('fancycheck', className) }>
                 <input { ...props }
+                        className={ classnames(inputClassName) }
                         type="checkbox"
+                        onChange={ this.onChange }
                         ref={ (ref) => { this.checkbox = ref; } } />
                 <ins role="checkbox"
+                        className={ classnames(innerClassName) }
                         tabIndex={ -1 }
                         aria-checked={ props.checked }
                         onClick={ this.onClick }

@@ -27,12 +27,16 @@ export const checkedGroupTransformer = ({ name, value, checked }, { group }) => 
 
 export const checkedFormTransformer = ({ name, value, checked }, { form }) => {
     const result = {};
-
+    result.value = value;
     if (typeof checked !== 'undefined') {
         result.checked = checked;
     } else if (form && typeof form.getValue(name) !== 'undefined') {
         const val = form.getValue(name);
-        result.checked = Array.isArray(val) ? val.indexOf(value) !== -1 : val === value;
+        if (Array.isArray(val)) {
+            result.checked = val.indexOf(value);
+        } else {
+            result.checked = val === value || val === true;
+        }
     } else {
         result.checked = false;
     }

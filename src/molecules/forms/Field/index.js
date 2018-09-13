@@ -36,15 +36,16 @@ const renderField = (id, name, classNames, { component, children, ...props }) =>
 };
 
 const Field = ({
-    id, name, className, classNames, label, ...props
+    id, name, className, classNames, label, inverse, ...props
 }) => (
     <div className={ className }>
-        { renderLabel(id, name, classNames, label) }
+        { inverse ? null : renderLabel(id, name, classNames, label) }
         { renderWrapper(
             renderField(id, name, classNames, props),
             { classNames, ...props },
             Field.wrapper
         ) }
+        { inverse ? renderLabel(id, name, classNames, label) : null }
     </div>
 );
 Field.displayName = 'Field';
@@ -61,6 +62,7 @@ Field.propTypes = {
         PropTypes.string,
         PropTypes.node
     ]),
+    inverse: PropTypes.bool,
     wrapper: PropTypes.oneOfType([
         PropTypes.element,
         PropTypes.func,
