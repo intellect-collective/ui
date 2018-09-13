@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "build": "NODE_ENV=production webpack --config ./.storybook/webpack.config.js --output-path ./dist"
   },
   "dependencies": {
     "classnames": "2.2.5",
@@ -52,7 +53,8 @@
     "react": "16.4.2",
     "react-dom": "16.4.2",
     "react-test-renderer": "16.4.2",
-    "sass-loader": "6.0.6"
+    "sass-loader": "6.0.6",
+    "style-loader": "^0.23.0"
   },
   "peerDependencies": {
     "prop-types": "15.6.2",

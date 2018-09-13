@@ -1,13 +1,36 @@
+const fs = require('fs');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const genDefaultConfig = require('@storybook/react/dist/server/config/defaults/webpack.config.js');
+const defaultConfig = require('@storybook/react/dist/server/config/webpack.config.js').default;
+const _ = require('lodash');
 
-module.exports = (baseConfig, env) => {
-    const config = genDefaultConfig(baseConfig, env);
+const production = (config) => {
+    config.module.rules.push({
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+            use: [{
+                loader: 'css-loader',
+                options: {
+                    minimize: true,
+                    importLoaders: 1
+                }
+            }, 'sass-loader'],
+            fallback: 'style-loader',
+            publicPath: '../'
+        })
+    });
 
-    // config.entry.default = [ path.resolve(__dirname, '../themes/default.scss')];
-    // config.entry.secondary = [ path.resolve(__dirname, '../themes/secondary.scss')];
+    config.plugins.push(
+        new ExtractTextPlugin({
+            // 'filename': '[name].[contenthash].css'
+            'filename': 'css/[name].css'
+        })
+    );
+}
 
+const development = (config) => {
     config.module.rules.push({
         test: /\.scss$/,
         exclude: /node_modules/,
@@ -23,9 +46,6 @@ module.exports = (baseConfig, env) => {
         ]
     });
 
-    config.resolve = {
-        extensions: ['.js', '.jsx']
-    }
     config.devServer = {
         contentBase: "./public",
         hot: true,
@@ -35,8 +55,23 @@ module.exports = (baseConfig, env) => {
         quiet: false,
         noInfo: false
     }
+}
 
+module.exports = (baseConfig, env) => {
+    if (!baseConfig) {
+        baseConfig = defaultConfig();
+    }
+    const config = genDefaultConfig(baseConfig, env);
+    config.resolve = {
+        extensions: ['.js', '.jsx']
+    }
+
+    if (process.env.NODE_ENV === 'development') {
+        development(config);
+    }
+    if (process.env.NODE_ENV === 'production') {
+        production(config);
+    }
     config.stats = true;
-
     return config;
 };
