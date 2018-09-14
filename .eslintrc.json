@@ -159,6 +159,7 @@
 
     "react/button-has-type": "off",
     "react/destructuring-assignment": "off",
+    "react/display-name": ["error", { "ignoreTranspilerName": false } ],
     "react/forbid-prop-types": "off",
     "react/jsx-boolean-value": "error",
     "react/jsx-closing-bracket-location": [
@@ -248,5 +249,14 @@
     "unicorn/custom-error-definition": "error",
     "unicorn/prefer-starts-ends-with": "error",
     "unicorn/prefer-type-error": "error"
-  }
+  },
+
+  "overrides": [
+    {
+      "files": [ "**/stories.js" ],
+      "rules": {
+        "react/display-name": "off"
+      }
+    }
+  ]
 }
