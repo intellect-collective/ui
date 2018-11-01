@@ -33,8 +33,6 @@ export const checkedFormTransformer = ({ name, value, checked }, { form }) => {
     } else if (form && typeof form.getValue(name) !== 'undefined') {
         const val = form.getValue(name);
         result.checked = Array.isArray(val) ? val.indexOf(value) !== -1 : val === value;
-    } else {
-        result.checked = false;
     }
 
     return result;

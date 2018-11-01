@@ -1,0 +1,209 @@
+$toggle-font-weight:           normal !default;
+$toggle-default-color:         #333 !default;
+
+$toggle-border-radius-base:    $border-radius-base !default;
+$toggle-border-radius-lg:      $border-radius-lg !default;
+$toggle-border-radius-sm:      $border-radius-sm !default;
+
+$toggle-primary-bg:            $brand-primary !default;
+$toggle-primary-color:         $brand-primary-contrast !default;
+$toggle-success-bg:            $brand-success !default;
+$toggle-success-color:         $brand-success-contrast !default;
+$toggle-info-bg:               $brand-info !default;
+$toggle-info-color:            $brand-info-contrast !default;
+$toggle-warning-bg:            $brand-warning !default;
+$toggle-warning-color:         $brand-warning-contrast !default;
+$toggle-danger-bg:             $brand-danger !default;
+$toggle-danger-color:          $brand-danger-contrast !default;
+
+$toggle-sizes: (
+    '.toggle': (52px, 20px, 20px)
+) !default;
+
+$toggle-variants: (
+    ('.toggle', '.toggle-primary', '.toggle-brand'): ($toggle-primary-bg, $toggle-primary-color),
+    ('.toggle-success', '.toggle-green'): ($toggle-success-bg, $toggle-success-color),
+    ('.toggle-info', '.toggle-alert', '.toggle-blue'): ($toggle-info-bg, $toggle-info-color),
+    ('.toggle-warning', '.toggle-orange'): ($toggle-warning-bg, $toggle-warning-color),
+    ('.toggle-danger', '.toggle-error', '.toggle-red'): ($toggle-danger-bg, $toggle-danger-color)
+) !default;
+
+
+
+@mixin toggle-size($toggle-width: 52px, $switch-width: 20px, $height: 20px) {
+    width: $toggle-width;
+
+    label {
+        height: $height;
+    }
+
+    .switch {
+        right: ($toggle-width - $switch-width) + 2;
+        width: $toggle-width * 2;
+
+        &-inner,
+        &:before,
+        &:after {
+            height: $height;
+            line-height: $height;
+        }
+
+        &-inner {
+            width: $switch-width;
+        }
+
+        &:before,
+        &:after {
+            width: $toggle-width - $switch-width
+        }
+    }
+
+    &-oval {
+        .switch {
+            right: ($toggle-width - ($switch-width / 2)) + 2;
+            width: $toggle-width * 2;
+
+            &-inner,
+            &:before,
+            &:after {
+                height: $height;
+                line-height: $height;
+            }
+
+            &-inner {
+                left: $toggle-width - ($switch-width / 2);
+                position: absolute;
+                width: $switch-width;
+            }
+
+            &:before,
+            &:after {
+                width: $toggle-width;
+            }
+        }
+
+        input[type="checkbox"]:checked + label .switch {
+            right: ($switch-width / 2) + 2 !important;
+        }
+    }
+}
+
+@mixin toggle-variant($bg, $color) {
+    input[type="checkbox"]:disabled {
+        + label,
+        + label .switch {
+            color: lighten($bg, 10%);
+        }
+    }
+
+    label {
+        border: 2px solid $bg;
+    }
+
+    .switch {
+        &-inner {
+            background: white;
+            border-color: $bg;
+        }
+        &:before {
+            background-color: $bg;
+            color: $color;
+        }
+        &:after {
+            background-color: white;
+            color: $bg;
+        }
+    }
+}
+
+@each $class, $attributes in $toggle-sizes {
+    #{$class} {
+        @include toggle-size($attributes...);
+    }
+}
+
+@each $classes, $attributes in $toggle-variants {
+    @each $class in $classes {
+        #{$class} {
+            @include toggle-variant($attributes...);
+        }
+    }
+}
+
+.toggle {
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    input[type="checkbox"] {
+        display: none;
+
+        &:checked {
+            + label .switch-inner {
+                margin-left: 0;
+            }
+            + label .switch {
+                right: 0;
+            }
+        }
+    }
+
+    label {
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 2px;
+    }
+
+    .switch {
+        display: block;
+        position: relative;
+        top: -2px;
+        transition: right 0.3s ease-in 0s;
+
+        &-inner,
+        &:before,
+        &:after {
+            box-sizing: border-box;
+            display: inline-block;
+            font-family: Trebuchet, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            vertical-align: top;
+        }
+        &-inner {
+            border-width: 2px;
+            border-style: solid;
+        }
+
+        &:before,
+        &:after {
+            content: " ";
+            text-align: center;
+        }
+    }
+
+    &-oval {
+        label {
+            border-radius: 100px;
+        }
+        .switch-inner {
+            border-radius: 100px;
+        }
+    }
+
+    &-worded {
+        .switch {
+            content: " ";
+            &:before {
+                content: "ON";
+            }
+            &:after {
+                content: "OFF";
+            }
+        }
+    }
+}

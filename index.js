@@ -20,6 +20,7 @@ export { default as Select } from './src/atoms/forms/Select';
 export { default as SubmitButton } from './src/atoms/forms/SubmitButton';
 export { default as Text } from './src/atoms/forms/Text';
 export { default as Textarea } from './src/atoms/forms/Textarea';
+export { default as Toggle } from './src/atoms/forms/Toggle';
 export { default as Column } from './src/atoms/grid/Column';
 export { default as Container } from './src/atoms/grid/Container';
 export { default as Row } from './src/atoms/grid/Row';

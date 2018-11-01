@@ -12,19 +12,16 @@ exports[`Checkbox Should accept valid props 1`] = `
     value="fire"
   >
     <Changeable
-      checked={false}
       name="test"
       onChange={[Function]}
       value="fire"
     >
       <Checkbox
-        checked={false}
         name="test"
         onChange={[Function]}
         value="fire"
       >
         <input
-          checked={false}
           name="test"
           onChange={[Function]}
           type="checkbox"
