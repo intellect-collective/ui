@@ -90,7 +90,6 @@ describe('Radio', () => {
                 </FieldGroup>
             );
             expect(wrapper.find('input').prop('name')).toEqual('test2');
-            expect(wrapper.find('input').prop('checked')).toEqual(false);
         });
 
         it('Remains unchecked if group has incorrect value', () => {

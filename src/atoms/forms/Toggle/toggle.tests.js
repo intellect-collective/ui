@@ -1,5 +1,5 @@
 import React from 'react';
-import FancyCheckbox from '.';
+import Toggle from '.';
 import Form from '../Form';
 import FieldGroup from '../FieldGroup';
 import {
@@ -18,14 +18,14 @@ const expectedProps = {
     onChange: expect.any(Function)
 };
 
-describe('FancyCheckbox', () => {
-    basicChangeableTests(FancyCheckbox, 'input', validProps, expectedProps);
+describe('Toggle', () => {
+    basicChangeableTests(Toggle, 'input', validProps, expectedProps);
 
     describe('Form Context Usage', () => {
         it('Gets checked state from form', () => {
             const wrapper = mount(
                 <Form action="/" data={{ test: 'sausages' }}>
-                    <FancyCheckbox name="test" value="sausages" />
+                    <Toggle name="test" value="sausages" />
                 </Form>
             );
             expect(wrapper.find('input').prop('checked')).toEqual(true);
@@ -34,7 +34,7 @@ describe('FancyCheckbox', () => {
         it('Prefers local attributes over form attributes', () => {
             const wrapper = mount(
                 <Form action="/" data={{ test: 'sausages' }}>
-                    <FancyCheckbox name="test" value="sausages" checked={ false } />
+                    <Toggle name="test" value="sausages" checked={ false } />
                 </Form>
             );
             expect(wrapper.find('input').prop('checked')).toEqual(false);
@@ -43,7 +43,7 @@ describe('FancyCheckbox', () => {
         it('Remains unchecked if form field has incorrect value', () => {
             const wrapper = mount(
                 <Form action="/" data={{ test: 'hotdogs' }}>
-                    <FancyCheckbox name="test" value="sausages" />
+                    <Toggle name="test" value="sausages" />
                 </Form>
             );
             expect(wrapper.find('input').prop('checked')).toEqual(false);
@@ -52,9 +52,9 @@ describe('FancyCheckbox', () => {
         it('Can check multiple', () => {
             const wrapper = mount(
                 <Form action="/" data={{ test: ['hotdogs', 'sausages'] }}>
-                    <FancyCheckbox name="test" value="hotdogs" />
-                    <FancyCheckbox name="test" value="sausages" />
-                    <FancyCheckbox name="test" value="burgers" />
+                    <Toggle name="test" value="hotdogs" />
+                    <Toggle name="test" value="sausages" />
+                    <Toggle name="test" value="burgers" />
                 </Form>
             );
             expect(wrapper.find('input[value="hotdogs"]').prop('checked')).toEqual(true);
@@ -67,7 +67,7 @@ describe('FancyCheckbox', () => {
         it('Gets name and checked state from group', () => {
             const wrapper = mount(
                 <FieldGroup name="test" value="sausages">
-                    <FancyCheckbox value="sausages" />
+                    <Toggle value="sausages" />
                 </FieldGroup>
             );
             expect(wrapper.find('input').prop('name')).toEqual('test');
@@ -77,7 +77,7 @@ describe('FancyCheckbox', () => {
         it('Prefers local attributes over group attributes', () => {
             const wrapper = mount(
                 <FieldGroup name="test" value="sausages">
-                    <FancyCheckbox value="sausages" checked={ false } />
+                    <Toggle value="sausages" checked={ false } />
                 </FieldGroup>
             );
             expect(wrapper.find('input').prop('checked')).toEqual(false);
@@ -86,7 +86,7 @@ describe('FancyCheckbox', () => {
         it('Prefers local name over group name', () => {
             const wrapper = mount(
                 <FieldGroup name="test" value="sausages">
-                    <FancyCheckbox name="test2" value="sausages" />
+                    <Toggle name="test2" value="sausages" />
                 </FieldGroup>
             );
             expect(wrapper.find('input').prop('name')).toEqual('test2');
@@ -95,7 +95,7 @@ describe('FancyCheckbox', () => {
         it('Remains unchecked if group has incorrect value', () => {
             const wrapper = mount(
                 <FieldGroup name="test" value="hotdogs">
-                    <FancyCheckbox value="sausages" />
+                    <Toggle value="sausages" />
                 </FieldGroup>
             );
             expect(wrapper.find('input').prop('checked')).toEqual(false);
@@ -104,9 +104,9 @@ describe('FancyCheckbox', () => {
         it('Can check multiple', () => {
             const wrapper = mount(
                 <FieldGroup name="test" value={ ['hotdogs', 'sausages'] }>
-                    <FancyCheckbox value="hotdogs" />
-                    <FancyCheckbox value="sausages" />
-                    <FancyCheckbox value="burgers" />
+                    <Toggle value="hotdogs" />
+                    <Toggle value="sausages" />
+                    <Toggle value="burgers" />
                 </FieldGroup>
             );
             expect(wrapper.find('input[value="hotdogs"]').prop('checked')).toEqual(true);
@@ -120,7 +120,7 @@ describe('FancyCheckbox', () => {
             const wrapper = mount(
                 <Form action="/" data={{ test: 'sausages' }}>
                     <FieldGroup name="test">
-                        <FancyCheckbox value="sausages" />
+                        <Toggle value="sausages" />
                     </FieldGroup>
                 </Form>
             );
@@ -132,7 +132,7 @@ describe('FancyCheckbox', () => {
             const wrapper = mount(
                 <Form action="/" data={{ test: 'sausages' }}>
                     <FieldGroup name="test" value="hotdogs">
-                        <FancyCheckbox value="sausages" />
+                        <Toggle value="sausages" />
                     </FieldGroup>
                 </Form>
             );
@@ -144,7 +144,7 @@ describe('FancyCheckbox', () => {
             const wrapper = mount(
                 <Form action="/" data={{ test: 'sausages' }}>
                     <FieldGroup name="test" value="hotdogs">
-                        <FancyCheckbox value="sausages" checked={ false } />
+                        <Toggle value="sausages" checked={ false } />
                     </FieldGroup>
                 </Form>
             );

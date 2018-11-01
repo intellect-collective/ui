@@ -12,19 +12,16 @@ exports[`Radio Should accept valid props 1`] = `
     value="fire"
   >
     <Changeable
-      checked={false}
       name="test"
       onChange={[Function]}
       value="fire"
     >
       <Radio
-        checked={false}
         name="test"
         onChange={[Function]}
         value="fire"
       >
         <input
-          checked={false}
           name="test"
           onChange={[Function]}
           type="radio"
