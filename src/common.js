@@ -1,3 +1,5 @@
+import { isAfter, isBefore, isSameDay } from 'date-fns';
+
 /**
  * Lifted from Lodash (https://github.com/lodash/lodash/blob/master/isObject.js)
  *
@@ -39,4 +41,24 @@ export function onKeyDown(func, keys = ['Enter', ' ']) {
             return func(ev);
         }
     };
+}
+/**
+ * Determines whether or not the first given date is the same day as, or before,
+ * the second given date.
+ * @param {Date} dateLeft - The first date to compare
+ * @param {Date} dateRight - The second date to compare
+ * @returns {Boolean} - True if the first date is same or before the second
+ */
+export function isSameOrBefore(dateLeft, dateRight) {
+    return isSameDay(dateLeft, dateRight) || isBefore(dateLeft, dateRight);
+}
+/**
+ * Determines whether or not the first given date is the same day as, or after,
+ * the second given date.
+ * @param {Date} dateLeft - The first date to compare
+ * @param {Date} dateRight - The second date to compare
+ * @returns {Boolean} - True if the first date is same or after the second
+ */
+export function isSameOrAfter(dateLeft, dateRight) {
+    return isSameDay(dateLeft, dateRight) || isAfter(dateLeft, dateRight);
 }

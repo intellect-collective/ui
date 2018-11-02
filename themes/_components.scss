@@ -2,6 +2,7 @@ $ui-includes:
 	// Atoms
 	'pageoverlay',
     'card',
+    'calendar.list',
     'form.button',
     'form.fancycheckbox',
     'form.label',
@@ -13,6 +14,7 @@ $ui-includes:
     'datatable',
     'modal',
     'pagination',
+    'calendar.table',
     'form.field'
 
     !default;
@@ -20,7 +22,6 @@ $ui-excludes: '' !default;
 
 @import '../src/_variables';
 @import '../src/common';
-@import '_partials/_field';
 
 // Import atoms
 @import '../src/atoms/PageOverlay/pageoverlay';
@@ -38,4 +39,6 @@ $ui-excludes: '' !default;
 @import '../src/molecules/DataTable/table';
 @import '../src/molecules/Modal/modal';
 @import '../src/molecules/Pagination/pagination';
+@import '../src/molecules/calendar/List/calendarlist';
+@import '../src/molecules/calendar/Table/calendartable';
 @import '../src/molecules/forms/Field/field';
