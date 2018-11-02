@@ -1,0 +1,334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List Can click checkbox 1`] = `
+<CalendarList
+  calendars={
+    Array [
+      Object {
+        "background": "#EDD197",
+        "color": "black",
+        "hidden": false,
+        "id": 1,
+        "title": "My Schedule",
+      },
+      Object {
+        "hidden": false,
+        "id": 2,
+        "title": "Patient Schedule",
+      },
+      Object {
+        "background": "#dc2127",
+        "hidden": false,
+        "id": 3,
+        "title": "World Events",
+      },
+    ]
+  }
+  onChange={[MockFunction]}
+>
+  <ul
+    className="calendar-list"
+  >
+    <li
+      className="item-header"
+    >
+      Calendars
+    </li>
+    <CalendarListItem
+      calendar={
+        Object {
+          "background": "#EDD197",
+          "color": "black",
+          "hidden": false,
+          "id": 1,
+          "title": "My Schedule",
+        }
+      }
+      hidden={false}
+      key="1"
+      onChange={[MockFunction]}
+    >
+      <li>
+        <GroupContext
+          checked={true}
+          id={1}
+          name="calendars"
+          onChange={[MockFunction]}
+          style={
+            Object {
+              "background": "#EDD197",
+              "borderColor": "#EDD197",
+              "color": "black",
+            }
+          }
+          value={1}
+        >
+          <FormContext
+            checked={true}
+            id={1}
+            name="calendars"
+            onChange={[MockFunction]}
+            style={
+              Object {
+                "background": "#EDD197",
+                "borderColor": "#EDD197",
+                "color": "black",
+              }
+            }
+            value={1}
+          >
+            <Changeable
+              checked={true}
+              id={1}
+              name="calendars"
+              onChange={[MockFunction]}
+              style={
+                Object {
+                  "background": "#EDD197",
+                  "borderColor": "#EDD197",
+                  "color": "black",
+                }
+              }
+              value={1}
+            >
+              <FancyCheckbox
+                checked={true}
+                id={1}
+                name="calendars"
+                onChange={[Function]}
+                style={
+                  Object {
+                    "background": "#EDD197",
+                    "borderColor": "#EDD197",
+                    "color": "black",
+                  }
+                }
+                value={1}
+              >
+                <div
+                  className="fancycheck"
+                >
+                  <input
+                    checked={true}
+                    id={1}
+                    name="calendars"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value={1}
+                  />
+                  <ins
+                    aria-checked={true}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="checkbox"
+                    style={
+                      Object {
+                        "background": "#EDD197",
+                        "borderColor": "#EDD197",
+                        "color": "black",
+                      }
+                    }
+                    tabIndex={-1}
+                  />
+                </div>
+              </FancyCheckbox>
+            </Changeable>
+          </FormContext>
+        </GroupContext>
+        <label
+          className=""
+          htmlFor={1}
+        >
+          <span>
+            My Schedule
+          </span>
+        </label>
+      </li>
+    </CalendarListItem>
+    <CalendarListItem
+      calendar={
+        Object {
+          "hidden": false,
+          "id": 2,
+          "title": "Patient Schedule",
+        }
+      }
+      hidden={false}
+      key="2"
+      onChange={[MockFunction]}
+    >
+      <li>
+        <GroupContext
+          checked={true}
+          id={2}
+          name="calendars"
+          onChange={[MockFunction]}
+          style={Object {}}
+          value={2}
+        >
+          <FormContext
+            checked={true}
+            id={2}
+            name="calendars"
+            onChange={[MockFunction]}
+            style={Object {}}
+            value={2}
+          >
+            <Changeable
+              checked={true}
+              id={2}
+              name="calendars"
+              onChange={[MockFunction]}
+              style={Object {}}
+              value={2}
+            >
+              <FancyCheckbox
+                checked={true}
+                id={2}
+                name="calendars"
+                onChange={[Function]}
+                style={Object {}}
+                value={2}
+              >
+                <div
+                  className="fancycheck"
+                >
+                  <input
+                    checked={true}
+                    id={2}
+                    name="calendars"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value={2}
+                  />
+                  <ins
+                    aria-checked={true}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="checkbox"
+                    style={Object {}}
+                    tabIndex={-1}
+                  />
+                </div>
+              </FancyCheckbox>
+            </Changeable>
+          </FormContext>
+        </GroupContext>
+        <label
+          className=""
+          htmlFor={2}
+        >
+          <span>
+            Patient Schedule
+          </span>
+        </label>
+      </li>
+    </CalendarListItem>
+    <CalendarListItem
+      calendar={
+        Object {
+          "background": "#dc2127",
+          "hidden": false,
+          "id": 3,
+          "title": "World Events",
+        }
+      }
+      hidden={false}
+      key="3"
+      onChange={[MockFunction]}
+    >
+      <li>
+        <GroupContext
+          checked={true}
+          id={3}
+          name="calendars"
+          onChange={[MockFunction]}
+          style={
+            Object {
+              "background": "#dc2127",
+              "borderColor": "#dc2127",
+            }
+          }
+          value={3}
+        >
+          <FormContext
+            checked={true}
+            id={3}
+            name="calendars"
+            onChange={[MockFunction]}
+            style={
+              Object {
+                "background": "#dc2127",
+                "borderColor": "#dc2127",
+              }
+            }
+            value={3}
+          >
+            <Changeable
+              checked={true}
+              id={3}
+              name="calendars"
+              onChange={[MockFunction]}
+              style={
+                Object {
+                  "background": "#dc2127",
+                  "borderColor": "#dc2127",
+                }
+              }
+              value={3}
+            >
+              <FancyCheckbox
+                checked={true}
+                id={3}
+                name="calendars"
+                onChange={[Function]}
+                style={
+                  Object {
+                    "background": "#dc2127",
+                    "borderColor": "#dc2127",
+                  }
+                }
+                value={3}
+              >
+                <div
+                  className="fancycheck"
+                >
+                  <input
+                    checked={true}
+                    id={3}
+                    name="calendars"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value={3}
+                  />
+                  <ins
+                    aria-checked={true}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="checkbox"
+                    style={
+                      Object {
+                        "background": "#dc2127",
+                        "borderColor": "#dc2127",
+                      }
+                    }
+                    tabIndex={-1}
+                  />
+                </div>
+              </FancyCheckbox>
+            </Changeable>
+          </FormContext>
+        </GroupContext>
+        <label
+          className=""
+          htmlFor={3}
+        >
+          <span>
+            World Events
+          </span>
+        </label>
+      </li>
+    </CalendarListItem>
+  </ul>
+</CalendarList>
+`;
