@@ -1,5 +1,5 @@
 import React from 'react';
-import OutsideClickWatcher from '.';
+import { OutsideClickWatcher } from '../../..';
 
 const test = (onClick = () => {}) => {
     return mount(
