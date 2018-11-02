@@ -28,7 +28,7 @@ const Toggle = ({
     <div className={ classes(className, oval, worded) }>
         <input type="checkbox" id={ id || name } name={ name } { ...rest } />
         <label htmlFor={ id || name }>
-            <span className="switch"><span className="switch-inner" tabIndex={ -1 } /></span>
+            <span className="switch"><span className="switch-inner" /></span>
         </label>
     </div>
 );

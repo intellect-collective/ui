@@ -1,0 +1,49 @@
+@mixin sw($color, $alt: white) {
+    .switch {
+        &-inner {
+            background: $alt;
+            border-color: $color;
+        }
+        &:before {
+            background-color: $color;
+            color: color-yiq($color);
+        }
+        &:after {
+            background-color: $alt;
+            color: $color;
+        }
+    }
+}
+
+@mixin toggle-variant($color,
+        $hover-color: darken($color, 7.5%)) {
+    &:hover {
+        label {
+            border-color: $hover-color;
+
+            @include sw($hover-color, #eee);
+        }
+    }
+
+    input[type="checkbox"]:focus + label,
+    input[type="checkbox"].focus + label,
+    label:focus,
+    label.focus {
+        @include focus-color($color);
+    }
+
+    @include control-disabled,
+    input[type="checkbox"]:disabled {
+        + label {
+            border-color: #ccc;
+
+            @include sw(#ccc);
+        }
+    }
+
+    label {
+        border: 2px solid $color;
+
+        @include sw($color);
+    }
+}

@@ -1,0 +1,10 @@
+@mixin focus() {
+    &:focus,
+    &.focus {
+    	@content;
+    }
+}
+@mixin focus-color($color) {
+    box-shadow: 0 0 $focus-shadow-width $focus-shadow-width rgba($color, .5);
+    outline: none;
+}

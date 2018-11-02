@@ -1,0 +1,7 @@
+@mixin control-disabled() {
+	&[disabled],
+	&.disabled,
+	fieldset[disabled] & {
+		@content;
+	}
+}

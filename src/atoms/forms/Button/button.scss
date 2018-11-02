@@ -1,54 +1,145 @@
-@if (null != index($ui-includes, 'form.button') and null == index($ui-excludes, 'form.button')) {
-    .btn,
-    .btn-small,
-    .btn-large,
-    .btn-flat {
-        background-color: $brand-color;
-        border: none;
-        border-radius: 2px;
-        color: $color-white;
-        cursor: pointer;
-        display: inline-block;
-        font-size: 1rem;
-        height: 36px;
-        letter-spacing: .5px;
-        line-height: 36px;
-        outline: 0;
-        padding: 0 2rem;
-        text-align: center;
-        text-decoration: none;
-        text-transform: uppercase;
-        transition: .2s ease-out;
-        vertical-align: middle;
-        -webkit-tap-highlight-color: transparent;
+@import 'mixins/button-size';
+@import 'mixins/button-variant';
+@import '../../../../themes/_mixins/tab-focus';
 
-        &:hover {
-            background-color: $brand-color-highlight;
+@if (null != index($ui-includes, 'form.button') and null == index($ui-excludes, 'form.button')) {
+    //
+    // Button-related variables
+    //
+    $btn-font-weight:           normal !default;
+    $btn-default-color:         #333 !default;
+
+    $btn-border-radius-base:    $border-radius-base !default;
+    $btn-border-radius-lg:      $border-radius-lg !default;
+    $btn-border-radius-sm:      $border-radius-sm !default;
+
+    $btn-sizes: (
+        '.btn': ($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $btn-border-radius-base),
+        '.btn-xs': ($padding-xs-vertical, $padding-xs-horizontal, $font-size-sm, $line-height-sm, $btn-border-radius-sm),
+        '.btn-sm': ($padding-sm-vertical, $padding-sm-horizontal, $font-size-sm, $line-height-sm, $btn-border-radius-sm),
+        '.btn-lg': ($padding-lg-vertical, $padding-lg-horizontal, $font-size-lg, $line-height-lg, $btn-border-radius-lg)
+    ) !default;
+
+    .btn {
+        background-image: none;
+        border: 1px solid transparent;
+        display: inline-block;
+        cursor: pointer;
+        font-weight: $btn-font-weight;
+        margin-bottom: 0;
+        text-align: center;
+        touch-action: manipulation;
+        transition: .2s ease-out;
+        user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $btn-border-radius-base);
+
+
+        /*&,
+        &:active,
+        &.active {
+            &:focus,
+            &.focus {
+                @extend .tab-focus;
+            }
+        }*/
+
+        &:hover,
+        &.hover,
+        &:focus,
+        &.focus,
+        &:active,
+        &.active {
+            background-color: transparent;
+            background-image: none;
+            border-color: transparent;
+            color: $btn-default-color;
+            text-decoration: none;
         }
 
-        &:not(.btn-flat) {
-            box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+        &:active,
+        &.active {
+            outline: 0;
+            background-image: none;
+        }
 
-            &:hover {
-                box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
+        &.disabled,
+        &[disabled],
+        fieldset[disabled] & {
+            &,
+            &:hover,
+            &:active,
+            &.active {
+                box-shadow: none;
+                cursor: disabled;
+                opacity: .65;
             }
         }
 
-        &.error {
-            background-color: $color-red !important;
+        &a {
+            &.disabled,
+            fieldset[disabled] & {
+                pointer-events: none;
+            }
+        }
+    }
+
+    @each $color, $value in $colors {
+        .btn-#{$color} {
+            @include button-variant($value);
+        }
+    }
+
+    @each $color, $value in $colors {
+        .btn-outline-#{$color} {
+            @include button-outline-variant($value);
+        }
+    }
+
+    .btn-loader {
+        position: relative;
+        transition: .3s ease all;
+
+        .btn-loader-label {
+            display: inline-block;
+            position: relative;
+            transition: .3s ease all;
         }
 
-    }
+        .btn-loader-spinner {
+            display: inline-block;
+            height: 32px;
+            left: 50%;
+            margin-left: -16px;
+            margin-top: -12px;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            top: 50%;
+            transform: scale(.2);
+            width: 32px;
+            z-index: 1000;
 
-    .btn-small {
-        font-size: .7rem;
-        height: 18px;
-        line-height: 18px;
-        padding: 0 1rem;
-    }
+            .sk-spinner-fading-circle {
+                div {
+                    &::before {
+                        background: #fff;
+                    }
+                }
+            }
+        }
 
-    .btn-large {
-        height: 54px;
-        line-height: 54px;
+        &.loading {
+            .btn-loader-label {
+                opacity: 0;
+                transform: scale(2.2);
+            }
+
+            .btn-loader-spinner {
+                opacity: 1;
+                transform: none;
+            }
+        }
     }
 }

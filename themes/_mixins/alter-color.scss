@@ -1,0 +1,11 @@
+/**
+ * Alter the given colour by the given amount, making it either darker or
+ * lighter based on the lightness of the provided colour, where lighter colours
+ * are made darker, and vice-versa.
+ */
+@function alter-color($color, $amount: 10%) {
+    @if (lightness($color) > 50) {
+        @return darken($color, $amount);
+    }
+    @return lighten($color, $amount);
+}
