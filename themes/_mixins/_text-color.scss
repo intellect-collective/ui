@@ -1,0 +1,10 @@
+/**
+ * Chooses either white or black as the text color based on the lightness of the
+ * given color.
+ */
+@function text-color($color) {
+    @if (lightness($color) < 30) {
+        @return black;
+    }
+    @return white;
+}

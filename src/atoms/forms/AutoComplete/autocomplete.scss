@@ -15,7 +15,7 @@
 
         li {
             background: white;
-            color: $brand-color;
+            color: $brand;
             cursor: pointer;
             display: block;
             list-style-type: none;
@@ -24,7 +24,7 @@
             transition: background .2s, color .2s;
 
             &.highlight {
-                background: $brand-color;
+                background: $brand;
                 color: white;
             }
         }

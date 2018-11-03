@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 //
 // Clearfix
 //
@@ -22,29 +18,5 @@
     }
     &:after {
         clear: both;
-    }
-}
-
-//
-// Margin and padding management
-//
-@each $type, $attributes in $space-attributes {
-    @each $key, $val in $space-sizes {
-        #{$type}#{$key} {
-            @each $attribute in $attributes {
-                #{$attribute}: $val;
-            }
-        }
-    }
-}
-
-//
-// Border management
-//
-@each $type, $attributes in $border-attributes {
-    #{$type} {
-        @each $attribute in $attributes {
-            #{$attribute}: 1px solid #ccc;
-        }
     }
 }

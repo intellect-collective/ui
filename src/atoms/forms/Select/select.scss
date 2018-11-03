@@ -1,5 +1,5 @@
 @if (null != index($ui-includes, 'form.select') and null == index($ui-excludes, 'form.select')) {
-	select:not(.browser-default) {
-	    //@extend .input;
-	}
+//	select:not(.browser-default) {
+//	    @extend .input;
+//	}
 }

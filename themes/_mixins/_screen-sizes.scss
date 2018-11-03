@@ -1,0 +1,60 @@
+// Listed screen size _only_
+@mixin screen-xxs-only {
+    @media (max-width: ($screen-xs - 1)) {
+        @content;
+    }
+}
+@mixin screen-xs-only {
+    @media (min-width: $screen-xs) and (max-width: $screen-xs-max) {
+        @content;
+    }
+}
+@mixin screen-sm-only {
+    @media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+        @content;
+    }
+}
+@mixin screen-md-only {
+    @media (min-width: $screen-md) and (max-width: $screen-md-max) {
+        @content;
+    }
+}
+@mixin screen-lg-only {
+    @media (min-width: $screen-lg) {
+        @content;
+    }
+}
+
+// Listed screen size, and any below
+@mixin screen-xs-max {
+    @media (max-width: $screen-xs-max) {
+        @content;
+    }
+}
+@mixin screen-sm-max {
+    @media (max-width: $screen-sm-max) {
+        @content;
+    }
+}
+@mixin screen-md-max {
+    @media (max-width: $screen-md-max) {
+        @content;
+    }
+}
+
+// Listed screen size, and any above
+@mixin screen-xs-min {
+    @media (min-width: $screen-xs) {
+        @content;
+    }
+}
+@mixin screen-sm-min {
+    @media (min-width: $screen-sm) {
+        @content;
+    }
+}
+@mixin screen-md-min {
+    @media (min-width: $screen-md) {
+        @content;
+    }
+}

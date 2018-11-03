@@ -1,0 +1,19 @@
+//
+// Generate a list of border types
+//
+$borders: (
+    '.b-a': ('border-bottom', 'border-top', 'border-left', 'border-right'),
+    '.b-v': ('border-left', 'border-right'),
+    '.b-h': ('border-bottom', 'border-top'),
+    '.b-b': 'border-bottom',
+    '.b-l': 'border-left',
+    '.b-r': 'border-right',
+    '.b-t': 'border-top'
+) !default;
+@each $type, $attributes in $borders {
+    #{$type} {
+        @each $attribute in $attributes {
+            #{$attribute}: 1px solid #ccc;
+        }
+    }
+}
