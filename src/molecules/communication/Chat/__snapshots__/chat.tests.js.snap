@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chat Can display 1`] = `
+<Chat
+  messages={
+    Array [
+      Object {
+        "content": "Hi!",
+        "date": 2018-09-18T21:02:45.773Z,
+        "id": 1,
+        "user": Object {
+          "avatar": "/assets/images/male-user-icon.png",
+          "me": true,
+          "name": "John Smith",
+          "url": "/u/johnsmith",
+        },
+      },
+      Object {
+        "content": "Good evening!",
+        "date": 2018-09-18T21:02:45.773Z,
+        "id": 2,
+        "user": Object {
+          "avatar": "/assets/images/female-user-icon.png",
+          "name": "Jane Doe",
+          "url": "/u/janedoe",
+        },
+      },
+    ]
+  }
+>
+  <div
+    className="discussion"
+  >
+    <ChatMessage
+      content="Hi!"
+      date={2018-09-18T21:02:45.773Z}
+      id={1}
+      key="1"
+      user={
+        Object {
+          "avatar": "/assets/images/male-user-icon.png",
+          "me": true,
+          "name": "John Smith",
+          "url": "/u/johnsmith",
+        }
+      }
+    >
+      <div
+        className="discussion-message me"
+      >
+        <div
+          className="discussion-message-inner"
+        >
+          <Avatar
+            alt="John Smith"
+            className="avatar"
+            src="/assets/images/male-user-icon.png"
+          >
+            <div
+              className="avatar"
+            >
+              <img
+                alt="JS"
+                onError={[Function]}
+                src="/assets/images/male-user-icon.png"
+              />
+            </div>
+          </Avatar>
+          <div
+            className="discussion-message-content"
+          >
+            <a
+              className="discussion-message-author"
+              href="/u/johnsmith"
+            >
+              John Smith
+            </a>
+            <span
+              className="discussion-message-date"
+            >
+              Tue, Sep 18, 2018 - 9:02p
+            </span>
+            <span
+              className="discussion-message-text"
+            >
+              Hi!
+            </span>
+          </div>
+        </div>
+      </div>
+    </ChatMessage>
+    <ChatMessage
+      content="Good evening!"
+      date={2018-09-18T21:02:45.773Z}
+      id={2}
+      key="2"
+      user={
+        Object {
+          "avatar": "/assets/images/female-user-icon.png",
+          "name": "Jane Doe",
+          "url": "/u/janedoe",
+        }
+      }
+    >
+      <div
+        className="discussion-message"
+      >
+        <div
+          className="discussion-message-inner"
+        >
+          <Avatar
+            alt="Jane Doe"
+            className="avatar"
+            src="/assets/images/female-user-icon.png"
+          >
+            <div
+              className="avatar"
+            >
+              <img
+                alt="JD"
+                onError={[Function]}
+                src="/assets/images/female-user-icon.png"
+              />
+            </div>
+          </Avatar>
+          <div
+            className="discussion-message-content"
+          >
+            <a
+              className="discussion-message-author"
+              href="/u/janedoe"
+            >
+              Jane Doe
+            </a>
+            <span
+              className="discussion-message-date"
+            >
+              Tue, Sep 18, 2018 - 9:02p
+            </span>
+            <span
+              className="discussion-message-text"
+            >
+              Good evening!
+            </span>
+          </div>
+        </div>
+      </div>
+    </ChatMessage>
+    <div
+      className="discussion-form"
+    >
+      <textarea
+        className="discussion-form-input"
+        name="message"
+        onKeyDown={[Function]}
+        placeholder="Enter message text"
+      />
+    </div>
+  </div>
+</Chat>
+`;

@@ -69,21 +69,29 @@ export default class DataTable extends React.Component {
         this.render = this.render.bind(this);
     }
 
-    getVisibleColumns = memoizeLast(() => (
-        this.props.columns
+    getVisibleColumns() {
+        return this.props.columns
             .filter((col) => {
                 return Boolean(col) && col.visible !== false;
-            })
-    ), () => (this.props.columns))
+            });
+    }
 
-    getIdField = memoizeLast(() => {
+    getIdField() {
         const idField = this.props.columns.find((c) => (c.id));
         if (idField) {
             return idField.field;
         }
 
         return this.props.columns[0].field;
-    }, () => (this.props.columns));
+    }
+
+    getIdValue(row) {
+        if (!this.getIdField()) {
+            return null;
+        }
+
+        return row[this.getIdField()];
+    }
 
     //
     // Rendering
@@ -107,20 +115,29 @@ export default class DataTable extends React.Component {
     }
 
     renderBody() {
+        const visible = this.getVisibleColumns();
         return (
             <tbody>
                 {
-                    this.props.data.map((row) => (
-                        <tr key={ row[this.getIdField()] } onClick={ this.props.onRowClick }>
-                            {
-                                this.getVisibleColumns().map((col) => (
-                                    <td key={ row[this.getIdField()] + (col.field) }>
-                                        { col.render ? col.render(row) : row[col.field] }
-                                    </td>
-                                ))
-                            }
-                        </tr>
-                    ))
+                    this.props.data.map((row) => {
+                        // If the dev avoids/misses using the `field` and `id`
+                        // attributes on all columns, the resulting `null` value
+                        // returned by `row[this.getIdField()]` would result in
+                        // react collapsing all rows into one. The random string
+                        // per row avoids that issue as a fallback.
+                        const id = this.getIdValue(row) || Math.random().toString(36).substring(7);
+                        return (
+                            <tr key={ id } onClick={ this.props.onRowClick }>
+                                {
+                                    visible.map((col) => (
+                                        <td key={ id + (col.field) }>
+                                            { col.render ? col.render(row) : row[col.field] }
+                                        </td>
+                                    ))
+                                }
+                            </tr>
+                        );
+                    })
                 }
             </tbody>
         );

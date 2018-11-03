@@ -117,6 +117,7 @@
         }
     ],
     "consistent-return": "off",
+    "no-plusplus": "off",
 
     "require-jsdoc": "error",
     "valid-jsdoc": [

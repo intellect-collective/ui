@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatMessage Can display 1`] = `
+<ChatMessage
+  content="Hello, world!"
+  date={2018-09-18T21:02:45.773Z}
+  user={
+    Object {
+      "avatar": "/assets/images/female-user-icon.png",
+      "me": true,
+      "name": "Jane Doe",
+      "url": "/u/jane",
+    }
+  }
+>
+  <div
+    className="discussion-message me"
+  >
+    <div
+      className="discussion-message-inner"
+    >
+      <Avatar
+        alt="Jane Doe"
+        className="avatar"
+        src="/assets/images/female-user-icon.png"
+      >
+        <div
+          className="avatar"
+        >
+          <img
+            alt="JD"
+            onError={[Function]}
+            src="/assets/images/female-user-icon.png"
+          />
+        </div>
+      </Avatar>
+      <div
+        className="discussion-message-content"
+      >
+        <a
+          className="discussion-message-author"
+          href="/u/jane"
+        >
+          Jane Doe
+        </a>
+        <span
+          className="discussion-message-date"
+        >
+          Tue, Sep 18, 2018 - 9:02p
+        </span>
+        <span
+          className="discussion-message-text"
+        >
+          Hello, world!
+        </span>
+      </div>
+    </div>
+  </div>
+</ChatMessage>
+`;

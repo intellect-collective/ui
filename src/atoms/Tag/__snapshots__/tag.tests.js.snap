@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag Can display 1`] = `
+<Tag>
+  <span
+    className="tag"
+  >
+    tag
+  </span>
+</Tag>
+`;
+
+exports[`Tag Can render with different wrapper 1`] = `
+<Tag
+  Component="a"
+  className="tag-anchor"
+  href="#"
+>
+  <a
+    className="tag-anchor"
+    href="#"
+  >
+    tag-anchor
+  </a>
+</Tag>
+`;
