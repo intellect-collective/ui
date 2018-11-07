@@ -95,7 +95,7 @@ exports[`List Can click checkbox 1`] = `
                 checked={true}
                 id={1}
                 name="calendars"
-                onChange={[Function]}
+                onChange={[MockFunction]}
                 style={
                   Object {
                     "background": "#EDD197",
@@ -112,7 +112,7 @@ exports[`List Can click checkbox 1`] = `
                     checked={true}
                     id={1}
                     name="calendars"
-                    onChange={[Function]}
+                    onChange={[MockFunction]}
                     type="checkbox"
                     value={1}
                   />
@@ -186,7 +186,7 @@ exports[`List Can click checkbox 1`] = `
                 checked={true}
                 id={2}
                 name="calendars"
-                onChange={[Function]}
+                onChange={[MockFunction]}
                 style={Object {}}
                 value={2}
               >
@@ -197,7 +197,7 @@ exports[`List Can click checkbox 1`] = `
                     checked={true}
                     id={2}
                     name="calendars"
-                    onChange={[Function]}
+                    onChange={[MockFunction]}
                     type="checkbox"
                     value={2}
                   />
@@ -281,7 +281,7 @@ exports[`List Can click checkbox 1`] = `
                 checked={true}
                 id={3}
                 name="calendars"
-                onChange={[Function]}
+                onChange={[MockFunction]}
                 style={
                   Object {
                     "background": "#dc2127",
@@ -297,7 +297,7 @@ exports[`List Can click checkbox 1`] = `
                     checked={true}
                     id={3}
                     name="calendars"
-                    onChange={[Function]}
+                    onChange={[MockFunction]}
                     type="checkbox"
                     value={3}
                   />

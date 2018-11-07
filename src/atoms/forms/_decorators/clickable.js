@@ -2,16 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getWrapped } from './_utils';
 
+const noop = () => {};
+
 export default (wrapped) => {
     const factory = React.createFactory(wrapped);
-    const Clickable = ({ onClick, value, ...props }) => (
+    const Clickable = ({ onClick = noop, value, ...props }) => (
         factory({
-            onClick: (ev) => {
-                if (onClick) {
-                    onClick(ev);
-                }
-            },
             ...props,
+            onClick,
             value: typeof value !== 'undefined' ? value : ''
         })
     );

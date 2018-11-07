@@ -2,15 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getWrapped } from './_utils';
 
+const noop = () => {};
+
 export default (wrapped) => {
-    const Changeable = ({ onChange, value, ...props }) => (
+    const Changeable = ({ onChange = noop, value, ...props }) => (
         React.createElement(wrapped, {
-            onChange: (ev) => {
-                if (onChange) {
-                    onChange(ev);
-                }
-            },
             ...props,
+            onChange,
             value: typeof value !== 'undefined' ? value : ''
         })
     );
