@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { compose } from '../_decorators/_utils';
 import formContext from '../_decorators/formContext';
 import changeable from '../_decorators/changeable';
 import { normalizeItems } from '../utils';
@@ -60,7 +61,7 @@ const KEY_HANDLERS = {
     }
 };
 
-export class AutoComplete extends React.Component {
+export class AutoCompleteInner extends React.Component {
     static propTypes = {
         /**
          * The id of the control, as used in the `id` and ARIA HTML
@@ -279,4 +280,7 @@ export class AutoComplete extends React.Component {
     }
 }
 
-export default formContext(changeable(AutoComplete));
+export default compose(
+    formContext(),
+    changeable()
+)(AutoCompleteInner);

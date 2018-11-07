@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StateControlledAutoComplete Should accept valid props 1`] = `
+exports[`StateControlledAutoComplete Basic changeable tests Should accept valid props 1`] = `
 <FormContext
   id="test"
   items={
@@ -26,7 +26,8 @@ exports[`StateControlledAutoComplete Should accept valid props 1`] = `
   name="test"
   value="fire"
 >
-  <Changeable
+  <FormContextInner
+    ctx={null}
     id="test"
     items={
       Array [
@@ -51,7 +52,7 @@ exports[`StateControlledAutoComplete Should accept valid props 1`] = `
     name="test"
     value="fire"
   >
-    <StateControlledAutoComplete
+    <Changeable
       id="test"
       items={
         Array [
@@ -74,10 +75,9 @@ exports[`StateControlledAutoComplete Should accept valid props 1`] = `
         ]
       }
       name="test"
-      onChange={[Function]}
       value="fire"
     >
-      <FormContext
+      <StateControlledAutoComplete
         id="test"
         items={
           Array [
@@ -101,13 +101,9 @@ exports[`StateControlledAutoComplete Should accept valid props 1`] = `
         }
         name="test"
         onChange={[Function]}
-        onClose={[Function]}
-        onHighlight={[Function]}
-        onOpen={[Function]}
-        onSelect={[Function]}
         value="fire"
       >
-        <Changeable
+        <AutoCompleteInner
           id="test"
           items={
             Array [
@@ -129,6 +125,7 @@ exports[`StateControlledAutoComplete Should accept valid props 1`] = `
               },
             ]
           }
+          max={10}
           name="test"
           onChange={[Function]}
           onClose={[Function]}
@@ -137,124 +134,92 @@ exports[`StateControlledAutoComplete Should accept valid props 1`] = `
           onSelect={[Function]}
           value="fire"
         >
-          <AutoComplete
-            id="test"
-            items={
-              Array [
-                Object {
-                  "title": "Wind",
-                  "value": "wind",
-                },
-                Object {
-                  "title": "Air",
-                  "value": "air",
-                },
-                Object {
-                  "title": "Fire",
-                  "value": "fire",
-                },
-                Object {
-                  "title": "Water",
-                  "value": "water",
-                },
-              ]
-            }
-            max={10}
-            name="test"
-            onChange={[Function]}
-            onClose={[Function]}
-            onHighlight={[Function]}
-            onOpen={[Function]}
-            onSelect={[Function]}
-            value="fire"
+          <div
+            className="autocomplete"
           >
-            <div
-              className="autocomplete"
+            <input
+              aria-autocomplete="list"
+              aria-controls="test-list"
+              autoComplete="off"
+              id="test"
+              name="test"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="combobox"
+              type="text"
+              value="fire"
+            />
+            <ul
+              aria-labelledby="test"
+              className="autocomplete-list"
+              id="test-list"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              role="listbox"
             >
-              <input
-                aria-autocomplete="list"
-                aria-controls="test-list"
-                autoComplete="off"
-                id="test"
-                name="test"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
+              <li
+                aria-selected={false}
+                className=""
+                data-index={0}
+                id="test-result-0"
+                key="Wind"
+                onClick={[Function]}
                 onKeyDown={[Function]}
-                role="combobox"
-                type="text"
-                value="fire"
-              />
-              <ul
-                aria-labelledby="test"
-                className="autocomplete-list"
-                id="test-list"
                 onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                role="listbox"
+                role="option"
+                title="Wind"
               >
-                <li
-                  aria-selected={false}
-                  className=""
-                  data-index={0}
-                  id="test-result-0"
-                  key="Wind"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  onMouseEnter={[Function]}
-                  role="option"
-                  title="Wind"
-                >
-                  Wind
-                </li>
-                <li
-                  aria-selected={false}
-                  className=""
-                  data-index={1}
-                  id="test-result-1"
-                  key="Air"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  onMouseEnter={[Function]}
-                  role="option"
-                  title="Air"
-                >
-                  Air
-                </li>
-                <li
-                  aria-selected={false}
-                  className=""
-                  data-index={2}
-                  id="test-result-2"
-                  key="Fire"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  onMouseEnter={[Function]}
-                  role="option"
-                  title="Fire"
-                >
-                  Fire
-                </li>
-                <li
-                  aria-selected={false}
-                  className=""
-                  data-index={3}
-                  id="test-result-3"
-                  key="Water"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  onMouseEnter={[Function]}
-                  role="option"
-                  title="Water"
-                >
-                  Water
-                </li>
-              </ul>
-            </div>
-          </AutoComplete>
-        </Changeable>
-      </FormContext>
-    </StateControlledAutoComplete>
-  </Changeable>
+                Wind
+              </li>
+              <li
+                aria-selected={false}
+                className=""
+                data-index={1}
+                id="test-result-1"
+                key="Air"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onMouseEnter={[Function]}
+                role="option"
+                title="Air"
+              >
+                Air
+              </li>
+              <li
+                aria-selected={false}
+                className=""
+                data-index={2}
+                id="test-result-2"
+                key="Fire"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onMouseEnter={[Function]}
+                role="option"
+                title="Fire"
+              >
+                Fire
+              </li>
+              <li
+                aria-selected={false}
+                className=""
+                data-index={3}
+                id="test-result-3"
+                key="Water"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onMouseEnter={[Function]}
+                role="option"
+                title="Water"
+              >
+                Water
+              </li>
+            </ul>
+          </div>
+        </AutoCompleteInner>
+      </StateControlledAutoComplete>
+    </Changeable>
+  </FormContextInner>
 </FormContext>
 `;

@@ -5,7 +5,7 @@
  *         to be broken down
  * @returns {Array} - An array of title-value objects
  */
-export const normalizeItems = (items) => {
+export const normalizeItems = (items = []) => {
     // If we received an array of options, they should already be formatted
     // correctly
     if (Array.isArray(items)) {

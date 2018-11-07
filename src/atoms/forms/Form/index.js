@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formContext } from '../prop-types';
+
+export const FormContext = React.createContext(null);
 
 export default class Form extends React.Component {
     static propTypes = {
@@ -22,33 +23,26 @@ export default class Form extends React.Component {
         onSubmit: () => {}
     };
 
-    static childContextTypes = {
-        form: formContext
-    };
-
     constructor(props) {
         super(props);
-        this.getChildContext = this.getChildContext.bind(this);
+        this.getValue = this.getValue.bind(this);
+        this.setValue = this.setValue.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.getEncType = this.getEncType.bind(this);
         this.getFormMethod = this.getFormMethod.bind(this);
         this.getMethodOverrideElement = this.getMethodOverrideElement.bind(this);
     }
 
-    getChildContext() {
-        return {
-            form: {
-                getValue: (name) => {
-                    if (this.props.data) {
-                        return this.props.data[name];
-                    }
-                    return undefined;
-                },
-                setValue: (ev) => {
-                    this.props.onChange(ev);
-                }
-            }
-        };
+
+    getValue(name) {
+        if (this.props.data) {
+            return this.props.data[name];
+        }
+        return undefined;
+    }
+
+    setValue(ev) {
+        this.props.onChange(ev);
     }
 
     /**
@@ -113,11 +107,12 @@ export default class Form extends React.Component {
      * @returns {Object} - The final props object
      */
     getProps() {
-        const props = Object.assign({}, this.props, {
+        const props = {
+            ...this.props,
             encType: this.getEncType(),
             method: this.getFormMethod(),
             onSubmit: this.onSubmit
-        });
+        };
         delete props.overrideProperty;
         return props;
     }
@@ -133,10 +128,16 @@ export default class Form extends React.Component {
             onSubmit,
             ...props
         } = this.getProps();
+        const ctx = {
+            getValue: this.getValue,
+            setValue: this.setValue
+        };
         return (
             <form { ...props }>
-                { this.getMethodOverrideElement() }
-                { this.props.children }
+                <FormContext.Provider value={ ctx }>
+                    { this.getMethodOverrideElement() }
+                    { this.props.children }
+                </FormContext.Provider>
             </form>
         );
     }

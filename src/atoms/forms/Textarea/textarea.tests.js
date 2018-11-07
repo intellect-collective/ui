@@ -1,7 +1,8 @@
 import React from 'react';
 import Textarea from '.';
 import {
-    basicChangeableTests
+    basicChangeableTests,
+    rerenderSuppressionTests
 } from '../../../../test/utils';
 
 const validProps = {
@@ -17,4 +18,5 @@ const expectedProps = {
 
 describe('Textarea', () => {
     basicChangeableTests(Textarea, 'textarea', validProps, expectedProps);
+    rerenderSuppressionTests(Textarea, validProps);
 });

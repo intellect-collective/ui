@@ -1,28 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Text Should accept valid props 1`] = `
+exports[`Text Basic changeable tests Should accept valid props 1`] = `
 <FormContext
   name="test"
   onChange={[Function]}
   value="pithy"
 >
-  <Changeable
+  <FormContextInner
+    ctx={null}
     name="test"
     onChange={[Function]}
     value="pithy"
   >
-    <Text
+    <Changeable
       name="test"
       onChange={[Function]}
       value="pithy"
     >
-      <input
+      <Text
         name="test"
         onChange={[Function]}
-        type="text"
         value="pithy"
-      />
-    </Text>
-  </Changeable>
+      >
+        <input
+          name="test"
+          onChange={[Function]}
+          type="text"
+          value="pithy"
+        />
+      </Text>
+    </Changeable>
+  </FormContextInner>
 </FormContext>
 `;

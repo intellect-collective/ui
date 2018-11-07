@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import changeable from '../_decorators/changeable';
 import formContext from '../_decorators/formContext';
+import { compose } from '../_decorators/_utils';
 
 const normalizeOptions = (options, val, placeholder, required) => {
     let result = [];
@@ -44,7 +45,11 @@ const getValue = (options, value) => {
 };
 
 const Select = ({
-    options, value, placeholder, required, ...props
+    options = {},
+    value,
+    placeholder,
+    required,
+    ...props
 }) => (
     <select { ...props } required={ required } value={ getValue(options, value) }>
         {
@@ -59,6 +64,7 @@ const Select = ({
 );
 Select.displayName = 'Select';
 Select.propTypes = {
+    name: PropTypes.string.isRequired,
     options: PropTypes.oneOfType([
         PropTypes.object,
         PropTypes.arrayOf(
@@ -89,4 +95,7 @@ Select.propTypes = {
     required: PropTypes.bool
 };
 
-export default formContext(changeable(Select));
+export default compose(
+    formContext(),
+    changeable()
+)(Select);

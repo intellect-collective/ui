@@ -77,8 +77,9 @@ exports[`List Can click checkbox 1`] = `
             }
             value={1}
           >
-            <Changeable
+            <FormContextInner
               checked={true}
+              ctx={null}
               id={1}
               name="calendars"
               onChange={[MockFunction]}
@@ -91,7 +92,7 @@ exports[`List Can click checkbox 1`] = `
               }
               value={1}
             >
-              <FancyCheckbox
+              <Checkable
                 checked={true}
                 id={1}
                 name="calendars"
@@ -105,22 +106,25 @@ exports[`List Can click checkbox 1`] = `
                 }
                 value={1}
               >
-                <div
-                  className="fancycheck"
+                <Changeable
+                  checked={true}
+                  id={1}
+                  name="calendars"
+                  onChange={[MockFunction]}
+                  style={
+                    Object {
+                      "background": "#EDD197",
+                      "borderColor": "#EDD197",
+                      "color": "black",
+                    }
+                  }
+                  value={1}
                 >
-                  <input
+                  <FancyCheckbox
                     checked={true}
                     id={1}
                     name="calendars"
                     onChange={[MockFunction]}
-                    type="checkbox"
-                    value={1}
-                  />
-                  <ins
-                    aria-checked={true}
-                    onClick={[Function]}
-                    onKeyDown={[Function]}
-                    role="checkbox"
                     style={
                       Object {
                         "background": "#EDD197",
@@ -128,11 +132,38 @@ exports[`List Can click checkbox 1`] = `
                         "color": "black",
                       }
                     }
-                    tabIndex={-1}
-                  />
-                </div>
-              </FancyCheckbox>
-            </Changeable>
+                    value={1}
+                  >
+                    <div
+                      className="fancycheck"
+                    >
+                      <input
+                        checked={true}
+                        id={1}
+                        name="calendars"
+                        onChange={[MockFunction]}
+                        type="checkbox"
+                        value={1}
+                      />
+                      <ins
+                        aria-checked={true}
+                        onClick={[Function]}
+                        onKeyDown={[Function]}
+                        role="checkbox"
+                        style={
+                          Object {
+                            "background": "#EDD197",
+                            "borderColor": "#EDD197",
+                            "color": "black",
+                          }
+                        }
+                        tabIndex={-1}
+                      />
+                    </div>
+                  </FancyCheckbox>
+                </Changeable>
+              </Checkable>
+            </FormContextInner>
           </FormContext>
         </GroupContext>
         <label
@@ -174,15 +205,16 @@ exports[`List Can click checkbox 1`] = `
             style={Object {}}
             value={2}
           >
-            <Changeable
+            <FormContextInner
               checked={true}
+              ctx={null}
               id={2}
               name="calendars"
               onChange={[MockFunction]}
               style={Object {}}
               value={2}
             >
-              <FancyCheckbox
+              <Checkable
                 checked={true}
                 id={2}
                 name="calendars"
@@ -190,28 +222,46 @@ exports[`List Can click checkbox 1`] = `
                 style={Object {}}
                 value={2}
               >
-                <div
-                  className="fancycheck"
+                <Changeable
+                  checked={true}
+                  id={2}
+                  name="calendars"
+                  onChange={[MockFunction]}
+                  style={Object {}}
+                  value={2}
                 >
-                  <input
+                  <FancyCheckbox
                     checked={true}
                     id={2}
                     name="calendars"
                     onChange={[MockFunction]}
-                    type="checkbox"
-                    value={2}
-                  />
-                  <ins
-                    aria-checked={true}
-                    onClick={[Function]}
-                    onKeyDown={[Function]}
-                    role="checkbox"
                     style={Object {}}
-                    tabIndex={-1}
-                  />
-                </div>
-              </FancyCheckbox>
-            </Changeable>
+                    value={2}
+                  >
+                    <div
+                      className="fancycheck"
+                    >
+                      <input
+                        checked={true}
+                        id={2}
+                        name="calendars"
+                        onChange={[MockFunction]}
+                        type="checkbox"
+                        value={2}
+                      />
+                      <ins
+                        aria-checked={true}
+                        onClick={[Function]}
+                        onKeyDown={[Function]}
+                        role="checkbox"
+                        style={Object {}}
+                        tabIndex={-1}
+                      />
+                    </div>
+                  </FancyCheckbox>
+                </Changeable>
+              </Checkable>
+            </FormContextInner>
           </FormContext>
         </GroupContext>
         <label
@@ -264,8 +314,9 @@ exports[`List Can click checkbox 1`] = `
             }
             value={3}
           >
-            <Changeable
+            <FormContextInner
               checked={true}
+              ctx={null}
               id={3}
               name="calendars"
               onChange={[MockFunction]}
@@ -277,7 +328,7 @@ exports[`List Can click checkbox 1`] = `
               }
               value={3}
             >
-              <FancyCheckbox
+              <Checkable
                 checked={true}
                 id={3}
                 name="calendars"
@@ -290,33 +341,61 @@ exports[`List Can click checkbox 1`] = `
                 }
                 value={3}
               >
-                <div
-                  className="fancycheck"
+                <Changeable
+                  checked={true}
+                  id={3}
+                  name="calendars"
+                  onChange={[MockFunction]}
+                  style={
+                    Object {
+                      "background": "#dc2127",
+                      "borderColor": "#dc2127",
+                    }
+                  }
+                  value={3}
                 >
-                  <input
+                  <FancyCheckbox
                     checked={true}
                     id={3}
                     name="calendars"
                     onChange={[MockFunction]}
-                    type="checkbox"
-                    value={3}
-                  />
-                  <ins
-                    aria-checked={true}
-                    onClick={[Function]}
-                    onKeyDown={[Function]}
-                    role="checkbox"
                     style={
                       Object {
                         "background": "#dc2127",
                         "borderColor": "#dc2127",
                       }
                     }
-                    tabIndex={-1}
-                  />
-                </div>
-              </FancyCheckbox>
-            </Changeable>
+                    value={3}
+                  >
+                    <div
+                      className="fancycheck"
+                    >
+                      <input
+                        checked={true}
+                        id={3}
+                        name="calendars"
+                        onChange={[MockFunction]}
+                        type="checkbox"
+                        value={3}
+                      />
+                      <ins
+                        aria-checked={true}
+                        onClick={[Function]}
+                        onKeyDown={[Function]}
+                        role="checkbox"
+                        style={
+                          Object {
+                            "background": "#dc2127",
+                            "borderColor": "#dc2127",
+                          }
+                        }
+                        tabIndex={-1}
+                      />
+                    </div>
+                  </FancyCheckbox>
+                </Changeable>
+              </Checkable>
+            </FormContextInner>
           </FormContext>
         </GroupContext>
         <label

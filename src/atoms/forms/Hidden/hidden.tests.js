@@ -1,29 +1,24 @@
 import React from 'react';
 import Hidden from '.';
 import {
+    expectConsoleError,
     getMissingFieldError,
-    validMount
+    rerenderSuppressionTests
 } from '../../../../test/utils';
 
-const validProps = {
-    name: 'test',
-    value: 'sausages'
-};
-
 describe('Hidden', () => {
+    rerenderSuppressionTests(Hidden, { name: 'test' });
+
     it('Should throw an error on missing name', () => {
-        expect(() => {
-            validMount(Hidden);
-        }).toThrowError(getMissingFieldError('name'));
+        expectConsoleError(() => {
+            mount(<Hidden />);
+        }, getMissingFieldError('name'));
     });
 
     it('Should accept valid props', () => {
-        const wrapper = mount(<Hidden { ...validProps } />);
+        const wrapper = mount(<Hidden name="test" value="sausages" />);
         expect(wrapper).toMatchSnapshot();
-        Object.keys(validProps)
-            .forEach((key) => {
-                expect(wrapper.find('input').prop(key))
-                    .toEqual(validProps[key]);
-            });
+        expect(wrapper.find('input').prop('name')).toEqual('test');
+        expect(wrapper.find('input').prop('value')).toEqual('sausages');
     });
 });

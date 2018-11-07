@@ -1,37 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Date Basic changeable tests Should accept valid props 1`] = `
+exports[`Button Basic clickable tests Should accept valid props 1`] = `
 <FormContext
   name="test"
   onClick={[Function]}
-  value="20120409"
+  type="submit"
 >
   <FormContextInner
     ctx={null}
     name="test"
     onClick={[Function]}
-    value="20120409"
+    type="submit"
   >
-    <Changeable
+    <Clickable
       name="test"
       onClick={[Function]}
-      value="20120409"
+      type="submit"
     >
-      <DateField
+      <Button
         name="test"
-        onChange={[Function]}
         onClick={[Function]}
-        value="20120409"
+        type="submit"
+        value=""
       >
-        <input
+        <button
           name="test"
-          onChange={[Function]}
           onClick={[Function]}
-          type="date"
-          value="2012-04-09"
+          type="submit"
+          value=""
         />
-      </DateField>
-    </Changeable>
+      </Button>
+    </Clickable>
   </FormContextInner>
 </FormContext>
 `;

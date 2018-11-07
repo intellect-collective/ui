@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ResetButton Should accept valid props 1`] = `
+exports[`ResetButton Basic clickable tests Should accept valid props 1`] = `
 <ResetButton
   name="test"
   onClick={[Function]}
@@ -10,25 +10,32 @@ exports[`ResetButton Should accept valid props 1`] = `
     onClick={[Function]}
     type="reset"
   >
-    <Clickable
+    <FormContextInner
+      ctx={null}
       name="test"
       onClick={[Function]}
       type="reset"
     >
-      <Button
+      <Clickable
         name="test"
         onClick={[Function]}
         type="reset"
-        value=""
       >
-        <button
+        <Button
           name="test"
           onClick={[Function]}
           type="reset"
           value=""
-        />
-      </Button>
-    </Clickable>
+        >
+          <button
+            name="test"
+            onClick={[Function]}
+            type="reset"
+            value=""
+          />
+        </Button>
+      </Clickable>
+    </FormContextInner>
   </FormContext>
 </ResetButton>
 `;

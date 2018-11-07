@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkbox Should accept valid props 1`] = `
+exports[`Checkbox Basic changeable tests Should accept valid props 1`] = `
 <GroupContext
   name="test"
   onChange={[Function]}
@@ -11,24 +11,40 @@ exports[`Checkbox Should accept valid props 1`] = `
     onChange={[Function]}
     value="fire"
   >
-    <Changeable
+    <FormContextInner
+      ctx={null}
       name="test"
       onChange={[Function]}
       value="fire"
     >
-      <Checkbox
+      <Checkable
         name="test"
         onChange={[Function]}
         value="fire"
       >
-        <input
+        <Changeable
+          checked={false}
           name="test"
           onChange={[Function]}
-          type="checkbox"
           value="fire"
-        />
-      </Checkbox>
-    </Changeable>
+        >
+          <Checkbox
+            checked={false}
+            name="test"
+            onChange={[Function]}
+            value="fire"
+          >
+            <input
+              checked={false}
+              name="test"
+              onChange={[Function]}
+              type="checkbox"
+              value="fire"
+            />
+          </Checkbox>
+        </Changeable>
+      </Checkable>
+    </FormContextInner>
   </FormContext>
 </GroupContext>
 `;

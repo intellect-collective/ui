@@ -1,27 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Textarea Should accept valid props 1`] = `
+exports[`Textarea Basic changeable tests Should accept valid props 1`] = `
 <FormContext
   name="test"
   onChange={[Function]}
   value="secret"
 >
-  <Changeable
+  <FormContextInner
+    ctx={null}
     name="test"
     onChange={[Function]}
     value="secret"
   >
-    <Textarea
+    <Changeable
       name="test"
       onChange={[Function]}
       value="secret"
     >
-      <textarea
+      <Textarea
         name="test"
         onChange={[Function]}
         value="secret"
-      />
-    </Textarea>
-  </Changeable>
+      >
+        <textarea
+          name="test"
+          onChange={[Function]}
+          value="secret"
+        />
+      </Textarea>
+    </Changeable>
+  </FormContextInner>
 </FormContext>
 `;

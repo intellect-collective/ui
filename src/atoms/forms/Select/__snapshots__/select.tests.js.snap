@@ -14,7 +14,8 @@ exports[`Select Basics Should accept valid props 1`] = `
   required={true}
   value="sausages"
 >
-  <Changeable
+  <FormContextInner
+    ctx={null}
     name="test"
     onChange={[Function]}
     options={
@@ -27,7 +28,7 @@ exports[`Select Basics Should accept valid props 1`] = `
     required={true}
     value="sausages"
   >
-    <Select
+    <Changeable
       name="test"
       onChange={[Function]}
       options={
@@ -40,32 +41,46 @@ exports[`Select Basics Should accept valid props 1`] = `
       required={true}
       value="sausages"
     >
-      <select
+      <Select
         name="test"
         onChange={[Function]}
+        options={
+          Object {
+            "burgers": "Burgers",
+            "hotdogs": "Hotdogs",
+            "sausages": "Sausages",
+          }
+        }
         required={true}
         value="sausages"
       >
-        <option
-          key="0"
-          value="hotdogs"
-        >
-          Hotdogs
-        </option>
-        <option
-          key="1"
+        <select
+          name="test"
+          onChange={[Function]}
+          required={true}
           value="sausages"
         >
-          Sausages
-        </option>
-        <option
-          key="2"
-          value="burgers"
-        >
-          Burgers
-        </option>
-      </select>
-    </Select>
-  </Changeable>
+          <option
+            key="0"
+            value="hotdogs"
+          >
+            Hotdogs
+          </option>
+          <option
+            key="1"
+            value="sausages"
+          >
+            Sausages
+          </option>
+          <option
+            key="2"
+            value="burgers"
+          >
+            Burgers
+          </option>
+        </select>
+      </Select>
+    </Changeable>
+  </FormContextInner>
 </FormContext>
 `;
