@@ -127,7 +127,12 @@ export default class Form extends React.Component {
      * @returns {Object} - A React element
      */
     render() {
-        const props = this.getProps();
+        const {
+            children,
+            onChange,
+            onSubmit,
+            ...props
+        } = this.getProps();
         return (
             <form { ...props }>
                 { this.getMethodOverrideElement() }
