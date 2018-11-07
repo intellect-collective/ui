@@ -1,7 +1,8 @@
 import React from 'react';
 import Text from '.';
 import {
-    basicChangeableTests
+    basicChangeableTests,
+    rerenderSuppressionTests
 } from '../../../../test/utils';
 
 const validProps = {
@@ -17,4 +18,5 @@ const expectedProps = {
 
 describe('Text', () => {
     basicChangeableTests(Text, 'input', validProps, expectedProps);
+    rerenderSuppressionTests(Text, validProps);
 });

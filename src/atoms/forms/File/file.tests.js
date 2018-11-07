@@ -9,11 +9,10 @@ const validProps = {
     onClick: () => {}
 };
 const expectedProps = {
-    name: 'test',
-    value: {},
-    onClick: expect.any(Function)
+    name: 'test'
 };
 
 describe('File', () => {
     basicChangeableTests(File, 'input', validProps, expectedProps);
+    // rerenderSuppressionTests(File, validProps);
 });

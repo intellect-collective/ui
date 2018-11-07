@@ -18,6 +18,7 @@ const expectedProps = {
 
 describe('SubmitButton', () => {
     basicClickableTests(SubmitButton, 'button', validProps, expectedProps);
+    // rerenderSuppressionTests(SubmitButton, validProps);
 
     it('Ignores button type', () => {
         const wrapper = mount(<SubmitButton name="test" type="button" />);

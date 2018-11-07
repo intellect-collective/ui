@@ -2,7 +2,9 @@ import React from 'react';
 import Select from '.';
 import Form from '../Form';
 import {
-    getMissingFieldError
+    expectConsoleError,
+    getMissingFieldError,
+    rerenderSuppressionTests
 } from '../../../../test/utils';
 
 const options = {
@@ -20,11 +22,13 @@ const validProps = {
 };
 
 describe('Select', () => {
+    rerenderSuppressionTests(Select, validProps);
+
     describe('Basics', () => {
         it('Should throw an error on missing name', () => {
-            expect(() => {
+            expectConsoleError(() => {
                 mount(<Select />);
-            }).toThrowError(getMissingFieldError('name'));
+            }, getMissingFieldError('name'));
         });
 
         it('Should accept valid props', () => {

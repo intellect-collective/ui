@@ -2,7 +2,9 @@ import React from 'react';
 import Button from '.';
 import {
     getInvalidFieldError,
-    basicClickableTests
+    basicClickableTests,
+    rerenderSuppressionTests,
+    expectConsoleError
 } from '../../../../test/utils';
 
 const validProps = {
@@ -19,11 +21,12 @@ const expectedProps = {
 
 describe('Button', () => {
     basicClickableTests(Button, 'button', validProps, expectedProps);
+    rerenderSuppressionTests(Button, validProps);
 
-    it.only('Should throw an error on invalid type', () => {
-        expect(() => {
+    it('Should throw an error on invalid type', () => {
+        expectConsoleError(() => {
             mount(<Button name="test" type="invalid">Execute</Button>);
-        }).toThrowError(getInvalidFieldError('type'));
+        }, getInvalidFieldError('type'));
     });
 
     it('Should have a default type', () => {

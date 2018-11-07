@@ -5,15 +5,21 @@ exports[`Hidden Should accept valid props 1`] = `
   name="test"
   value="sausages"
 >
-  <Hidden
+  <FormContextInner
+    ctx={null}
     name="test"
     value="sausages"
   >
-    <input
+    <Hidden
       name="test"
-      type="hidden"
       value="sausages"
-    />
-  </Hidden>
+    >
+      <input
+        name="test"
+        type="hidden"
+        value="sausages"
+      />
+    </Hidden>
+  </FormContextInner>
 </FormContext>
 `;

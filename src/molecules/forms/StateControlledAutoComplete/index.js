@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AutoComplete from '../../../atoms/forms/AutoComplete';
+import { AutoCompleteInner } from '../../../atoms/forms/AutoComplete';
+import { compose } from '../../../atoms/forms/_decorators/_utils';
 import formContext from '../../../atoms/forms/_decorators/formContext';
 import changeable from '../../../atoms/forms/_decorators/changeable';
 
@@ -80,7 +81,7 @@ export class StateControlledAutoComplete extends React.Component {
 
     render() {
         return (
-            <AutoComplete { ...this.props }
+            <AutoCompleteInner { ...this.props }
                     open={ this._getState().open }
                     onOpen={ this.onOpen }
                     onClose={ this.onClose }
@@ -93,4 +94,7 @@ export class StateControlledAutoComplete extends React.Component {
     }
 }
 
-export default formContext(changeable(StateControlledAutoComplete));
+export default compose(
+    formContext(),
+    changeable()
+)(StateControlledAutoComplete);

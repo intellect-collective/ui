@@ -5,6 +5,6 @@ const SubmitButton = (props) => (
     <Button { ...props } type="submit" />
 );
 SubmitButton.displayName = 'SubmitButton';
-SubmitButton.wrapped = Button;
+SubmitButton.Wrapped = Button.Wrapped;
 
 export default SubmitButton;

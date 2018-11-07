@@ -1,28 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`File Should accept valid props 1`] = `
+exports[`File Basic changeable tests Should accept valid props 1`] = `
 <FormContext
   name="test"
   onClick={[Function]}
 >
-  <Changeable
+  <FormContextInner
+    ctx={null}
     name="test"
     onClick={[Function]}
   >
-    <File
+    <Changeable
       name="test"
-      onChange={[Function]}
       onClick={[Function]}
-      value=""
     >
-      <input
+      <File
         name="test"
         onChange={[Function]}
         onClick={[Function]}
-        type="file"
-        value=""
-      />
-    </File>
-  </Changeable>
+      >
+        <input
+          name="test"
+          onChange={[Function]}
+          onClick={[Function]}
+          type="file"
+        />
+      </File>
+    </Changeable>
+  </FormContextInner>
 </FormContext>
 `;

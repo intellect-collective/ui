@@ -17,6 +17,7 @@ const expectedProps = {
 
 describe('ResetButton', () => {
     basicClickableTests(ResetButton, 'button', validProps, expectedProps);
+    // rerenderSuppressionTests(ResetButton, validProps);
 
     it('Ignores button type', () => {
         const wrapper = mount(<ResetButton name="test" type="button" />);

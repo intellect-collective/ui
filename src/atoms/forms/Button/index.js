@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clickable from '../_decorators/clickable';
 import formContext from '../_decorators/formContext';
+import { compose } from '../_decorators/_utils';
 
 const Button = (props) => (
     <button { ...props } />
@@ -16,4 +17,7 @@ Button.defaultProps = {
     value: ''
 };
 
-export default formContext(clickable(Button));
+export default compose(
+    formContext(),
+    clickable()
+)(Button);

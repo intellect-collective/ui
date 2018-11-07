@@ -9,13 +9,9 @@ global.shallow = shallow;
 global.render = render;
 global.mount = mount;
 
-// const oldWarn = console.warn;
 console.warn = function (warn) {
-	// oldWarn(warn);
     throw new Error(warn);
 };
-// const oldError = console.error;
 console.error = function (err) {
-	// oldError(err);
     throw new Error(err);
 };

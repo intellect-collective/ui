@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classable from '../../../atoms/forms/_decorators/classable';
 
 const renderLabel = (id, name, classNames, content) => {
     if (!content) {
@@ -36,7 +35,12 @@ const renderField = (id, name, classNames, { component, children, ...props }) =>
 };
 
 const Field = ({
-    id, name, className, classNames, label, ...props
+    id,
+    name,
+    className,
+    classNames = {},
+    label,
+    ...props
 }) => (
     <div className={ className }>
         { renderLabel(id, name, classNames, label) }
@@ -81,4 +85,4 @@ Field.className = null;
 Field.classNames = {};
 Field.wrapper = null;
 
-export default classable(Field);
+export default Field;

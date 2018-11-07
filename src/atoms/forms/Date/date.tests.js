@@ -2,7 +2,8 @@ import React from 'react';
 import DateField from '.';
 import Form from '../Form';
 import {
-    basicChangeableTests
+    basicChangeableTests,
+    rerenderSuppressionTests
 } from '../../../../test/utils';
 
 const validProps = {
@@ -18,6 +19,7 @@ const expectedProps = {
 
 describe('Date', () => {
     basicChangeableTests(DateField, 'input', validProps, expectedProps);
+    rerenderSuppressionTests(DateField, validProps);
 
     describe('Form Context Usage', () => {
         it('Gets value from form', () => {

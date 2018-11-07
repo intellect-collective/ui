@@ -1,39 +1,29 @@
 import React from 'react';
-import { groupContext } from '../prop-types';
-import { getHandlerName, getWrapped } from './_utils';
+import { FieldGroupContext } from '../FieldGroup';
 
-const prePropsTransformer = (props, { group }, wrapped) => {
-    const result = {};
+/**
+ * The `groupContext` decorator allows the developer to wrap groups of certain
+ * types of elements in order to provide them with the same name without having
+ * to manually wire each element. Supported elements include `Checkbox` and
+ * `Radio`, as well as, generally, their subclasses.
+ *
+ * The `groupContext` decorator does not provide values to its children. Rather,
+ * that remains the responsibility of the wrapping `Form`.
+ *
+ * @returns {Function} - A new React Element wrapping the given component
+ */
+export default () => (Wrapped) => (
+    class GroupContext extends React.Component {
+        static Wrapped = Wrapped;
 
-    const handlerName = getHandlerName(wrapped);
-    if (group && group.onChange) {
-        result[handlerName] = group.onChange;
+        render() {
+            return (
+                <FieldGroupContext.Consumer>
+                    { (ctx) => (
+                        <GroupContext.Wrapped name={ ctx } { ...this.props } />
+                    ) }
+                </FieldGroupContext.Consumer>
+            );
+        }
     }
-
-    if (group && group.name) {
-        result.name = group.name;
-    }
-
-    if (group && typeof group.value !== 'undefined') {
-        result.value = group.value || '';
-    }
-    return result;
-};
-
-export default (wrapped, transformer = () => ({})) => {
-    const factory = React.createFactory(wrapped);
-    const GroupContext = (props, context) => (
-        factory({
-            ...prePropsTransformer(props, context, wrapped),
-            ...props,
-            ...transformer(props, context)
-        })
-    );
-    GroupContext.displayName = 'GroupContext';
-    GroupContext.contextTypes = {
-        group: groupContext
-    };
-    GroupContext.wrapped = wrapped;
-    GroupContext.root = getWrapped(wrapped);
-    return GroupContext;
-};
+);

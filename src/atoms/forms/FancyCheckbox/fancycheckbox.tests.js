@@ -3,7 +3,8 @@ import FancyCheckbox from '.';
 import Form from '../Form';
 import FieldGroup from '../FieldGroup';
 import {
-    basicChangeableTests
+    basicChangeableTests,
+    rerenderSuppressionTests
 } from '../../../../test/utils';
 
 const validProps = {
@@ -20,6 +21,7 @@ const expectedProps = {
 
 describe('FancyCheckbox', () => {
     basicChangeableTests(FancyCheckbox, 'input', validProps, expectedProps);
+    rerenderSuppressionTests(FancyCheckbox, validProps);
 
     describe('Form Context Usage', () => {
         it('Gets checked state from form', () => {
@@ -64,54 +66,22 @@ describe('FancyCheckbox', () => {
     });
 
     describe('FieldGroup Context Usage', () => {
-        it('Gets name and checked state from group', () => {
+        it('Gets name from group', () => {
             const wrapper = mount(
-                <FieldGroup name="test" value="sausages">
+                <FieldGroup name="test">
                     <FancyCheckbox value="sausages" />
                 </FieldGroup>
             );
             expect(wrapper.find('input').prop('name')).toEqual('test');
-            expect(wrapper.find('input').prop('checked')).toEqual(true);
-        });
-
-        it('Prefers local attributes over group attributes', () => {
-            const wrapper = mount(
-                <FieldGroup name="test" value="sausages">
-                    <FancyCheckbox value="sausages" checked={ false } />
-                </FieldGroup>
-            );
-            expect(wrapper.find('input').prop('checked')).toEqual(false);
         });
 
         it('Prefers local name over group name', () => {
             const wrapper = mount(
-                <FieldGroup name="test" value="sausages">
+                <FieldGroup name="test">
                     <FancyCheckbox name="test2" value="sausages" />
                 </FieldGroup>
             );
             expect(wrapper.find('input').prop('name')).toEqual('test2');
-        });
-
-        it('Remains unchecked if group has incorrect value', () => {
-            const wrapper = mount(
-                <FieldGroup name="test" value="hotdogs">
-                    <FancyCheckbox value="sausages" />
-                </FieldGroup>
-            );
-            expect(wrapper.find('input').prop('checked')).toEqual(false);
-        });
-
-        it('Can check multiple', () => {
-            const wrapper = mount(
-                <FieldGroup name="test" value={ ['hotdogs', 'sausages'] }>
-                    <FancyCheckbox value="hotdogs" />
-                    <FancyCheckbox value="sausages" />
-                    <FancyCheckbox value="burgers" />
-                </FieldGroup>
-            );
-            expect(wrapper.find('input[value="hotdogs"]').prop('checked')).toEqual(true);
-            expect(wrapper.find('input[value="sausages"]').prop('checked')).toEqual(true);
-            expect(wrapper.find('input[value="burgers"]').prop('checked')).toEqual(false);
         });
     });
 
@@ -128,22 +98,10 @@ describe('FancyCheckbox', () => {
             expect(wrapper.find('input').prop('checked')).toEqual(true);
         });
 
-        it('Prefers state from group', () => {
-            const wrapper = mount(
-                <Form action="/" data={{ test: 'sausages' }}>
-                    <FieldGroup name="test" value="hotdogs">
-                        <FancyCheckbox value="sausages" />
-                    </FieldGroup>
-                </Form>
-            );
-            expect(wrapper.find('input').prop('name')).toEqual('test');
-            expect(wrapper.find('input').prop('checked')).toEqual(false);
-        });
-
         it('Prefers state from field', () => {
             const wrapper = mount(
                 <Form action="/" data={{ test: 'sausages' }}>
-                    <FieldGroup name="test" value="hotdogs">
+                    <FieldGroup name="test">
                         <FancyCheckbox value="sausages" checked={ false } />
                     </FieldGroup>
                 </Form>

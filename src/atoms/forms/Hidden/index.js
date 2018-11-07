@@ -6,4 +6,4 @@ const Hidden = (props) => (
 );
 Hidden.displayName = 'Hidden';
 
-export default formContext(Hidden);
+export default formContext()(Hidden);
