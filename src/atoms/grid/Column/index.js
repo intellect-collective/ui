@@ -11,17 +11,17 @@ const getColumnClass = ({
     width, 'sm-width': smWidth, 'md-width': mdWidth, 'lg-width': lgWidth
 }) => {
     if (width) {
-        return `col-md-${width}`;
+        return `col-md-${ width }`;
     }
     const result = [];
     if (smWidth) {
-        result.push(`col-sm-${smWidth}`);
+        result.push(`col-sm-${ smWidth }`);
     }
     if (mdWidth) {
-        result.push(`col-md-${mdWidth}`);
+        result.push(`col-md-${ mdWidth }`);
     }
     if (lgWidth) {
-        result.push(`col-lg-${lgWidth}`);
+        result.push(`col-lg-${ lgWidth }`);
     }
     return result.join(' ');
 };
