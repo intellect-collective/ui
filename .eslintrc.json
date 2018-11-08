@@ -65,7 +65,7 @@
     ],
     "arrow-body-style": "off",
     "no-underscore-dangle": "off",
-    "template-curly-spacing": "error",
+    "template-curly-spacing": ["error", "always"],
     "radix": "error",
     "no-mixed-operators": "error",
     "no-dupe-keys": "error",

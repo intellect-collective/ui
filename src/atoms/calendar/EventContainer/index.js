@@ -58,7 +58,7 @@ export default class EventContainer extends React.Component {
             .map((o, i) => {
                 const event = tmp.find((o) => (o.position === i));
                 if (!event) {
-                    return (<div className="calendar-spacer" key={ `k${i}` }>&nbsp;</div>); // eslint-disable-line react/no-array-index-key
+                    return (<div className="calendar-spacer" key={ `k${ i }` }>&nbsp;</div>); // eslint-disable-line react/no-array-index-key
                 }
                 return (
                     <Event day={ day }

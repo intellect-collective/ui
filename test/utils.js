@@ -1,11 +1,11 @@
 import React from 'react';
 
 export const getMissingFieldError = (name) => (
-    new RegExp(`Warning: Failed prop type: The prop \`${name}\` is marked as required *`)
+    new RegExp(`Warning: Failed prop type: The prop \`${ name }\` is marked as required *`)
 );
 
 export const getInvalidFieldError = (name) => (
-    new RegExp(`Warning: Failed prop type: Invalid prop \`${name}\`*`)
+    new RegExp(`Warning: Failed prop type: Invalid prop \`${ name }\`*`)
 );
 
 // export const validMount = bounded;
