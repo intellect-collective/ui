@@ -5,9 +5,13 @@ class Stateful extends React.Component {
 		super(props);
 		this.state = props.initialState || {};
 		this.onChange = this.onChange.bind(this);
+		this.childSetState = this.childSetState.bind(this);
 	}
 	onChange(name, value) {
 		this.setState({ [name]: value });
+	}
+	childSetState(o) {
+		this.setState(o);
 	}
 	render() {
 		return (

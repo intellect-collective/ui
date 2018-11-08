@@ -38,11 +38,7 @@ export function basicChangeableTests(Component,
     it('Should accept valid props', () => {
         const wrapper = validMount(Component, validProps);
         expect(wrapper).toMatchSnapshot();
-        Object.keys(validProps)
-            .forEach((key) => {
-                expect(wrapper.find(element).prop(key))
-                    .toEqual((expectedProps || validProps)[key]);
-            });
+        expect(wrapper.find(element).props()).toMatchObject(expectedProps);
     });
 
     it('Clicking without handler is no-op', () => {
@@ -57,11 +53,12 @@ export function basicChangeableTests(Component,
             onChange: fn
         });
         wrapper.find(element).simulate('change');
-        expect(fn).toHaveBeenCalledWith(expect.objectContaining({
-            target: expect.objectContaining({
+        expect(fn).toHaveBeenCalledTimes(1);
+        expect(fn.mock.calls[0][0]).toMatchObject({
+            target: {
                 name: validProps.name
-            })
-        }));
+            }
+        });
     });
 }
 
@@ -86,11 +83,7 @@ export function basicClickableTests(Component,
     it('Should accept valid props', () => {
         const wrapper = validMount(Component, validProps);
         expect(wrapper).toMatchSnapshot();
-        Object.keys(validProps)
-            .forEach((key) => {
-                expect(wrapper.find(element).prop(key))
-                    .toEqual((expectedProps || validProps)[key]);
-            });
+        expect(wrapper.find(element).props()).toMatchObject(expectedProps);
     });
 
     it('Clicking without handler is no-op', () => {
@@ -105,10 +98,11 @@ export function basicClickableTests(Component,
             onClick: fn
         });
         wrapper.find(element).simulate('click');
-        expect(fn).toHaveBeenCalledWith(expect.objectContaining({
-            target: expect.objectContaining({
+        expect(fn).toHaveBeenCalledTimes(1);
+        expect(fn.mock.calls[0][0]).toMatchObject({
+            target: {
                 name: validProps.name
-            })
-        }));
+            }
+        });
     });
 }

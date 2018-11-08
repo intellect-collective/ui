@@ -1,0 +1,32 @@
+.autocomplete {
+    position: relative;
+
+    &.open &-list{
+        display: block;
+    }
+
+    &-list {
+        display: none;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        width: 100%;
+
+        li {
+            background: white;
+            color: $brand-color;
+            cursor: pointer;
+            display: block;
+            list-style-type: none;
+            margin: 0;
+            padding: .5em 1em;
+            transition: background .2s, color .2s;
+
+            &.highlight {
+                background: $brand-color;
+                color: white;
+            }
+        }
+    }
+}
