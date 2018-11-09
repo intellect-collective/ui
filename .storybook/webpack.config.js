@@ -6,6 +6,7 @@ const defaultConfig = require('@storybook/react/dist/server/config/webpack.confi
 const _ = require('lodash');
 
 const production = (config) => {
+    console.log('=> Build Production');
     config.module.rules.push({
         test: /\.scss$/,
         exclude: /node_modules/,
@@ -28,6 +29,11 @@ const production = (config) => {
             'filename': 'css/[name].css'
         })
     );
+
+    config.devServer = {
+        hot: false,
+        inline: false,
+    };
 }
 
 const development = (config) => {
@@ -47,7 +53,7 @@ const development = (config) => {
     });
 
     config.devServer = {
-        contentBase: "./public",
+        contentBase: './public',
         hot: true,
         stats: {
             colors: true
