@@ -11,4 +11,12 @@ install:
 script:
   - npm run lint
   - npm run test:coverage
-after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+after_script:
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+
+deploy:
+  provider: script
+  script: chmod +x .travis-deploy.sh && bash .travis-deploy.sh
+  skip_cleanup: true
+  on:
+    branch: master
