@@ -3,31 +3,37 @@ import PropTypes from 'prop-types';
 
 export const FieldGroupContext = React.createContext(null);
 
+const renderInner = ({ children, wrapper: Wrapper, ...props }) => {
+    if (Wrapper) {
+        return (
+            <Wrapper role="group" { ...props }>
+                { children }
+            </Wrapper>
+        );
+    }
+
+    return children;
+};
+
 const FieldGroup = ({
     name,
-    onChange,
-    component: Component,
-    children,
     ...rest
 }) => (
     <FieldGroupContext.Provider value={ name }>
-        <Component role="group" { ...rest }>
-            { children }
-        </Component>
+        { renderInner(rest) }
     </FieldGroupContext.Provider>
 );
 FieldGroup.propTypes = {
-    name: PropTypes.string,
-    multiple: PropTypes.bool,
-    onChange: PropTypes.func,
-    children: PropTypes.node.isRequired,
-    component: PropTypes.oneOfType([
+    name: PropTypes.string.isRequired,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+        PropTypes.func
+    ]).isRequired,
+    wrapper: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.func,
         PropTypes.object
     ])
-};
-FieldGroup.defaultProps = {
-    component: 'div'
 };
 export default FieldGroup;

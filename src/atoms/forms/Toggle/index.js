@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import changeable from '../_decorators/changeable';
-import formContext from '../_decorators/formContext';
-import groupContext from '../_decorators/groupContext';
-import checkable from '../_decorators/checkable';
-import { compose } from '../_decorators/_utils';
+import {
+    asCheckable, asField, asGroupable, compose
+} from '../utils';
 
 const classes = (className, oval, worded) => (
     classnames(
@@ -17,33 +15,36 @@ const classes = (className, oval, worded) => (
     )
 );
 
-const Toggle = ({
-    name,
-    id,
-    className,
-    oval,
-    worded,
-    ...rest
-}) => (
-    <div className={ classes(className, oval, worded) }>
-        <input type="checkbox" id={ id || name } name={ name } { ...rest } />
-        <label htmlFor={ id || name }>
-            <span className="switch"><span className="switch-inner" tabIndex={ -1 } /></span>
-        </label>
-    </div>
-);
-Toggle.displayName = 'Toggle';
-Toggle.propTypes = {
-    name: PropTypes.string.isRequired,
-    id: PropTypes.string,
-    className: PropTypes.string,
-    oval: PropTypes.bool,
-    worded: PropTypes.bool
-};
+class Toggle extends React.PureComponent {
+    static propTypes = {
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string,
+        className: PropTypes.string,
+        checked: PropTypes.bool,
+        oval: PropTypes.bool,
+        worded: PropTypes.bool
+    };
+
+    render() {
+        const {
+            className,
+            oval,
+            worded,
+            ...rest
+        } = this.props;
+        return (
+            <div className={ classes(className, oval, worded) }>
+                <input type="checkbox" { ...rest } />
+                <label htmlFor={ this.props.id || this.props.name }>
+                    <span className="switch"><span className="switch-inner" tabIndex={ -1 } /></span>
+                </label>
+            </div>
+        );
+    }
+}
 
 export default compose(
-    groupContext(),
-    formContext('_value'),
-    checkable(),
-    changeable()
+    asGroupable(),
+    asField(),
+    asCheckable()
 )(Toggle);

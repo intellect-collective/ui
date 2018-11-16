@@ -1,5 +1,0 @@
-@if (null != index($ui-includes, 'form.textarea') and null == index($ui-excludes, 'form.textarea')) {
-	textarea:not(.browser-default) {
-	    //@extend .input;
-	}
-}

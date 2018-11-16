@@ -145,6 +145,7 @@
       "ignoreRestSiblings": true,
       "varsIgnorePattern": "React"
     }],
+    "no-continue": "off",
 
     "import/extensions": "error",
     "import/first": "error",

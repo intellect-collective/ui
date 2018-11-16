@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AutoCompleteInner } from '../../../atoms/forms/AutoComplete';
-import { compose } from '../../../atoms/forms/_decorators/_utils';
-import formContext from '../../../atoms/forms/_decorators/formContext';
-import changeable from '../../../atoms/forms/_decorators/changeable';
+import { BasicAutoComplete } from '../../../atoms/forms/AutoComplete';
+import { asField, asGroupable, compose } from '../../../atoms/forms/utils';
 
 export class StateControlledAutoComplete extends React.Component {
     static propTypes = {
@@ -11,14 +9,6 @@ export class StateControlledAutoComplete extends React.Component {
          * The current value of the field.
          */
         value: PropTypes.any,
-        /**
-         * When provided, allows an ancestral component to contain the state
-         * that would otherwise be contained herein.
-         */
-        state: PropTypes.shape({
-            data: PropTypes.object,
-            set: PropTypes.func
-        }),
         /**
          * Arguments: ``
          *
@@ -30,8 +20,6 @@ export class StateControlledAutoComplete extends React.Component {
     constructor() {
         super();
         this.state = {};
-        this._getState = this._getState.bind(this);
-        this._setState = this._setState.bind(this);
         this.onOpen = this.onOpen.bind(this);
         this.onClose = this.onClose.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -39,34 +27,19 @@ export class StateControlledAutoComplete extends React.Component {
         this.onHighlight = this.onHighlight.bind(this);
     }
 
-    _getState() {
-        if (this.props.state) {
-            return this.props.state.data;
-        }
-        return this.state;
-    }
-
-    _setState(o) {
-        if (this.props.state) {
-            this.props.state.set(o);
-        } else {
-            this.setState(o);
-        }
-    }
-
     onOpen() {
-        this._setState({ open: true });
+        this.setState({ open: true });
     }
 
     onClose() {
-        this._setState({
+        this.setState({
             open: false,
             highlightedIndex: undefined
         });
     }
 
     onChange(ev) {
-        this._setState({ value: ev.target.value });
+        this.setState({ value: ev.target.value });
         this.props.onChange(ev);
     }
 
@@ -76,25 +49,25 @@ export class StateControlledAutoComplete extends React.Component {
     }
 
     onHighlight(ev) {
-        this._setState({ highlightedIndex: ev.target.index });
+        this.setState({ highlightedIndex: ev.target.index });
     }
 
     render() {
         return (
-            <AutoCompleteInner { ...this.props }
-                    open={ this._getState().open }
+            <BasicAutoComplete { ...this.props }
+                    open={ this.state.open }
                     onOpen={ this.onOpen }
                     onClose={ this.onClose }
                     onChange={ this.onChange }
                     onSelect={ this.onSelect }
                     onHighlight={ this.onHighlight }
-                    highlightedIndex={ this._getState().highlightedIndex }
-                    value={ this.props.value || this._getState().value } />
+                    highlightedIndex={ this.state.highlightedIndex }
+                    value={ this.props.value || this.state.value } />
         );
     }
 }
 
 export default compose(
-    formContext(),
-    changeable()
+    asGroupable(),
+    asField('value')
 )(StateControlledAutoComplete);

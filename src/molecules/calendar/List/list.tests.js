@@ -32,9 +32,13 @@ describe('List', () => {
     it('Can click checkbox', () => {
         expect(wrapper).toMatchSnapshot();
         wrapper.find('input[type="checkbox"]').first().simulate('change');
-        expect(fn).toHaveBeenLastCalledWith(expect.objectContaining({
-            target: expect.anything()
-        }));
+        expect(fn).toHaveBeenCalledTimes(1);
+        expect(fn.mock.calls[0][0]).toMatchObject({
+            target: {
+                name: 'calendars',
+                value: '1'
+            }
+        });
     });
     it('Supports no-op handler', () => {
         wrapper = mount(<CalendarList calendars={ CALENDARS } />);

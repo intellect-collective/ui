@@ -5,7 +5,7 @@
             visibility: hidden;
         }
 
-        ins {
+        label {
             position: relative;
 
             &:after {
@@ -29,7 +29,7 @@
             }
         }
 
-        input[type="checkbox"] + ins {
+        input[type="checkbox"] + label {
             background-color: #fafafa;
             border: 1px solid #cacece;
             padding: 9px;
@@ -37,7 +37,7 @@
             position: relative;
         }
 
-        input[type="checkbox"]:checked + ins {
+        input[type="checkbox"]:checked + label {
             background-color: #26a69a;
             border: 1px solid #26a69a;
             color: #99a1a7;

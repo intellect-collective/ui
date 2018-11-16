@@ -5,140 +5,176 @@ export const FormContext = React.createContext(null);
 
 export default class Form extends React.Component {
     static propTypes = {
+        /**
+         * The `action` prop is equivalent to the HTML form action attribute.
+         */
         action: PropTypes.string.isRequired,
+        /**
+         * The `method` prop is equivalent to the HTML form method attribute,
+         * but accepts values other than `GET` and `POST`. In the event that a
+         * value other than `GET` or `POST` is supplied, the `method` attribute
+         * of the form will be set to `POST` and the method override field will
+         * be set to the supplied value.
+         */
         method: PropTypes.oneOf(['get', 'post', 'put']),
+        /**
+         * The `overrideProperty` prop provides the developer with the ability
+         * to customize the method override field which will be used to pass the
+         * non-standard HTTP method being used to submit the form. Values other
+         * than `GET` and `POST` are not supported as method types in HTML forms
+         * and the override field allows us to pass that information along
+         * anyway.
+         */
         overrideProperty: PropTypes.string,
+        /**
+         * The `encType` prop is equivalent ot the HTML form encType attribute.
+         */
         encType: PropTypes.oneOf(['text', 'multipart']),
-        onChange: PropTypes.func,
-        onSubmit: PropTypes.func,
-        children: PropTypes.any,
-        data: PropTypes.object
+        /**
+         * A component to render, passing the form context as props.
+         */
+        component: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.func,
+            PropTypes.object
+        ]),
+        /**
+         * The contents of the form.
+         */
+        children: PropTypes.oneOfType([
+            PropTypes.arrayOf(PropTypes.node),
+            PropTypes.node,
+            PropTypes.func
+        ]),
+        /**
+         * The handler is responsible for tracking form state, reconciling
+         * external modifications, form submission, etc.
+         */
+        handler: PropTypes.shape({
+            /**
+             * Retrieve the original value of the field.
+             */
+            getOriginal: PropTypes.func,
+            /**
+             * Retrieve the last value given to the field through props.
+             */
+            getLastValue: PropTypes.func,
+            /**
+             * Retrieve the value for a field.
+             */
+            getValue: PropTypes.func,
+            /**
+             * Set the value for a field.
+             */
+            setValue: PropTypes.func,
+            /**
+             * Retrieve the error message for a field.
+             */
+            getError: PropTypes.func,
+            /**
+             * Set the error message for a field.
+             */
+            setError: PropTypes.func,
+            /**
+             * Retrieve a list of names of touched fields.
+             */
+            isTouched: PropTypes.func,
+            /**
+             * Set the touched state of a field to true.
+             */
+            setTouched: PropTypes.func,
+            /**
+             * Retrieve a list names of dirty fields.
+             */
+            isDirty: PropTypes.func,
+            /**
+             * Retrieve a conflicting value that was set externally for the
+             * field given.
+             */
+            getConflict: PropTypes.func
+        })
     };
 
     static defaultProps = {
         method: 'post',
         overrideProperty: '_method',
-        data: {},
-        onChange: () => {},
-        onSubmit: () => {}
+        handler: {}
     };
 
-    constructor(props) {
-        super(props);
-        this.getValue = this.getValue.bind(this);
-        this.setValue = this.setValue.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.getEncType = this.getEncType.bind(this);
-        this.getFormMethod = this.getFormMethod.bind(this);
-        this.getMethodOverrideElement = this.getMethodOverrideElement.bind(this);
+    get ctx() {
+        return {
+            getOriginal: this.props.handler.getOriginal,
+            getLastValue: this.props.handler.getLastValue,
+            getValue: this.props.handler.getValue,
+            setValue: this.props.handler.setValue,
+            getError: this.props.handler.getError,
+            setError: this.props.handler.setError,
+            isTouched: this.props.handler.isTouched,
+            setTouched: this.props.handler.setTouched,
+            isDirty: this.props.handler.isDirty,
+            getConflict: this.props.handler.getConflict
+        };
     }
 
+    get content() {
+        const { children, component: Component } = this.props;
 
-    getValue(name) {
-        if (this.props.data) {
-            return this.props.data[name];
+        if (Component) {
+            return (<Component { ...this.ctx }>{ children }</Component>);
         }
-        return undefined;
-    }
-
-    setValue(ev) {
-        this.props.onChange(ev);
-    }
-
-    /**
-     * Calls the onSubmit prop function, if provided, when the form is
-     * submitted.
-     * @param {Object} e - The React event
-     */
-    onSubmit(e) {
-        if (this.props.onSubmit) {
-            this.props.onSubmit(this.props.data, e);
+        if (typeof children === 'function') {
+            return children(this.ctx);
         }
+        return children;
     }
 
-    /**
-     * Determines the encoding type of the form.
-     * See https://www.ietf.org/rfc/rfc1867.txt
-     * @returns {String} - The mime type to specify in th enctype attribute
-     */
-    getEncType() {
-        if (this.props.encType === 'text') {
+    get encType() {
+        const { encType } = this.props;
+        if (encType === 'text') {
             return 'text/plain';
         }
-        if (this.props.encType === 'multipart') {
+        if (encType === 'multipart') {
             return 'multipart/form-data';
         }
-        return this.props.encType;
+        return encType;
     }
 
-    /**
-     * Determines the HTTP method to use when submitting the form.
-     * See https://www.ietf.org/rfc/rfc1867.txt
-     * @returns {String} - The http method to use
-     */
-    getFormMethod() {
-        if (['get', 'post'].indexOf(this.props.method) !== -1) {
-            return this.props.method;
+    get method() {
+        const { method } = this.props;
+        if (['get', 'post'].indexOf(method) !== -1) {
+            return method;
         }
         return 'post';
     }
 
-    /**
-     * Produces a hidden element which provides the opportunity to emulate
-     * http methods other than GET and POST. Requires that the server receiving
-     * the request support method overriding.
-     * @returns {Object} - A React element
-     */
-    getMethodOverrideElement() {
-        if (['get', 'post'].indexOf(this.props.method) !== -1) {
+    get methodOverrideElement() {
+        const { method, overrideProperty } = this.props;
+        if (['get', 'post'].indexOf(method) !== -1) {
             return null;
         }
         return (
             <input type="hidden"
-                    name={ this.props.overrideProperty || '_method' }
-                    value={ this.props.method } />
+                    name={ overrideProperty }
+                    value={ method } />
         );
     }
 
-    /**
-     * Builds the props that are to be passed through to the form element. We
-     * need to get rid of some props that aren't supported by the form element,
-     * so we take that opportunity here.
-     * @returns {Object} - The final props object
-     */
-    getProps() {
-        const props = {
-            ...this.props,
-            encType: this.getEncType(),
-            method: this.getFormMethod(),
-            onSubmit: this.onSubmit
-        };
-        delete props.overrideProperty;
-        return props;
-    }
-
-    /**
-     * Perform render
-     * @returns {Object} - A React element
-     */
     render() {
         const {
-            children,
-            onChange,
-            onSubmit,
+            component,
+            handler,
+            overrideProperty,
             ...props
-        } = this.getProps();
-        const ctx = {
-            getValue: this.getValue,
-            setValue: this.setValue
-        };
+        } = this.props;
         return (
-            <form { ...props }>
-                <FormContext.Provider value={ ctx }>
-                    { this.getMethodOverrideElement() }
-                    { this.props.children }
-                </FormContext.Provider>
-            </form>
+            <FormContext.Provider value={ this.ctx }>
+                <form { ...props }
+                        encType={ this.encType }
+                        method={ this.method }>
+                    { this.methodOverrideElement }
+                    { this.content }
+                </form>
+            </FormContext.Provider>
         );
     }
 }
