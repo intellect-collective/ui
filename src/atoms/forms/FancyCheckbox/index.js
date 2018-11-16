@@ -1,49 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import changeable from '../_decorators/changeable';
-import formContext from '../_decorators/formContext';
-import groupContext from '../_decorators/groupContext';
-import checkable from '../_decorators/checkable';
-import { compose } from '../_decorators/_utils';
-import { onKeyDown } from '../../../common';
+import { asCheckable, asField, compose } from '../utils';
 
-class FancyCheckbox extends React.Component {
-    static propTypes = {
-        style: PropTypes.object
-    };
+const FancyCheckbox = (props) => (
+    <div className="fancycheck">
+        <input { ...props }
+                type="checkbox" />
+        <label aria-checked={ props.checked } />
+    </div>
+);
+FancyCheckbox.displayName = 'FancyCheckbox';
+FancyCheckbox.propTypes = {
+    checked: PropTypes.bool
+};
 
-    constructor() {
-        super();
-        this.onClick = this.onClick.bind(this);
-    }
-
-    onClick() {
-        this.checkbox.click();
-    }
-
-    render() {
-        const {
-            style,
-            ...props
-        } = this.props;
-        return (
-            <div className="fancycheck">
-                <input { ...props }
-                        type="checkbox"
-                        ref={ (ref) => { this.checkbox = ref; } } />
-                <ins role="checkbox"
-                        tabIndex={ -1 }
-                        aria-checked={ props.checked }
-                        onClick={ this.onClick }
-                        onKeyDown={ onKeyDown(this.onClick) }
-                        style={ style } />
-            </div>
-        );
-    }
-}
 export default compose(
-    groupContext(),
-    formContext('_value'),
-    checkable(),
-    changeable()
+    asField(),
+    asCheckable()
 )(FancyCheckbox);

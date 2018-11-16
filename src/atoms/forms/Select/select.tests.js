@@ -1,103 +1,115 @@
 import React from 'react';
-import Select from '.';
-import Form from '../Form';
-import {
-    expectConsoleError,
-    getMissingFieldError,
-    rerenderSuppressionTests
-} from '../../../../test/utils';
+import { Form, Select } from '../../../..';
 
-const options = {
-    hotdogs: 'Hotdogs',
-    sausages: 'Sausages',
-    burgers: 'Burgers'
-};
-
-const validProps = {
-    options,
-    name: 'test',
-    value: 'sausages',
-    onChange: () => {},
-    required: true
-};
-
-describe('Select', () => {
-    rerenderSuppressionTests(Select, validProps);
-
+describe('Form Components - Select', () => {
     describe('Basics', () => {
-        it('Should throw an error on missing name', () => {
-            expectConsoleError(() => {
-                mount(<Select />);
-            }, getMissingFieldError('name'));
-        });
-
-        it('Should accept valid props', () => {
-            const wrapper = mount(<Select { ...validProps } required />);
-            expect(wrapper).toMatchSnapshot();
-            expect(wrapper.find('select').prop('name')).toEqual('test');
-            expect(wrapper.find('option').length).toEqual(3);
-            expect(wrapper.find('option[value="sausages"]').getDOMNode().selected).toEqual(true);
-        });
-
         it('Clicking without handler is no-op', () => {
-            const wrapper = mount(<Select { ...validProps } />);
+            const wrapper = mount(
+                <Select name="test">
+                    <option value="first">First</option>
+                </Select>
+            );
             wrapper.find('select').simulate('change');
         });
 
         it('Clicking with handler supplies name and event', () => {
             const fn = jest.fn();
-            const wrapper = mount(<Select { ...validProps } onChange={ fn } />);
-            wrapper.find('select').simulate('change');
-            expect(fn).toHaveBeenCalledWith(expect.objectContaining({
-                target: expect.objectContaining({
-                    name: validProps.name,
-                    value: validProps.value
-                })
-            }));
+            const wrapper = mount(
+                <Select name="test" onChange={ fn }>
+                    <option value="first">First</option>
+                </Select>
+            );
+            wrapper.find('option').simulate('change');
+            expect(fn).toHaveBeenCalled();
+            expect(fn.mock.calls[0][0]).toMatchObject({
+                target: {
+                    value: 'first'
+                }
+            });
+            expect(fn.mock.calls[0][1]).toEqual('first');
+        });
+
+        it('Can check multiple', () => {
+            const fn = jest.fn();
+            const wrapper = mount(
+                <Select name="test" value={ ['first', 'second'] } onChange={ fn } multiple>
+                    <option value="first">First</option>
+                    <option value="second">Second</option>
+                    <option value="third">Third</option>
+                </Select>
+            );
+            expect(wrapper.find('option[value="first"]').getDOMNode().selected).toEqual(true);
+            expect(wrapper.find('option[value="second"]').getDOMNode().selected).toEqual(true);
+            wrapper.find('option[value="third"]').simulate('change', {
+                target: {
+                    selectedOptions: [
+                        { value: 'first' },
+                        { value: 'second' },
+                        { value: 'third' }
+                    ]
+                }
+            });
+            expect(fn).toHaveBeenCalled();
+            expect(fn.mock.calls[0][0]).toMatchObject({
+                target: {
+                    selectedOptions: [
+                        { value: 'first' },
+                        { value: 'second' },
+                        { value: 'third' }
+                    ]
+                }
+            });
+            expect(fn.mock.calls[0][1]).toIncludeSameMembers(['first', 'second', 'third']);
         });
     });
 
     describe('Form Context Usage', () => {
-        it('Gets checked state from form', () => {
-            const wrapper = mount(
-                <Form action="/" data={{ test: 'sausages' }}>
-                    <Select name="test" options={ options } required />
-                </Form>
-            );
-            expect(wrapper.find('select').prop('name')).toEqual('test');
-            expect(wrapper.find('option').length).toEqual(3);
-            expect(wrapper.find('option[value="sausages"]').getDOMNode().selected).toEqual(true);
+        const handler = (data) => ({
+            getValue() {
+                return data;
+            }
         });
 
-        it('Prefers local attributes over form attributes', () => {
+        it('Gets selected state from form', () => {
             const wrapper = mount(
-                <Form action="/" data={{ test: 'sausages' }}>
-                    <Select name="test" options={ options } value="burgers" required />
+                <Form action="/" handler={ handler('second') }>
+                    <Select name="test">
+                        <option value="first">First</option>
+                        <option value="second">Second</option>
+                    </Select>
                 </Form>
             );
-            expect(wrapper.find('select').prop('name')).toEqual('test');
-            expect(wrapper.find('option').length).toEqual(3);
-            expect(wrapper.find('option[value="sausages"]').getDOMNode().selected).toEqual(false);
-            expect(wrapper.find('option[value="burgers"]').getDOMNode().selected).toEqual(true);
+            expect(wrapper.find('option[value="second"]').getDOMNode().selected).toEqual(true);
         });
 
-        it('Remains unchecked if form field has incorrect value', () => {
+        it('Prefers local value over form context value', () => {
             const wrapper = mount(
-                <Form action="/" data={{ test: 'streetmeat' }}>
-                    <Select name="test" options={ options } required />
+                <Form action="/" handler={ handler('second') }>
+                    <Select name="test" value="third">
+                        <option value="first">First</option>
+                        <option value="second">Second</option>
+                        <option value="third">Third</option>
+                    </Select>
                 </Form>
             );
-            expect(wrapper.find('select').prop('value')).toEqual('streetmeat');
+            expect(wrapper.find('option[value="first"]').getDOMNode().selected).toEqual(false);
+            expect(wrapper.find('option[value="second"]').getDOMNode().selected).toEqual(false);
+            expect(wrapper.find('option[value="third"]').getDOMNode().selected).toEqual(true);
         });
 
-        it('Can check multiple', () => {
+        it('Can initialize with multiple checked', () => {
             const wrapper = mount(
-                <Form action="/" data={{ test: ['hotdogs', 'sausages'] }}>
-                    <Select name="test" options={ options } multiple required />
+                <Form action="/" handler={ handler(['first', 'second']) }>
+                    <Select name="test" multiple>
+                        <option value="first">First</option>
+                        <option value="second">Second</option>
+                        <option value="third">Third</option>
+                    </Select>
                 </Form>
             );
-            expect(wrapper.find('option[value="sausages"]').getDOMNode().selected).toEqual(true);
-            expect(wrapper.find('option[value="hotdogs"]').getDOMNode().selected).toEqual(true);
+            expect(wrapper.find('option[value="first"]').getDOMNode().selected).toEqual(true);
+            expect(wrapper.find('option[value="second"]').getDOMNode().selected).toEqual(true);
+            expect(wrapper.find('option[value="third"]').getDOMNode().selected).toEqual(false);
         });
     });
 });

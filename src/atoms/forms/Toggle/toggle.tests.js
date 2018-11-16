@@ -3,30 +3,22 @@ import Toggle from '.';
 import Form from '../Form';
 import FieldGroup from '../FieldGroup';
 import {
-    basicChangeableTests,
-    rerenderSuppressionTests
+    checkableTests
 } from '../../../../test/utils';
 
-const validProps = {
-    name: 'test',
-    value: 'fire',
-    onChange: () => {}
-};
-
-const expectedProps = {
-    name: 'test',
-    value: 'fire',
-    onChange: expect.any(Function)
-};
+const handler = (data) => ({
+    getValue() {
+        return data;
+    }
+});
 
 describe('Toggle', () => {
-    basicChangeableTests(Toggle, 'input', validProps, expectedProps);
-    rerenderSuppressionTests(Toggle, validProps);
+    checkableTests(Toggle);
 
     describe('Form Context Usage', () => {
         it('Gets checked state from form', () => {
             const wrapper = mount(
-                <Form action="/" data={{ test: 'sausages' }}>
+                <Form action="/" handler={ handler('sausages') }>
                     <Toggle name="test" value="sausages" />
                 </Form>
             );
@@ -35,7 +27,7 @@ describe('Toggle', () => {
 
         it('Prefers local attributes over form attributes', () => {
             const wrapper = mount(
-                <Form action="/" data={{ test: 'sausages' }}>
+                <Form action="/" handler={ handler('sausages') }>
                     <Toggle name="test" value="sausages" checked={ false } />
                 </Form>
             );
@@ -44,7 +36,7 @@ describe('Toggle', () => {
 
         it('Remains unchecked if form field has incorrect value', () => {
             const wrapper = mount(
-                <Form action="/" data={{ test: 'hotdogs' }}>
+                <Form action="/" handler={ handler('hotdogs') }>
                     <Toggle name="test" value="sausages" />
                 </Form>
             );
@@ -53,7 +45,7 @@ describe('Toggle', () => {
 
         it('Can check multiple', () => {
             const wrapper = mount(
-                <Form action="/" data={{ test: ['hotdogs', 'sausages'] }}>
+                <Form action="/" handler={ handler(['hotdogs', 'sausages']) }>
                     <Toggle name="test" value="hotdogs" />
                     <Toggle name="test" value="sausages" />
                     <Toggle name="test" value="burgers" />
@@ -88,7 +80,7 @@ describe('Toggle', () => {
     describe('Form + FieldGroup Context Usage', () => {
         it('Gets state from form', () => {
             const wrapper = mount(
-                <Form action="/" data={{ test: 'sausages' }}>
+                <Form action="/" handler={ handler('sausages') }>
                     <FieldGroup name="test">
                         <Toggle value="sausages" />
                     </FieldGroup>
@@ -100,7 +92,7 @@ describe('Toggle', () => {
 
         it('Prefers state from field', () => {
             const wrapper = mount(
-                <Form action="/" data={{ test: 'sausages' }}>
+                <Form action="/" handler={ handler('sausages') }>
                     <FieldGroup name="test">
                         <Toggle value="sausages" checked={ false } />
                     </FieldGroup>

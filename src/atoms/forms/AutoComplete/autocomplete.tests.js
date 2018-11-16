@@ -1,8 +1,5 @@
 import React from 'react';
 import { AutoComplete, Form } from '../../../..';
-import {
-    basicChangeableTests
-} from '../../../../test/utils';
 
 const validProps = {
     id: 'test',
@@ -16,15 +13,7 @@ const validProps = {
     ]
 };
 
-const expectedProps = {
-    id: 'test',
-    name: 'test',
-    value: 'fire'
-};
-
 describe('AutoComplete', () => {
-    basicChangeableTests(AutoComplete, 'input', validProps, expectedProps);
-
     describe('Basic AutoComplete Operation', () => {
         it('Opens on focus', () => {
             const fn = jest.fn();
@@ -329,9 +318,15 @@ describe('AutoComplete', () => {
     });
 
     describe('Form Context Usage', () => {
+        const handler = (data) => ({
+            getValue() {
+                return data;
+            }
+        });
+
         it('Gets value state from form', () => {
             const wrapper = mount(
-                <Form action="/" data={{ test: 'fire' }}>
+                <Form action="/" handler={ handler('fire') }>
                     <AutoComplete name="test" items={ validProps.items } />
                 </Form>
             );

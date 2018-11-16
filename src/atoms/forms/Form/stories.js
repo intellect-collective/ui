@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import stateful from '../../../../.storybook/decorators/stateful';
 import {
-    Checkbox, Field, Form, Password, Text, SubmitButton
+    Checkbox, Field, Form, Password, Text
 } from '../../../..';
 
 class FormExample extends React.Component {
@@ -74,7 +74,7 @@ class FormExample extends React.Component {
                 </div>
                 <div className="form-group">
                     <div className="col-lg-offset-2 col-lg-10">
-                        <SubmitButton className="btn btn-sm btn-white" name="go">Sign In</SubmitButton>
+                        <button type="submit" name="go" className="btn btn-sm btn-white">Sign In</button>
                     </div>
                 </div>
             </Form>
