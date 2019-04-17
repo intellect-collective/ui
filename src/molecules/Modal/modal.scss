@@ -5,6 +5,7 @@
     }
     .modal {
         background: rgba(255,255,255,0.8);
+        display: block;
         position: fixed;
         top: 0;
         right: 0;
@@ -13,11 +14,23 @@
         z-index: 1050;
         outline: 0;
         z-index: 2050 !important;
-        opacity: 0;
+        //opacity: 0;
         transition: opacity .25s;
 
         &.visible {
             opacity: 1;
+        }
+
+        button.close {
+            border-radius: 100px;
+            display: block;
+            height: 1.5em;
+            line-height: 1.5em;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 1.5em;
+            z-index: 1000;
         }
     }
 
@@ -75,5 +88,15 @@
         padding: 15px;
         text-align: right;
         border-top: 1px solid #e5e5e5;
+
+        .alert:first-child {
+            margin-top: -15px;
+            margin-left: -15px;
+            margin-right: -15px;
+            border-radius: 0;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
     }
 }

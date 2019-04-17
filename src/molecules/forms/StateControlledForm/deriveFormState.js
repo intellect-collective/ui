@@ -35,9 +35,9 @@ export default (props, state) => {
     }
 
     // Set the last errors to the newly updated prop errors
-    const sameErrors = shallowEqual(state.lastErrors, props.errors);
+    const sameErrors = shallowEqual(state.errors, props.errors);
     if (!sameErrors) {
-        result.lastErrors = { ...props.errors };
+        result.errors = { ...props.errors };
     }
 
     // If we only just set values/lastValues, then we have no need to continue

@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const genDefaultConfig = require('@storybook/react/dist/server/config/defaults/webpack.config.js');
-const defaultConfig = require('@storybook/react/dist/server/config/webpack.config.js').default;
+// const genDefaultConfig = require('@storybook/react/dist/server/config/defaults/webpack.config.js');
+// const defaultConfig = require('@storybook/react/dist/server/config/webpack.config.js').default;
 const _ = require('lodash');
 
 const production = (config) => {
@@ -64,14 +64,15 @@ const development = (config) => {
 }
 
 module.exports = (baseConfig, env) => {
-    if (!baseConfig) {
-        baseConfig = defaultConfig();
-    }
-    const config = genDefaultConfig(baseConfig, env);
-    config.resolve = {
-        extensions: ['.js', '.jsx']
-    }
+    // if (!baseConfig) {
+    //     baseConfig = defaultConfig();
+    // }
+    // const config = genDefaultConfig(baseConfig, env);
+    // config.resolve = {
+    //     extensions: ['.js', '.jsx']
+    // }
 
+    const config = { ...baseConfig };
     if (process.env.NODE_ENV === 'development') {
         development(config);
     }

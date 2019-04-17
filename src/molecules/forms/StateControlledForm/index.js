@@ -4,6 +4,7 @@ import update from 'immutability-helper';
 import Form from '../../../atoms/forms/Form';
 import deriveFormState from './deriveFormState';
 import pushUnique from '../../../utils/pushUnique';
+import get from '../../../utils/get';
 
 const noop = () => {};
 
@@ -47,6 +48,7 @@ class StateControlledForm extends React.Component {
         this.isDirty = this.isDirty.bind(this);
         this.getConflict = this.getConflict.bind(this);
         this.onReset = this.onReset.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     //
@@ -61,7 +63,7 @@ class StateControlledForm extends React.Component {
     }
 
     getValue(field) {
-        return (this.state.values || {})[field];
+        return get(this.state.values || {}, field);
     }
 
     setValue(field, value) {
@@ -111,6 +113,12 @@ class StateControlledForm extends React.Component {
         });
     }
 
+    onSubmit(ev) {
+        if (this.props.onSubmit) {
+            this.props.onSubmit(ev, this.handler, this.state.values);
+        }
+    }
+
     //
     // Helpers
     //
@@ -125,13 +133,17 @@ class StateControlledForm extends React.Component {
             isTouched: this.isTouched,
             setTouched: this.setTouched,
             isDirty: this.isDirty,
-            getConflict: this.getConflict
+            getConflict: this.getConflict,
+            onReset: this.onReset,
+            onSubmit: this.onSubmit
         };
     }
 
     render() {
         const {
             children,
+            errors,
+            values,
             ...rest
         } = this.props;
         return (

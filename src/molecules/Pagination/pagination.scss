@@ -1,6 +1,6 @@
 @if (null != index($ui-includes, 'pagination') and null == index($ui-excludes, 'pagination')) {
 	.pagination {
-	    border-radius: 4px;
+	    border-radius: .285714em;
 	    display: inline-block;
 	    margin: 0;
 	    padding: 0;
@@ -23,9 +23,9 @@
 			    border: 1px solid #ddd;
 			    color: inherit;
 			    float: left;
-			    line-height: 1.42857;
+			    line-height: 1;
 			    margin-left: -1px;
-			    padding: 4px 10px;
+			    padding: .285714em .714286em;
 			    text-decoration: none;
 	    	}
 		}

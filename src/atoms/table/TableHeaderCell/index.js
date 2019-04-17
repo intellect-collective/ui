@@ -50,7 +50,7 @@ export default class ColumnHeader extends React.Component {
 
         const aria = ifSort(this.props.column.field, this.props.sorting, 'ascending', 'descending');
         const className = ifSort(this.props.column.field, this.props.sorting, 'sorting-asc', 'sorting-desc');
-        const classNames = classnames('sortable', className);
+        const classNames = classnames('sortable', className, this.props.column.headerClasses);
         return (
             <th className={ classNames }
                     onClick={ this.onHeaderClick }

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import stateful from '../../../../.storybook/decorators/stateful';
 import {
     Checkbox, Field, Form, Password, Text
@@ -20,7 +19,7 @@ class FormExample extends React.Component {
 
     render() {
         return (
-            <Form action="/" method="post" data={ this.props.data } onChange={ this.props.onChange } onSubmit={ (data, ev) => { ev.preventDefault(); ev.stopPropagation(); action('onSubmit')(data); } } className="form-horizontal">
+            <Form action="/" method="post" data={ this.props.data } onChange={ this.props.onChange } onSubmit={ (data, ev) => { ev.preventDefault(); ev.stopPropagation(); } } className="form-horizontal">
                 <p>Sign in for a better experience.</p>
                 <Field name="email"
                         label="Email"

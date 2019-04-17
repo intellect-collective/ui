@@ -2,21 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import OutsideClickWatcher from '../../atoms/OutsideClickWatcher';
 import { onKeyDown } from '../../common';
 
 export default class Modal extends React.Component {
     static propTypes = {
         className: PropTypes.string,
         onClose: PropTypes.func,
-        children: PropTypes.node,
-        element: PropTypes.object,
-        removeTimeout: PropTypes.number
+        children: PropTypes.node
     };
 
     static defaultProps = {
         className: 'modal',
-        onClose: () => {},
-        removeTimeout: 300
+        onClose: () => {}
     };
 
     constructor(props) {
@@ -25,35 +23,6 @@ export default class Modal extends React.Component {
             visible: false
         };
         this.onOverlayClick = this.onOverlayClick.bind(this);
-        this.onTransitionEnd = this.onTransitionEnd.bind(this);
-        this.remove = this.remove.bind(this);
-        if (props.element) {
-            this.el = props.element;
-        } else {
-            this.el = document.createElement('DIV');
-            document.body.appendChild(this.el);
-        }
-    }
-
-    componentDidMount() {
-        this._render();
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                this.setState({ visible: true });
-            });
-        });
-    }
-
-    componentDidUpdate() {
-        this._render(this.state.visible);
-    }
-
-    componentWillUnmount() {
-        this.state.visible = false;
-        this._render(false);
-        setTimeout(() => {
-            this.remove();
-        }, this.props.removeTimeout);
     }
 
     onOverlayClick(ev) {
@@ -62,46 +31,26 @@ export default class Modal extends React.Component {
         }
     }
 
-    onTransitionEnd() {
-        if (!this.state.visible) {
-            this.remove();
-        }
-    }
-
-    remove() {
-        ReactDOM.unmountComponentAtNode(this.el);
-        this.el.remove();
-    }
-
-    renderInner(visible) {
+    render() {
         /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
         return (
-            <div className={ classnames(this.props.className, {
-                visible
-            }) }
+            <div className={ classnames(this.props.className) }
                     tabIndex="-1"
                     role="dialog"
                     onClick={ this.onOverlayClick }
                     onMouseUp={ this.onOverlayClick }
                     onKeyDown={ onKeyDown(this.onOverlayClick, ['Escape']) }
-                    onTransitionEnd={ this.onTransitionEnd }
                     ref={ (ref) => { this._outerRef = ref; } }>
                 <div className="modal-dialog"
                         ref={ (ref) => { this._dialogRef = ref; } }>
-                    <div className="modal-content">
-                        { this.props.children }
-                    </div>
+                    <OutsideClickWatcher onClick={ this.onClose }>
+                        <div className="modal-content">
+                            { this.props.children }
+                        </div>
+                    </OutsideClickWatcher>
                 </div>
             </div>
         );
         /* eslint-enable jsx-a11y/no-noninteractive-element-interactions */
-    }
-
-    _render(visible) {
-        this._ref = ReactDOM.render(this.renderInner(visible), this.el);
-    }
-
-    render() {
-        return null;
     }
 }

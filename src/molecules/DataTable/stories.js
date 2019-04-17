@@ -1,7 +1,6 @@
 import React from 'react';
 import { orderBy } from 'lodash';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import stateful from '../../../.storybook/decorators/stateful';
 import style from '../../../.storybook/decorators/style';
 import { DataTable } from '../../..';
@@ -66,6 +65,5 @@ storiesOf('Molecules / DataTable', module)
                 columns={ columns }
                 sorting={ state.sorting }
                 onHeaderClick={ onHeaderClick(onChange) }
-                onRowClick={ action('onRowClick') }
                 className="basic" />
     ));

@@ -40,6 +40,10 @@ class Field extends React.Component {
          */
         formValueProp: PropTypes.string,
         /**
+         * An optional function to transform the field value.
+         */
+        transformValue: PropTypes.func,
+        /**
          * The name given by the nearest ancestral FieldGroup, if available.
          */
         context: PropTypes.string,
@@ -59,6 +63,7 @@ class Field extends React.Component {
 
     static defaultProps = {
         formValueProp: 'value',
+        transformValue: (v) => (v),
         onChange: noop
     };
 
@@ -78,15 +83,16 @@ class Field extends React.Component {
 
     get value() {
         const {
-            formValueProp
+            formValueProp,
+            transformValue
         } = this.props;
         if (typeof this.props[formValueProp] !== 'undefined') {
-            return this.props[formValueProp];
+            return transformValue(this.props[formValueProp]) || '';
         }
         if (this.context && this.context.getValue) {
-            return this.context.getValue(this.name);
+            return transformValue(this.context.getValue(this.name)) || '';
         }
-        return undefined;
+        return '';
     }
 
     get fieldCtx() {
@@ -133,6 +139,7 @@ class Field extends React.Component {
             component: Component,
             formValueProp,
             forwardedRef,
+            transformValue,
             ...rest
         } = this.props;
 

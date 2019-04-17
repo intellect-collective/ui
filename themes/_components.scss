@@ -24,10 +24,13 @@ $ui-excludes: '' !default;
 @import '../src/common';
 
 // Import atoms
+@import '../src/atoms/CloseButton/close-button';
 @import '../src/atoms/PageOverlay/pageoverlay';
+@import '../src/atoms/Toast/toast';
 @import '../src/atoms/card/card';
 @import '../src/atoms/forms/AutoComplete/autocomplete';
 @import '../src/atoms/forms/Button/button';
+@import '../src/atoms/forms/ErrorText/errortext';
 @import '../src/atoms/forms/FancyCheckbox/fancycheckbox';
 @import '../src/atoms/forms/LoadingButton/loadingbutton';
 @import '../src/atoms/forms/Select/select';

@@ -20,10 +20,13 @@ addDecorator(centered);
 addDecorator(styled);
 
 const src = require.context('../src', true, /stories\.js$/);
+const docs = require.context('../docs', true, /stories\.js$/);
 
 function loadStories() {
     src.keys()
         .forEach((filename) => src(filename));
+    docs.keys()
+        .forEach((filename) => docs(filename));
 }
 
 configure(loadStories, module);

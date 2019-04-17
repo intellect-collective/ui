@@ -20,10 +20,10 @@ const KEY_HANDLERS = {
     },
     ArrowUp(ev) {
         ev.preventDefault();
-        const { highlightedIndex } = this.props;
+        const { highlightedIndex, items } = this.props;
         if (typeof highlightedIndex === 'undefined'
                 || highlightedIndex === 0) {
-            this.onHighlight(ev, this.props.items.length - 1);
+            this.onHighlight(ev, this.getItems().length - 1);
         } else {
             this.onHighlight(ev, highlightedIndex - 1);
         }
@@ -253,12 +253,19 @@ export class AutoComplete extends React.Component {
 
     render() {
         const {
+            context,
+            highlightedIndex,
+            items,
             value,
-            open
+            onHighlight,
+            onOpen,
+            open,
+            ...rest
         } = this.props;
         return (
             <div className={ classnames('autocomplete', { open }) }>
-                <input id={ this.id }
+                <input { ...rest }
+                        id={ this.id }
                         name={ this.props.name }
                         type="text"
                         value={ value }
@@ -272,7 +279,9 @@ export class AutoComplete extends React.Component {
                         onFocus={ this.onFocus }
                         onBlur={ this.onBlur }
                         onChange={ this.props.onChange }
-                        onKeyDown={ this.onKeyDown } />
+                        onKeyDown={ this.onKeyDown }
+                        onClose={ undefined }
+                        onSelect={ undefined } />
                 { this.renderMenu() }
             </div>
         );
