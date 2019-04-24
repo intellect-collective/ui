@@ -3,7 +3,7 @@ $brand-color-highlight: lighten($brand-color, 10%);
 
 $ui-excludes: 'calendar.list';
 
-@import '_variables', '_components';
+@import '_variables', '../src/_components';
 
 .pagination {
 	& > li {
