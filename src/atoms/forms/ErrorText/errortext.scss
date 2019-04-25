@@ -1,7 +1,8 @@
 .invalid-feedback {
-	background: lighten($brand-danger, 40%);
-	border: 1px solid $brand-danger;
+	$danger: map-get($theme, 'danger');
+	background: lighten(map-get($danger, 'color'), 40%);
+	border: 1px solid map-get($danger, 'color');
 	border-radius: 2px;
-	color: $brand-danger;
+	color: map-get($danger, 'color');
 	padding: .5em;
 }

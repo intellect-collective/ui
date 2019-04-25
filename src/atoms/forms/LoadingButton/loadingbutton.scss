@@ -1,5 +1,5 @@
 @if (null != index($ui-includes, 'form.loadingbutton') and null == index($ui-excludes, 'form.loadingbutton')) {
-    $spin-color: $brand-color !default;
+    $spin-color: map-get(map-get($theme, 'brand'), 'color') !default;
     $spin-margin: 0 auto !default;
 
 

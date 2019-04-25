@@ -67,3 +67,15 @@ return (
 ```
 
 When you supply the data property, all that information is made available to the form components contained within the form. In the above example, the `name` field would be pre-populated with "John Smith" and the "sausages" and "hotdogs" checkboxes would be pre-checked.
+
+## Development ##
+
+```
+docker run -it --rm -v $PWD:/usr/src/app -w /usr/src/app -p '3000:3000' node:11-alpine sh
+apk --no-cache add --virtual native-deps \
+    g++ \
+    make \
+    python \
+ && npm i --quiet \
+ && apk del native-deps
+```

@@ -16,7 +16,7 @@
 
         li {
             background: white;
-            color: $brand-color;
+            color: map-get(map-get($theme, 'brand'), 'color');
             cursor: pointer;
             display: block;
             list-style-type: none;
@@ -25,7 +25,7 @@
             transition: background .2s, color .2s;
 
             &.highlight {
-                background: $brand-color;
+                background: map-get(map-get($theme, 'brand'), 'color');
                 color: white;
             }
         }

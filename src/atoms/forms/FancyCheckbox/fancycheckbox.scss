@@ -1,37 +1,25 @@
-@if (null != index($ui-includes, 'form.fancycheckbox') and null == index($ui-excludes, 'form.fancycheckbox')) {
-    $fancycheck-primary:            $brand-primary !default;
-    $fancycheck-success:            $brand-success !default;
-    $fancycheck-info:               $brand-info !default;
-    $fancycheck-warning:            $brand-warning !default;
-    $fancycheck-danger:             $brand-danger !default;
-
-    $fancycheck-variants: (
-        ('.fancycheck', '.fancycheck-primary', '.fancycheck-brand'): ($fancycheck-primary),
-        ('.fancycheck-success', '.fancycheck-green'): ($fancycheck-success),
-        ('.fancycheck-info', '.fancycheck-alert', '.fancycheck-blue'): ($fancycheck-info),
-        ('.fancycheck-warning', '.fancycheck-orange'): ($fancycheck-warning),
-        ('.fancycheck-danger', '.fancycheck-error', '.fancycheck-red'): ($fancycheck-danger)
-    ) !default;
-
-    @mixin fancycheck-variant($color) {
-        input[type="checkbox"] {
-            + label {
-                background-color: mix($color, white, 10%);
-                border: 1px solid mix($color, white, 20%);
-            }
-            &:hover + label,
-            + label:hover {
-                border-color: $color;
-            }
-            &:focus + label,
-            + label:focus {
-                box-shadow: 0 0 2px 2px rgba($color, 0.5);
-            }
-            &:checked + label {
-                background-color: $color;
-            }
+@mixin fancycheck-variant($color) {
+    input[type="checkbox"] {
+        + label {
+            background-color: mix($color, white, 10%);
+            border: 1px solid mix($color, white, 20%);
+        }
+        &:hover + label,
+        + label:hover {
+            border-color: $color;
+        }
+        &:focus + label,
+        + label:focus {
+            box-shadow: 0 0 2px 2px rgba($color, 0.5);
+        }
+        &:checked + label {
+            background-color: $color;
         }
     }
+}
+
+@if (null != index($ui-includes, 'form.fancycheckbox') and null == index($ui-excludes, 'form.fancycheckbox')) {
+    $fancycheck-colors: $theme !default;
 
     .fancycheck {
         input[type="checkbox"] {
@@ -69,11 +57,9 @@
     }
 
 
-    @each $classes, $attributes in $fancycheck-variants {
-        @each $class in $classes {
-            #{$class} {
-                @include fancycheck-variant($attributes...);
-            }
+    @each $name, $attributes in $fancycheck-colors {
+        .fancycheck-#{$name} {
+            @include fancycheck-variant(map-get($attributes, 'color'));
         }
     }
 }

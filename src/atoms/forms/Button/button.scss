@@ -3,7 +3,7 @@
     .btn-small,
     .btn-large,
     .btn-flat {
-        background-color: $brand-color;
+        background-color: map-get(map-get($theme, 'brand'), 'color');
         border: none;
         border-radius: 2px;
         color: $color-white;
@@ -23,7 +23,7 @@
         -webkit-tap-highlight-color: transparent;
 
         &:hover {
-            background-color: $brand-color-highlight;
+            background-color: map-get(map-get($theme, 'brand'), 'highlight');
         }
 
         &:not(.btn-flat) {

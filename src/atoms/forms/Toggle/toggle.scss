@@ -5,30 +5,11 @@ $toggle-border-radius-base:    $border-radius-base !default;
 $toggle-border-radius-lg:      $border-radius-lg !default;
 $toggle-border-radius-sm:      $border-radius-sm !default;
 
-$toggle-primary-bg:            $brand-primary !default;
-$toggle-primary-color:         $brand-primary-contrast !default;
-$toggle-success-bg:            $brand-success !default;
-$toggle-success-color:         $brand-success-contrast !default;
-$toggle-info-bg:               $brand-info !default;
-$toggle-info-color:            $brand-info-contrast !default;
-$toggle-warning-bg:            $brand-warning !default;
-$toggle-warning-color:         $brand-warning-contrast !default;
-$toggle-danger-bg:             $brand-danger !default;
-$toggle-danger-color:          $brand-danger-contrast !default;
+$toggle-colors: $theme !default;
 
 $toggle-sizes: (
     '.toggle': (52px, 20px, 20px)
 ) !default;
-
-$toggle-variants: (
-    ('.toggle', '.toggle-primary', '.toggle-brand'): ($toggle-primary-bg, $toggle-primary-color),
-    ('.toggle-success', '.toggle-green'): ($toggle-success-bg, $toggle-success-color),
-    ('.toggle-info', '.toggle-alert', '.toggle-blue'): ($toggle-info-bg, $toggle-info-color),
-    ('.toggle-warning', '.toggle-orange'): ($toggle-warning-bg, $toggle-warning-color),
-    ('.toggle-danger', '.toggle-error', '.toggle-red'): ($toggle-danger-bg, $toggle-danger-color)
-) !default;
-
-
 
 @mixin toggle-size($toggle-width: 52px, $switch-width: 20px, $height: 20px) {
     width: $toggle-width;
@@ -130,11 +111,9 @@ $toggle-variants: (
     }
 }
 
-@each $classes, $attributes in $toggle-variants {
-    @each $class in $classes {
-        #{$class} {
-            @include toggle-variant($attributes...);
-        }
+@each $name, $attributes in $toggle-colors {
+    .toggle-#{$name} {
+        @include toggle-variant(map-get($attributes, 'color'), map-get($attributes, 'text'));
     }
 }
 
