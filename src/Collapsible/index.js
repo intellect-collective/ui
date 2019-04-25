@@ -8,29 +8,31 @@ import classnames from 'classnames';
  */
 export default class Collapsible extends React.Component {
     static propTypes = {
-        visible: PropTypes.bool,
+        open: PropTypes.bool,
         children: PropTypes.any,
-        element: PropTypes.any
+        component: PropTypes.any
     };
     static defaultProps = {
-        element: 'div'
+        component: 'div',
+        className: 'collapsible'
     };
 
     constructor(props) {
         super(props);
         this.state = {
-            show: props.visible
+            animating: false,
+            height: '0px'
         };
         this.expand = this.expand.bind(this);
         this.collapse = this.collapse.bind(this);
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.visible === this.props.visible) {
+        if (prevProps.open === this.props.open) {
             return;
         }
 
-        if (this.props.visible) {
+        if (this.props.open) {
             this.expand();
         } else {
             this.collapse();
@@ -39,49 +41,45 @@ export default class Collapsible extends React.Component {
 
     expand() {
         const self = this;
-
-        this.setState({ collapsing: true, show: false }, () => {
-            var sectionHeight = this.node.scrollHeight;
-            this.node.style.height = sectionHeight + 'px';
-
-            this.node.addEventListener('transitionend', function f(e) {
+        this.setState({ animating: true, height: '0px' }, () => {
+            self.node.addEventListener('transitionend', function f(e) {
                 self.node.removeEventListener('transitionend', f);
-                self.node.style.height = null;
-                self.setState({ collapsing: false, show: true });
+                self.setState({ animating: false });
             });
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    this.setState({ height: this.node.scrollHeight + 'px' });
+                })
+            })
         });
     }
 
     collapse() {
         const self = this;
-
-        var sectionHeight = this.node.scrollHeight;
-        this.node.style.height = sectionHeight + 'px';
-
-        this.setState({ collapsing: true, show: true }, () => {
-            this.node.addEventListener('transitionend', function f(e) {
+        this.setState({ animating: true, height: this.node.scrollHeight + 'px' }, () => {
+            self.node.addEventListener('transitionend', function f(e) {
                 self.node.removeEventListener('transitionend', f);
-                self.node.style.display = null;
-                self.setState({ collapsing: false, show: false });
+                self.setState({ animating: false });
             });
-
             requestAnimationFrame(() => {
-                self.node.style.height = 0 + 'px';
+                requestAnimationFrame(() => {
+                    this.setState({ height: '0px' });
+                });
             });
-
-        })
+        });
     }
 
     render() {
-        const { collapsing, show } = this.state;
-        const { className, element: Element, visible, ...props } = this.props;
+        const { animating, height } = this.state;
+        const { className, component: Component, open, ...props } = this.props;
         return (
-            <Element { ...props }
-                    className={ classnames(className, { collapsing, show, collapse: !collapsing }) }
-                    data-collapsed={ !this.state.show }
+            <Component { ...props }
+                    className={ classnames(className, { animating, collapsed: !animating && !open }) }
+                    data-collapsed={ !animating && !open }
+                    style={{ height }}
                     ref={ (ref) => { this.node = ref; } }>
                 { this.props.children }
-            </Element>
+            </Component>
         );
     }
 }

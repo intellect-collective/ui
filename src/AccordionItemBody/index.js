@@ -2,12 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withContext from '../utils/withContext';
 import { AccordionItemContext } from '../AccordionItem';
+import Collapsible from '../Collapsible';
 
-const AccordionItemBody = ({ context, ...rest }) => (
-    <dd aria-hidden={ !context.expanded }
+const AccordionItemBody = ({ children, context, ...rest }) => (
+    <Collapsible component="dd"
+            aria-hidden={ !context.expanded }
             aria-labelledby={ `${ context.id }-title` }
             role="region"
-            { ...rest } />
+            open={ context.expanded }
+            { ...rest }>
+        <div>{ children }</div>
+    </Collapsible>
 );
 AccordionItemBody.displayName = 'AccordionItemBody';
 AccordionItemBody.propTypes = {
