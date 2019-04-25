@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import width from '../../.storybook/decorators/width';
-import stateful from '../../.storybook/decorators/stateful';
 import { StateControlledAutoComplete } from '../..';
 import data from '../../test/data/people.json';
 
@@ -11,11 +10,9 @@ const items = data.map((person) => ({
 }));
 
 storiesOf('StateControlledAutoComplete', module)
-    .addDecorator(stateful({}))
     .addDecorator(width(200))
-    .add('default', () => (onChange, state, stateful) => (
+    .add('default', () => (
         <StateControlledAutoComplete name="person"
                 items={ items }
-                onSelect={ onChange }
-                ref={ (ref) => { stateful.setChildRef(ref); } } />
+                onSelect={ onChange } />
     ));

@@ -1,6 +1,7 @@
 import React from 'react';
 import update from 'immutability-helper';
 import { storiesOf } from '@storybook/react';
+import { withState } from '@dump247/storybook-state';
 import {
     addDays,
     addWeeks,
@@ -11,7 +12,6 @@ import {
     startOfMonth,
     subDays
 } from 'date-fns';
-import stateful from '../../.storybook/decorators/stateful';
 import Calendar from './index';
 
 const now = new Date();
@@ -81,26 +81,25 @@ const events = [
 ];
 
 storiesOf('Calendar', module)
-    .addDecorator(stateful({ calendars, events, month: new Date() }))
-    .add('default', () => (onChange, state, stateful) => (
-        <Calendar { ...state }
+    .add('default', withState({ calendars, events, month: new Date() })(({ store }) => (
+        <Calendar { ...store.state }
                 onCalendarVisibilityStateChange={ (ev) => {
                     ev.preventDefault();
                     ev.stopPropagation();
-                    const idx = state.calendars.findIndex((c) => (
+                    const idx = store.state.calendars.findIndex((c) => (
                         c.id === Number(ev.target.value)
                     ));
-                    const updated = update(state.calendars, {
+                    const updated = update(store.state.calendars, {
                         [idx]: { hidden: { $set: !ev.target.checked } }
                     });
-                    stateful.setState({ calendars: updated });
+                    store.set({ calendars: updated });
                 } }
                 onDrop={ (ev, date) => {
                     ev.preventDefault();
                     ev.stopPropagation();
                     const id = ev.dataTransfer.getData('id');
-                    const idx = state.events.findIndex((c) => (c.id === Number(id)));
-                    let event = state.events[idx];
+                    const idx = store.state.events.findIndex((c) => (c.id === Number(id)));
+                    let event = store.state.events[idx];
 
                     const diff = differenceInDays(date, event.start);
                     if (event.start) {
@@ -109,10 +108,10 @@ storiesOf('Calendar', module)
                     if (event.end) {
                         event = update(event, { end: { $set: addDays(event.end, diff) } });
                     }
-                    const updated = update(state.events, { [idx]: { $set: event } });
-                    stateful.setState({ events: updated });
+                    const updated = update(store.state.events, { [idx]: { $set: event } });
+                    store.set({ events: updated });
                 } }
                 onMonthChange={ (month) => {
-                    stateful.setState({ month });
+                    store.set({ month });
                 } } />
-    ));
+    )));

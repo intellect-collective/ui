@@ -207,6 +207,7 @@ exports[`List Can click checkbox 1`] = `
                       >
                         <FancyCheckbox
                           checked={true}
+                          className="fancycheck"
                           context={null}
                           id={1}
                           name="calendars"
@@ -245,6 +246,7 @@ exports[`List Can click checkbox 1`] = `
                             />
                             <label
                               aria-checked={true}
+                              htmlFor={1}
                             />
                           </div>
                         </FancyCheckbox>
@@ -389,6 +391,7 @@ exports[`List Can click checkbox 1`] = `
                       >
                         <FancyCheckbox
                           checked={true}
+                          className="fancycheck"
                           context={null}
                           id={2}
                           name="calendars"
@@ -415,6 +418,7 @@ exports[`List Can click checkbox 1`] = `
                             />
                             <label
                               aria-checked={true}
+                              htmlFor={2}
                             />
                           </div>
                         </FancyCheckbox>
@@ -600,6 +604,7 @@ exports[`List Can click checkbox 1`] = `
                       >
                         <FancyCheckbox
                           checked={true}
+                          className="fancycheck"
                           context={null}
                           id={3}
                           name="calendars"
@@ -636,6 +641,7 @@ exports[`List Can click checkbox 1`] = `
                             />
                             <label
                               aria-checked={true}
+                              htmlFor={3}
                             />
                           </div>
                         </FancyCheckbox>

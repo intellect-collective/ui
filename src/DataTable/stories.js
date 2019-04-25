@@ -2,7 +2,7 @@ import React from 'react';
 import { orderBy } from 'lodash';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import stateful from '../../.storybook/decorators/stateful';
+import { withState } from '@dump247/storybook-state';
 import style from '../../.storybook/decorators/style';
 import { DataTable } from '../..';
 import data from '../../test/data/people.json';
@@ -29,14 +29,13 @@ const getData = (state = {}) => {
 
 const onHeaderClick = (onChange) => (col, dir) => {
     if (!dir) {
-        onChange('sorting', undefined);
+        onChange({ sorting: undefined });
     } else {
-        onChange('sorting', dir + col);
+        onChange({ sorting: dir + col });
     }
 };
 
 storiesOf('DataTable', module)
-    .addDecorator(stateful({ }))
     .addDecorator(style(`
         .style-wrapper {
             width: 768px;
@@ -45,27 +44,27 @@ storiesOf('DataTable', module)
             width: 100%;
         }
     `))
-    .add('plain', () => (onChange, state) => (
-        <DataTable data={ getData(state) }
+    .add('plain', withState()((store) => (
+        <DataTable data={ getData(store.state) }
                 columns={ columns }
-                sorting={ state.sorting }
-                onHeaderClick={ onHeaderClick(onChange) } />
-    ))
+                sorting={ store.state.sorting }
+                onHeaderClick={ onHeaderClick(store.set) } />
+    )))
     .add('no data', () => (
         <DataTable data={ [] } columns={ columns } />
     ))
-    .add('with class name', () => (onChange, state) => (
-        <DataTable data={ getData(state) }
+    .add('with class name', withState()((store) => (
+        <DataTable data={ getData(store.state) }
                 columns={ columns }
-                sorting={ state.sorting }
-                onHeaderClick={ onHeaderClick(onChange) }
+                sorting={ store.state.sorting }
+                onHeaderClick={ onHeaderClick(store.set) }
                 className="basic" />
-    ))
-    .add('clickable rows', () => (onChange, state) => (
-        <DataTable data={ getData(state) }
+    )))
+    .add('clickable rows', withState()((store) => (
+        <DataTable data={ getData(store.state) }
                 columns={ columns }
-                sorting={ state.sorting }
-                onHeaderClick={ onHeaderClick(onChange) }
+                sorting={ store.state.sorting }
+                onHeaderClick={ onHeaderClick(store.set) }
                 onRowClick={ action('onRowClick') }
                 className="basic" />
-    ));
+    )));

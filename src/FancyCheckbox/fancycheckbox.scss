@@ -1,8 +1,12 @@
-@mixin fancycheck-variant($color) {
+@mixin fancycheck-variant($color, $check) {
     input[type="checkbox"] {
         + label {
             background-color: mix($color, white, 10%);
             border: 1px solid mix($color, white, 20%);
+
+            &:after {
+                border-color: $check;
+            }
         }
         &:hover + label,
         + label:hover {
@@ -35,8 +39,8 @@
 
                 &:after {
                     background-color: transparent;
-                    border-bottom: 3px solid white;
-                    border-right: 3px solid white;
+                    border-bottom: 3px solid map-get(map-get($theme, 'primary'), 'color');
+                    border-right: 3px solid map-get(map-get($theme, 'primary'), 'color');
                     content: "";
                     height: 8px;
                     left: 6px;
@@ -59,7 +63,7 @@
 
     @each $name, $attributes in $fancycheck-colors {
         .fancycheck-#{$name} {
-            @include fancycheck-variant(map-get($attributes, 'color'));
+            @include fancycheck-variant(map-get($attributes, 'color'), map-get($attributes, 'text'));
         }
     }
 }

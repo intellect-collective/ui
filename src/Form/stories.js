@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import stateful from '../../.storybook/decorators/stateful';
+import { withState } from '@dump247/storybook-state';
 import {
     Checkbox, Field, Form, Password, Text
 } from '../..';
@@ -12,11 +12,6 @@ class FormExample extends React.Component {
         data: PropTypes.object,
         onChange: PropTypes.func
     };
-
-    constructor() {
-        super();
-        this.state = {};
-    }
 
     render() {
         return (
@@ -83,5 +78,4 @@ class FormExample extends React.Component {
 }
 
 storiesOf('Form', module)
-    .addDecorator(stateful())
-    .add('default', () => (onChange, state) => (<FormExample action="/" data={ state } onChange={ (ev) => onChange(ev.target.name, ev.target.value) } />));
+    .add('default', withState()(({ store }) => (<FormExample action="/" data={ store.state } onChange={ (ev) => store.set({ [ev.target.name]: ev.target.value}) } />)));

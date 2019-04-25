@@ -1,25 +1,24 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withState } from '@dump247/storybook-state';
 import width from '../../.storybook/decorators/width';
-import stateful from '../../.storybook/decorators/stateful';
 import { Field, StateControlledForm, Text } from '../..';
 
 storiesOf('StateControlledForm', module)
-    .addDecorator(stateful({}, true))
     .addDecorator(width(200))
-    .add('default', () => (onChange, state, stateful) => (
+    .add('default', withState()(({ store }) => (
         <div>
             <div className="card">
                 <div className="card-title">Source</div>
                 <div className="card-body">
-                    <Text name="test" onChange={ (ev) => { onChange(ev.target.name, ev.target.value); } } />
+                    <Text name="test" onChange={ (ev) => { store.set({ [ev.target.name]: ev.target.value }); } } value={ store.state.test } />
                 </div>
             </div>
 
             <div className="card">
                 <div className="card-title">StateControlledForm</div>
                 <div className="card-body">
-                    <StateControlledForm action="/" values={{ test: state.test }} ref={ stateful.setChildRef }>
+                    <StateControlledForm action="/" values={{ test: store.state.test }}>
                         <Text name="test" />
                         <Field name="test">
                             { ({ getConflict }) => {
@@ -33,4 +32,4 @@ storiesOf('StateControlledForm', module)
                 </div>
             </div>
         </div>
-    ));
+    )));

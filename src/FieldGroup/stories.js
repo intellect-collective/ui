@@ -1,14 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withState } from '@dump247/storybook-state';
 import FieldGroup from './index';
 import Checkbox from '../Checkbox';
 import Radio from '../Radio';
-import stateful from '../../.storybook/decorators/stateful';
 
 storiesOf('FieldGroup', module)
-    .addDecorator(stateful())
-    .add('radio buttons', () => (onChange, state) => (
-        <FieldGroup name="test" value={ state.test } onChange={ onChange }>
+    .add('radio buttons', withState({ initialState: {} })(({ store }) => (
+        <FieldGroup name="test" value={ store.state.test } onChange={ (ev) => store.set({ [ev.target.name]: ev.target.value }) }>
             First
             {' '}
             <Radio value="first" />
@@ -21,9 +20,9 @@ storiesOf('FieldGroup', module)
             {' '}
             <Radio value="third" />
         </FieldGroup>
-    ))
-    .add('checkboxes', () => (onChange, state) => (
-        <FieldGroup name="test" value={ state.test } multiple onChange={ onChange }>
+    )))
+    .add('checkboxes', withState({})(({ store }) => (
+        <FieldGroup name="test" value={ store.state.test } multiple onChange={ store.set }>
             First
             {' '}
             <Checkbox value="first" />
@@ -36,4 +35,4 @@ storiesOf('FieldGroup', module)
             {' '}
             <Checkbox value="third" />
         </FieldGroup>
-    ));
+    )));

@@ -46,6 +46,7 @@ const asCheckable = ({
         }
 
         onChange(ev) {
+            console.log('here')
             const {
                 boolean,
                 value,

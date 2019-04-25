@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withState } from '@dump247/storybook-state';
 import Modal from './index';
 import { ModalHeader, ModalBody, ModalFooter } from '../..';
-import stateful from '../../.storybook/decorators/stateful';
 
 const renderModal = (props) => (
     <Modal { ...props }>
@@ -20,25 +20,24 @@ const renderModal = (props) => (
 );
 
 storiesOf('Modal', module)
-    .addDecorator(stateful())
-    .add('default', () => (onChange, state) => (
+    .add('default', withState()(({ store }) => (
         <div>
-            <button className="btn" onClick={ () => onChange('open', !state.open) }>Open</button>
-            { state.open && renderModal({
+            <button className="btn" onClick={ () => store.set({ open: !store.state.open }) }>Open</button>
+            { store.state.open && renderModal({
                 onClose: () => {
-                    onChange('open', false);
+                    store.set({ open: false });
                 }
             }) }
         </div>
-    ))
-    .add('without transition', () => (onChange, state) => (
+    )))
+    .add('without transition', withState()(({ store }) => (
         <div>
-            <button className="btn" onClick={ () => onChange('open', !state.open) }>Open</button>
-            { state.open && renderModal({
+            <button className="btn" onClick={ () => store.set({ open: !state.open}) }>Open</button>
+            { store.state.open && renderModal({
                 className: 'other-modal',
                 onClose: () => {
-                    onChange('open', false);
+                    store.set({ open: false });
                 }
             }) }
         </div>
-    ));
+    )));
