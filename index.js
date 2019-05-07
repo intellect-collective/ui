@@ -1,4 +1,5 @@
 // Atoms
+export { default as Collapsible } from './src/atoms/Collapsible';
 export { default as OutsideClickWatcher } from './src/atoms/OutsideClickWatcher';
 export { default as PageOverlay } from './src/atoms/PageOverlay';
 export { default as Toast } from './src/atoms/Toast';
