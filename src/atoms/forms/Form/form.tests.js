@@ -14,7 +14,7 @@ describe('Form', () => {
     it('Form submit calls handler', () => {
         const fn = jest.fn();
         const wrapper = mount(
-            <Form action="/" onSubmit={ fn }>
+            <Form action="/" handler={{ onSubmit: fn }}>
                 <input type="submit" name="test" />
             </Form>
         );

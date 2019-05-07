@@ -91,7 +91,15 @@ export default class Form extends React.Component {
              * Retrieve a conflicting value that was set externally for the
              * field given.
              */
-            getConflict: PropTypes.func
+            getConflict: PropTypes.func,
+            /**
+             * A function called when the form is reset.
+             */
+            onReset: PropTypes.func,
+            /**
+             * A function called when the form is submitted.
+             */
+            onSubmit: PropTypes.func
         })
     };
 
@@ -100,6 +108,12 @@ export default class Form extends React.Component {
         overrideProperty: '_method',
         handler: {}
     };
+
+    constructor() {
+        super();
+        this.onReset = this.onReset.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
 
     get ctx() {
         return {
@@ -159,6 +173,18 @@ export default class Form extends React.Component {
         );
     }
 
+    onReset(ev) {
+        if (this.props.handler.onReset) {
+            this.props.handler.onReset(ev);
+        }
+    }
+
+    onSubmit(ev) {
+        if (this.props.handler.onSubmit) {
+            this.props.handler.onSubmit(ev);
+        }
+    }
+
     render() {
         const {
             component,
@@ -170,7 +196,9 @@ export default class Form extends React.Component {
             <FormContext.Provider value={ this.ctx }>
                 <form { ...props }
                         encType={ this.encType }
-                        method={ this.method }>
+                        method={ this.method }
+                        onReset={ this.onReset }
+                        onSubmit={ this.onSubmit }>
                     { this.methodOverrideElement }
                     { this.content }
                 </form>

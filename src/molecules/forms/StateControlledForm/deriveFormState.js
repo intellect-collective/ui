@@ -5,7 +5,13 @@ import shallowEqual from '../../../utils/shallowEqual';
 const isEmpty = (o) => (!o || Object.keys(o).length === 0);
 
 export default (props, state) => {
-    const result = {};
+    if (state.props === props) {
+        return state;
+    }
+
+    const result = {
+        props
+    };
 
     // Set original if not already set
     if (isEmpty(state.original) && props.values) {
@@ -35,9 +41,9 @@ export default (props, state) => {
     }
 
     // Set the last errors to the newly updated prop errors
-    const sameErrors = shallowEqual(state.lastErrors, props.errors);
+    const sameErrors = shallowEqual(state.errors, props.errors);
     if (!sameErrors) {
-        result.lastErrors = { ...props.errors };
+        result.errors = { ...props.errors };
     }
 
     // If we only just set values/lastValues, then we have no need to continue

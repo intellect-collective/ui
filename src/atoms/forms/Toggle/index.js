@@ -34,9 +34,9 @@ class Toggle extends React.PureComponent {
         } = this.props;
         return (
             <div className={ classes(className, oval, worded) }>
-                <input type="checkbox" { ...rest } />
+                <input type="checkbox" tabIndex="0" { ...rest } />
                 <label htmlFor={ this.props.id || this.props.name }>
-                    <span className="switch"><span className="switch-inner" tabIndex={ -1 } /></span>
+                    <span className="switch"><span className="switch-inner" /></span>
                 </label>
             </div>
         );

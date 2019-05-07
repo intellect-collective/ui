@@ -168,6 +168,7 @@ exports[`List Can click checkbox 1`] = `
                         "color": "black",
                       }
                     }
+                    transformValue={[Function]}
                     value={1}
                   >
                     <ForwardRef
@@ -361,6 +362,7 @@ exports[`List Can click checkbox 1`] = `
                     name="calendars"
                     onChange={[MockFunction]}
                     style={Object {}}
+                    transformValue={[Function]}
                     value={2}
                   >
                     <ForwardRef
@@ -561,6 +563,7 @@ exports[`List Can click checkbox 1`] = `
                         "borderColor": "#dc2127",
                       }
                     }
+                    transformValue={[Function]}
                     value={3}
                   >
                     <ForwardRef
