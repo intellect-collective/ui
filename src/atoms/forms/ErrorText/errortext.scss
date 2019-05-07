@@ -1,0 +1,7 @@
+.invalid-feedback {
+	background: lighten($brand-danger, 40%);
+	border: 1px solid $brand-danger;
+	border-radius: 2px;
+	color: $brand-danger;
+	padding: .5em;
+}
