@@ -3,7 +3,7 @@
 exports[`Pagination Can display 1`] = `
 <Pagination
   buffer="5"
-  generateUri={[Function]}
+  link={[Function]}
   onPageChange={[Function]}
   page="3"
   pageSize="25"
@@ -17,121 +17,193 @@ exports[`Pagination Can display 1`] = `
         className=""
         key="first"
       >
-        <a
+        <Link
           onClick={[Function]}
+          page={1}
+          pageSize="25"
         >
-          First
-        </a>
+          <a
+            onClick={[Function]}
+          >
+            First
+          </a>
+        </Link>
       </li>
       <li
         className=""
         key="prev"
       >
-        <a
+        <Link
           onClick={[Function]}
+          page={2}
+          pageSize="25"
         >
-          Previous
-        </a>
+          <a
+            onClick={[Function]}
+          >
+            Previous
+          </a>
+        </Link>
       </li>
       <li
         className="waves-effect"
         key="1"
       >
-        <a
+        <Link
           onClick={[Function]}
+          page={1}
+          pageSize="25"
         >
-          1
-        </a>
+          <a
+            onClick={[Function]}
+          >
+            1
+          </a>
+        </Link>
       </li>
       <li
         className="waves-effect"
         key="2"
       >
-        <a
+        <Link
           onClick={[Function]}
+          page={2}
+          pageSize="25"
         >
-          2
-        </a>
+          <a
+            onClick={[Function]}
+          >
+            2
+          </a>
+        </Link>
       </li>
       <li
         className="waves-effect active"
         key="3"
       >
-        <a
+        <Link
           onClick={[Function]}
+          page={3}
+          pageSize="25"
         >
-          3
-        </a>
+          <a
+            onClick={[Function]}
+          >
+            3
+          </a>
+        </Link>
       </li>
       <li
         className="waves-effect"
         key="4"
       >
-        <a
+        <Link
           onClick={[Function]}
+          page={4}
+          pageSize="25"
         >
-          4
-        </a>
+          <a
+            onClick={[Function]}
+          >
+            4
+          </a>
+        </Link>
       </li>
       <li
         className="waves-effect"
         key="5"
       >
-        <a
+        <Link
           onClick={[Function]}
+          page={5}
+          pageSize="25"
         >
-          5
-        </a>
+          <a
+            onClick={[Function]}
+          >
+            5
+          </a>
+        </Link>
       </li>
       <li
         className="waves-effect"
         key="6"
       >
-        <a
+        <Link
           onClick={[Function]}
+          page={6}
+          pageSize="25"
         >
-          6
-        </a>
+          <a
+            onClick={[Function]}
+          >
+            6
+          </a>
+        </Link>
       </li>
       <li
         className="waves-effect"
         key="7"
       >
-        <a
+        <Link
           onClick={[Function]}
+          page={7}
+          pageSize="25"
         >
-          7
-        </a>
+          <a
+            onClick={[Function]}
+          >
+            7
+          </a>
+        </Link>
       </li>
       <li
         className="waves-effect"
         key="8"
       >
-        <a
+        <Link
           onClick={[Function]}
+          page={8}
+          pageSize="25"
         >
-          8
-        </a>
+          <a
+            onClick={[Function]}
+          >
+            8
+          </a>
+        </Link>
       </li>
       <li
         className=""
         key="next"
       >
-        <a
+        <Link
           onClick={[Function]}
+          page={4}
+          pageSize="25"
         >
-          Next
-        </a>
+          <a
+            onClick={[Function]}
+          >
+            Next
+          </a>
+        </Link>
       </li>
       <li
         className=""
         key="last"
       >
-        <a
+        <Link
           onClick={[Function]}
+          page={9}
+          pageSize="25"
         >
-          Last
-        </a>
+          <a
+            onClick={[Function]}
+          >
+            Last
+          </a>
+        </Link>
       </li>
     </ul>
     <div

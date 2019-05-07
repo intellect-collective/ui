@@ -7,11 +7,24 @@ const numeric = PropTypes.oneOfType([
     PropTypes.number
 ]);
 
+const PaginationButton = ({
+    onClick,
+    children
+}) => (
+    <button onClick={ onClick }>
+        { children }
+    </button>
+);
+PaginationButton.propTypes = {
+    onClick: PropTypes.func,
+    children: PropTypes.elementType
+};
+
 export default class Pagination extends React.Component {
     static propTypes = {
-        page: numeric.isRequired,
-        pageSize: numeric.isRequired,
-        rows: numeric.isRequired,
+        page: numeric,
+        pageSize: numeric,
+        rows: numeric,
         buffer: numeric,
         sorting: PropTypes.arrayOf(
             PropTypes.shape({
@@ -19,14 +32,16 @@ export default class Pagination extends React.Component {
                 asc: PropTypes.bool
             })
         ),
-
-        generateUri: PropTypes.func,
+        link: PropTypes.elementType.isRequired,
         onPageChange: PropTypes.func
     };
 
     static defaultProps = {
+        page: 0,
+        pageSize: 0,
+        rows: 0,
         buffer: 4,
-        generateUri: () => {},
+        link: PaginationButton,
         onPageChange: () => {}
     };
 
@@ -44,16 +59,15 @@ export default class Pagination extends React.Component {
     }
 
     renderItem(page, value, classNames, key) {
+        const Link = this.props.link;
         return (
             <li className={ classNames } key={ key }>
-                <a href={ this.props.generateUri(
-                    page,
-                    Number(this.props.pageSize),
-                    Number(this.props.sorting)
-                ) }
+                <Link page={ page }
+                        pageSize={ this.props.pageSize }
+                        sorting={ this.props.sorting }
                         onClick={ this.onPageChange(page, Number(this.props.pageSize)) }>
                     { value }
-                </a>
+                </Link>
             </li>
         );
     }
