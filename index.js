@@ -25,7 +25,11 @@ export { default as Row } from './src/atoms/grid/Row';
 export { default as ModalHeader } from './src/atoms/modal/Header';
 export { default as ModalBody } from './src/atoms/modal/Body';
 export { default as ModalFooter } from './src/atoms/modal/Footer';
-export { default as ColumnHeader } from './src/atoms/table/ColumnHeader';
+export { default as TableBody } from './src/atoms/table/TableBody';
+export { default as TableBodyCell } from './src/atoms/table/TableBodyCell';
+export { default as TableFooter } from './src/atoms/table/TableFooter';
+export { default as TableHeader } from './src/atoms/table/TableHeader';
+export { default as TableHeaderCell } from './src/atoms/table/TableHeaderCell';
 
 // Molecules
 export { default as DataTable } from './src/molecules/DataTable';

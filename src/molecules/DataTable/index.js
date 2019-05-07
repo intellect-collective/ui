@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ColumnHeader from '../../atoms/table/ColumnHeader';
 import memoizeLast from '../../utils/memoizeLast';
+import TableHeader from '../../atoms/table/TableHeader';
+import TableHeaderCell from '../../atoms/table/TableHeaderCell';
+import TableBody from '../../atoms/table/TableBody';
+import TableBodyCell from '../../atoms/table/TableBodyCell';
+import TableFooter from '../../atoms/table/TableFooter';
 import { columnProp } from '../../atoms/table/prop-types';
 
 const noop = () => {};
@@ -42,12 +46,17 @@ export default class DataTable extends React.Component {
          */
         onHeaderClick: PropTypes.func,
 
-
         className: PropTypes.string,
         classNames: PropTypes.shape({
             noDataClass: PropTypes.string
         }),
-        HeaderCell: PropTypes.func
+        elements: PropTypes.shape({
+            header: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
+            headerCell: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
+            body: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
+            bodyCell: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
+            footer: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object])
+        })
     };
 
     static defaultProps = {
@@ -58,15 +67,20 @@ export default class DataTable extends React.Component {
         classNames: {
             noDataClass: 'no-data'
         },
-        HeaderCell: ColumnHeader
+
+        elements: {
+            header: TableHeader,
+            headerCell: TableHeaderCell,
+            body: TableBody,
+            bodyCell: TableBodyCell,
+            footer: TableFooter
+        }
     };
 
     constructor() {
         super();
         this.getVisibleColumns = this.getVisibleColumns.bind(this);
         this.getIdField = this.getIdField.bind(this);
-        this.renderHeader = this.renderHeader.bind(this);
-        this.render = this.render.bind(this);
     }
 
     getVisibleColumns = memoizeLast(() => (
@@ -82,67 +96,12 @@ export default class DataTable extends React.Component {
             return idField.field;
         }
 
-        return this.props.columns[0].field;
+        return this.props.columns.find((c) => (!!c.field)).field;
     }, () => (this.props.columns));
 
     //
     // Rendering
     //
-    renderHeader() {
-        const { HeaderCell } = this.props;
-        return (
-            <thead>
-                <tr>
-                    {
-                        this.getVisibleColumns().map((col) => (
-                            <HeaderCell column={ col }
-                                    sorting={ this.props.sorting }
-                                    onHeaderClick={ this.props.onHeaderClick }
-                                    key={ col.field } />
-                        ))
-                    }
-                </tr>
-            </thead>
-        );
-    }
-
-    renderBody() {
-        return (
-            <tbody>
-                {
-                    this.props.data.map((row) => (
-                        <tr key={ row[this.getIdField()] } onClick={ this.props.onRowClick }>
-                            {
-                                this.getVisibleColumns().map((col) => (
-                                    <td key={ row[this.getIdField()] + (col.field) }>
-                                        { col.render ? col.render(row) : row[col.field] }
-                                    </td>
-                                ))
-                            }
-                        </tr>
-                    ))
-                }
-            </tbody>
-        );
-    }
-
-    renderNoDataMessage() {
-        if (this.props.data && this.props.data.length > 0) {
-            return undefined;
-        }
-        return (
-            <tbody>
-                <tr>
-                    <td colSpan={ this.getVisibleColumns().length }>
-                        <div className={ this.props.classNames.noDataClass }>
-                            Nothing to see here!
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        );
-    }
-
     render() {
         const {
             data,
@@ -153,15 +112,29 @@ export default class DataTable extends React.Component {
             onHeaderClick,
 
             classNames,
-            HeaderCell,
+            elements: {
+                header: Header = TableHeader,
+                headerCell: HeaderCell = TableHeaderCell,
+                body: Body = TableBody,
+                bodyCell: BodyCell = TableBodyCell,
+                footer: Footer = TableFooter
+            },
             ...rest
         } = this.props;
 
         return (
             <table { ...rest }>
-                { this.renderHeader() }
-                { this.renderBody() }
-                { this.renderNoDataMessage() }
+                <Header { ...this.props }
+                        columns={ this.getVisibleColumns() }
+                        idField={ this.getIdField() }
+                        cell={ HeaderCell } />
+                <Body { ...this.props }
+                        columns={ this.getVisibleColumns() }
+                        idField={ this.getIdField() }
+                        cell={ BodyCell } />
+                <Footer { ...this.props }
+                        columns={ this.getVisibleColumns() }
+                        idField={ this.getIdField() } />
             </table>
         );
     }
