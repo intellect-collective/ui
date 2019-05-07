@@ -25,6 +25,7 @@ $ui-excludes: '' !default;
 
 // Import atoms
 @import '../src/atoms/PageOverlay/pageoverlay';
+@import '../src/atoms/Toast/toast';
 @import '../src/atoms/card/card';
 @import '../src/atoms/forms/AutoComplete/autocomplete';
 @import '../src/atoms/forms/Button/button';

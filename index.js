@@ -1,6 +1,7 @@
 // Atoms
 export { default as OutsideClickWatcher } from './src/atoms/OutsideClickWatcher';
 export { default as PageOverlay } from './src/atoms/PageOverlay';
+export { default as Toast } from './src/atoms/Toast';
 export { default as Card } from './src/atoms/card/Card';
 export { default as CardBody } from './src/atoms/card/CardBody';
 export { default as CardFooter } from './src/atoms/card/CardFooter';
