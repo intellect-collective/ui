@@ -86,6 +86,7 @@
     @extend .clearfix;
     margin-right: auto;
     margin-left: auto;
+    position: relative;
 }
 
 @mixin make-row($gutter: $grid-gutter-width) {

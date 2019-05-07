@@ -1,9 +1,29 @@
+@mixin button-variant($color, $highlight, $text) {
+    background-color: $color;
+    color: text;
+
+    &:hover {
+        background-color: $highlight;
+    }
+
+    &-outline {
+        background-color: transparent;
+        border: 1px solid $color;
+        color: $color;
+
+        &:hover {
+            background-color: $highlight;
+            border-color: $highlight;
+            color: $text;
+        }
+    }
+}
+
 @if (null != index($ui-includes, 'form.button') and null == index($ui-excludes, 'form.button')) {
-    .btn,
-    .btn-small,
-    .btn-large,
-    .btn-flat {
-        background-color: map-get(map-get($theme, 'brand'), 'color');
+    $button-colors: $theme !default;
+
+    .btn {
+        background-color: transparent;
         border: none;
         border-radius: 2px;
         color: $color-white;
@@ -23,7 +43,8 @@
         -webkit-tap-highlight-color: transparent;
 
         &:hover {
-            background-color: map-get(map-get($theme, 'brand'), 'highlight');
+            background-color: transparent;
+            text-decoration: none;
         }
 
         &:not(.btn-flat) {
@@ -34,21 +55,23 @@
             }
         }
 
-        &.error {
-            background-color: $color-red !important;
-        }
-
     }
 
     .btn-small {
-        font-size: .7rem;
-        height: 18px;
-        line-height: 18px;
+        font-size: .85rem;
+        height: 30px;
+        line-height: 30px;
         padding: 0 1rem;
     }
 
     .btn-large {
         height: 54px;
         line-height: 54px;
+    }
+
+    @each $name, $attributes in $button-colors {
+        .btn-#{$name} {
+            @include button-variant(map-get($attributes, 'color'), map-get($attributes, 'highlight'), map-get($attributes, 'text'));
+        }
     }
 }
