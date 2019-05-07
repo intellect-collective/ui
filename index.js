@@ -1,4 +1,5 @@
 // Atoms
+export { default as CloseButton } from './src/atoms/CloseButton';
 export { default as Collapsible } from './src/atoms/Collapsible';
 export { default as OutsideClickWatcher } from './src/atoms/OutsideClickWatcher';
 export { default as PageOverlay } from './src/atoms/PageOverlay';
