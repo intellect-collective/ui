@@ -14,6 +14,7 @@ export { default as CalendarNavigation } from './src/atoms/calendar/Navigation';
 export { default as AutoComplete } from './src/atoms/forms/AutoComplete';
 export { default as Checkbox, BasicCheckbox } from './src/atoms/forms/Checkbox';
 export { default as DateField } from './src/atoms/forms/DateField';
+export { default as Debugger } from './src/atoms/forms/Debugger';
 export { default as ErrorText } from './src/atoms/forms/ErrorText';
 export { default as FancyCheckbox } from './src/atoms/forms/FancyCheckbox';
 export { default as Field } from './src/atoms/forms/Field';
