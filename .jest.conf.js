@@ -9,9 +9,13 @@ global.shallow = shallow;
 global.render = render;
 global.mount = mount;
 
-console.warn = function (warn) {
-    throw new Error(warn);
+const oldWarn = console.warn;
+console.warn = function (...args) {
+	oldWarn.apply(console, args);
+    throw new Error('Unexpected warning');
 };
-console.error = function (err) {
-    throw new Error(err);
+const oldError = console.error;
+console.error = function (...args) {
+	oldError.apply(console, args);
+    throw new Error('Unexpected error');
 };
