@@ -1,14 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const genDefaultConfig = require('@storybook/react/dist/server/config/defaults/webpack.config.js');
-const defaultConfig = require('@storybook/react/dist/server/config/webpack.config.js').default;
 const _ = require('lodash');
 
 const production = (config) => {
     console.log('=> Build Production');
     config.module.rules.push({
         test: /\.scss$/,
+        resolve: {
+            extensions: ['.scss', '.sass'],
+        },
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
             use: [{
@@ -39,6 +40,9 @@ const production = (config) => {
 const development = (config) => {
     config.module.rules.push({
         test: /\.scss$/,
+        resolve: {
+            extensions: ['.scss', '.sass'],
+        },
         exclude: /node_modules/,
         loader: [
             {
@@ -63,19 +67,15 @@ const development = (config) => {
     }
 }
 
-module.exports = (baseConfig, env) => {
-    if (!baseConfig) {
-        baseConfig = defaultConfig();
-    }
-    const config = genDefaultConfig(baseConfig, env);
+module.exports = async ({ config, mode }) => {
     config.resolve = {
         extensions: ['.js', '.jsx']
     }
 
-    if (process.env.NODE_ENV === 'development') {
+    if (mode === 'DEVELOPMENT') {
         development(config);
     }
-    if (process.env.NODE_ENV === 'production') {
+    if (mode === 'PRODUCTION') {
         production(config);
     }
     config.stats = true;
