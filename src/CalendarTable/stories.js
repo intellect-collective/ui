@@ -77,5 +77,5 @@ const events = [
     }
 ];
 
-storiesOf('CalendarTable', module)
+storiesOf('2 - Components / CalendarTable', module)
     .add('default', () => (<Table events={ events } calendars={ calendars } />));

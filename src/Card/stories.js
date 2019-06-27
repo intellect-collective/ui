@@ -7,7 +7,7 @@ import {
     CardFooter
 } from '../..';
 
-storiesOf('Card', module)
+storiesOf('2 - Components / Card', module)
     .add('default', () => (
         <div style={{ background: '#179aa3', padding: '5em' }}>
             <Card>

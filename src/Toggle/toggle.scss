@@ -1,109 +1,14 @@
+@import '_mixins/toggle-size';
+@import '_mixins/toggle-variant';
+
 $toggle-font-weight:           normal !default;
 $toggle-default-color:         #333 !default;
 
-$toggle-border-radius-base:    $border-radius-base !default;
-$toggle-border-radius-lg:      $border-radius-lg !default;
-$toggle-border-radius-sm:      $border-radius-sm !default;
-
-$toggle-colors: $theme !default;
+$toggle-border-radius:    $border-radius !default;
 
 $toggle-sizes: (
     '.toggle': (52px, 20px, 20px)
 ) !default;
-
-@mixin toggle-size($toggle-width: 52px, $switch-width: 20px, $height: 20px) {
-    width: $toggle-width;
-
-    label {
-        height: $height;
-    }
-
-    .switch {
-        right: ($toggle-width - $switch-width) + 2;
-        width: $toggle-width * 2;
-
-        &-inner,
-        &:before,
-        &:after {
-            height: $height;
-            line-height: $height;
-        }
-
-        &-inner {
-            width: $switch-width;
-        }
-
-        &:before,
-        &:after {
-            width: $toggle-width - $switch-width;
-        }
-    }
-
-    &-oval {
-        .switch {
-            right: ($toggle-width - ($switch-width / 2)) + 2;
-            width: $toggle-width * 2;
-
-            &-inner,
-            &:before,
-            &:after {
-                height: $height;
-                line-height: $height;
-            }
-
-            &-inner {
-                left: $toggle-width - ($switch-width / 2);
-                position: absolute;
-                width: $switch-width;
-            }
-
-            &:before,
-            &:after {
-                width: $toggle-width;
-            }
-        }
-
-        input[type="checkbox"]:checked + label .switch {
-            right: ($switch-width / 2) + 2 !important;
-        }
-    }
-}
-
-@mixin toggle-variant($bg, $color) {
-    input[type="checkbox"] {
-        &:disabled {
-            + label,
-            + label .switch {
-                color: lighten($bg, 10%);
-            }
-        }
-        &:focus {
-            + label {
-                box-shadow: 0 0 2px 2px rgba($bg, .5);
-                outline: 0;
-            }
-        }
-    }
-
-    label {
-        border: 2px solid $bg;
-    }
-
-    .switch {
-        &-inner {
-            background: white;
-            border-color: $bg;
-        }
-        &:before {
-            background-color: $bg;
-            color: $color;
-        }
-        &:after {
-            background-color: white;
-            color: $bg;
-        }
-    }
-}
 
 @each $class, $attributes in $toggle-sizes {
     #{$class} {
@@ -111,9 +16,9 @@ $toggle-sizes: (
     }
 }
 
-@each $name, $attributes in $toggle-colors {
+@each $name, $attributes in $colors {
     .toggle-#{$name} {
-        @include toggle-variant(map-get($attributes, 'color'), map-get($attributes, 'text'));
+        @include toggle-variant($name);
     }
 }
 

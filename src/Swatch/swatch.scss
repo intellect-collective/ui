@@ -1,0 +1,19 @@
+.swatch {
+	display: inline-block;
+	font-size: .75em;
+	margin: .25em;
+	padding: .25em;
+
+	.chip {
+		transition: background-color .3s;
+	}
+
+	figcaption {
+		font-size: .8rem;
+
+		small {
+			color: #666;
+			font-size: .75rem;
+		}
+	}
+}

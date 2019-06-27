@@ -1,0 +1,12 @@
+@import 'get-luminance';
+
+/**
+ * Calculate the contrast ratio between two colors.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+@function get-contrast-ratio($back, $front) {
+  $backLum: get-luminance($back) + .05;
+  $foreLum: get-luminance($front) + .05;
+
+  @return max($backLum, $foreLum) / min($backLum, $foreLum);
+}

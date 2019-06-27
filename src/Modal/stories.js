@@ -19,7 +19,7 @@ const renderModal = (props) => (
     </Modal>
 );
 
-storiesOf('Modal', module)
+storiesOf('2 - Components / Modal', module)
     .add('default', withState()(({ store }) => (
         <div>
             <button className="btn" onClick={ () => store.set({ open: !store.state.open }) }>Open</button>

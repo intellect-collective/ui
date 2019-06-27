@@ -4,7 +4,7 @@ import { withState } from '@dump247/storybook-state';
 import { Select } from '../..';
 import width from '../../.storybook/decorators/width';
 
-storiesOf('Select', module)
+storiesOf('2 - Components / Form / Select', module)
     .addDecorator(width(200))
     .add('default', withState()(({ store }) => (
         <Select name="actors"

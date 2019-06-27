@@ -7,7 +7,7 @@ import {
     AccordionItemBody
 } from '../..';
 
-storiesOf('Accordion', module)
+storiesOf('2 - Components / Accordion', module)
     .add('default', () => (
         <Accordion>
             <AccordionItem>

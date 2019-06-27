@@ -6,7 +6,7 @@ import {
     Column
 } from '../..';
 
-storiesOf('Grid', module)
+storiesOf('2 - Components / Grid', module)
     .add('default', () => (
         <div>
             <style type="text/css"

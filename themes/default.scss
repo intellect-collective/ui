@@ -1,1 +1,8 @@
-@import '_variables', '../src/_components';
+@import '_functions/get-contrast-color';
+@import '_functions/highlight';
+
+
+@import '_variables';
+
+@import 'basics';
+@import '../src/_components';

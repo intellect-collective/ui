@@ -1,30 +1,28 @@
-@mixin fancycheck-variant($color, $check) {
+@mixin fancycheck-variant($color) {
     input[type="checkbox"] {
         + label {
-            background-color: mix($color, white, 10%);
-            border: 1px solid mix($color, white, 20%);
+            background-color: var(--color-#{$color}-highlight);
+            border: var(--color-#{$color});
 
             &:after {
-                border-color: $check;
+                //border-color: $check;
             }
         }
         &:hover + label,
         + label:hover {
-            border-color: $color;
+            border-color: var(--color-#{$color});
         }
         &:focus + label,
         + label:focus {
-            box-shadow: 0 0 2px 2px rgba($color, 0.5);
+            box-shadow: 0 0 2px 2px rgba(var(--color-#{$color}), 0.5);
         }
         &:checked + label {
-            background-color: $color;
+            background-color: var(--color-#{$color}-highlight);
         }
     }
 }
 
 @if (null != index($ui-includes, 'form.fancycheckbox') and null == index($ui-excludes, 'form.fancycheckbox')) {
-    $fancycheck-colors: $theme !default;
-
     .fancycheck {
         input[type="checkbox"] {
             opacity: 0;
@@ -39,8 +37,8 @@
 
                 &:after {
                     background-color: transparent;
-                    border-bottom: 3px solid map-get(map-get($theme, 'primary'), 'color');
-                    border-right: 3px solid map-get(map-get($theme, 'primary'), 'color');
+                    border-bottom: 3px solid var(--color-brand-contrast);
+                    border-right: 3px solid var(--color-brand-contrast);
                     content: "";
                     height: 8px;
                     left: 6px;
@@ -61,9 +59,9 @@
     }
 
 
-    @each $name, $attributes in $fancycheck-colors {
-        .fancycheck-#{$name} {
-            @include fancycheck-variant(map-get($attributes, 'color'), map-get($attributes, 'text'));
+    @each $color, $attributes in $colors {
+        .fancycheck-#{$color} {
+            @include fancycheck-variant($color);
         }
     }
 }

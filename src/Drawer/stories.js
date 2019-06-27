@@ -42,7 +42,7 @@ const set = (store, update) => {
 	}
 }
 
-storiesOf('Drawer', module)
+storiesOf('2 - Components / Drawer', module)
     .add('default', withState({ anchor: 'anchor-left' })(({ store }) => (
     	<div>
 	        <Drawer classes={ classnames('docked', store.state.anchor, { open: store.state.open }) } open ref={ ref }>

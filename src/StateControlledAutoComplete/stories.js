@@ -9,7 +9,7 @@ const items = data.map((person) => ({
     value: person.email
 }));
 
-storiesOf('StateControlledAutoComplete', module)
+storiesOf('2 - Components / StateControlledAutoComplete', module)
     .addDecorator(width(200))
     .add('default', () => (
         <StateControlledAutoComplete name="person"

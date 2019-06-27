@@ -27,6 +27,7 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@dump247/storybook-state": "^1.6.1",
+    "@storybook/addon-a11y": "^5.1.9",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-options": "5.1.9",
     "@storybook/react": "5.1.9",
@@ -36,16 +37,17 @@
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "classnames": "^2.2.6",
+    "clsx": "^1.0.4",
     "coveralls": "^3.0.4",
     "css-loader": "^3.0.0",
     "date-fns": "^2.0.0-alpha.32",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "3.3.x",
-    "eslint": "^6.0.0",
+    "eslint": "^6.0.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-jsdoc": "^8.6.0",
+    "eslint-plugin-jsdoc": "^8.7.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-unicorn": "^9.1.1",
@@ -61,12 +63,13 @@
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
     "sass-loader": "^7.1.0",
+    "storybook-cartesian": "^2.1.1",
     "style-loader": "^0.23.1"
   },
   "peerDependencies": {
     "prop-types": "15.7.2",
-    "react": "16.6.3",
-    "react-dom": "16.6.3"
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
   },
   "jest": {
     "testURL": "http://localhost/",

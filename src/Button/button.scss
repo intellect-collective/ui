@@ -1,77 +1,69 @@
-@mixin button-variant($color, $highlight, $text) {
-    background-color: $color;
-    color: text;
+@import '_mixins/button-variant';
+
+$control-hitbox-size: 40px;
+$control-visual-size-min: 20px;
+$control-visual-size-max: 60px;
+$control-font-size-min: .75rem;
+$control-font-size-max: 1.25rem;
+$control-sizes: (
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge'
+);
+
+$control-visual-size-increment: ($control-visual-size-max - $control-visual-size-min) / length($control-sizes);
+$control-font-size-increment: ($control-font-size-max - $control-font-size-min) / length($control-sizes);
+
+.btn {
+    background-color: map-get($colors, 'default');
+    border: none;
+    color: get-contrast-color(map-get($colors, 'default'));
+    cursor: pointer;
+    display: inline-block;
+    font-size: ($control-font-size-min + $control-font-size-max) / 2;
+    height: ($control-visual-size-min + $control-visual-size-max) / 2;
+    line-height: ($control-visual-size-min + $control-visual-size-max) / 2;
+    outline: 0;
+    padding: 0 2rem;
+    text-align: center;
+    text-decoration: none;
+    transition: .2s ease-out;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
-        background-color: $highlight;
+        background-color: highlight(map-get($colors, 'default'));
+        text-decoration: none;
     }
 
-    &-outline {
-        background-color: transparent;
-        border: 1px solid $color;
-        color: $color;
-
-        &:hover {
-            background-color: $highlight;
-            border-color: $highlight;
-            color: $text;
-        }
+    &.square {
+        border-radius: none;
+    }
+    &.rounded {
+        border-radius: $border-radius;
+    }
+    &.circle {
+        border-radius: 50%;
+        width: 100%;
     }
 }
 
-@if (null != index($ui-includes, 'form.button') and null == index($ui-excludes, 'form.button')) {
-    $button-colors: $theme !default;
-
-    .btn {
-        background-color: transparent;
-        border: none;
-        border-radius: 2px;
-        color: $color-white;
-        cursor: pointer;
-        display: inline-block;
-        font-size: 1rem;
-        height: 36px;
-        letter-spacing: .5px;
-        line-height: 36px;
-        outline: 0;
-        padding: 0 2rem;
-        text-align: center;
-        text-decoration: none;
-        text-transform: uppercase;
-        transition: .2s ease-out;
-        vertical-align: middle;
-        -webkit-tap-highlight-color: transparent;
-
-        &:hover {
-            background-color: transparent;
-            text-decoration: none;
-        }
-
-        &:not(.btn-flat) {
-            box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-
-            &:hover {
-                box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
-            }
-        }
-
+@each $name, $color in $colors {
+    .btn.#{$name} {
+        @include button-variant($color);
     }
+}
 
-    .btn-small {
-        font-size: .85rem;
-        height: 30px;
-        line-height: 30px;
-        padding: 0 1rem;
-    }
+@for $i from 1 through length($control-sizes) {
+    $size: nth($control-sizes, $i);
+    @debug "size: #{$size}";
+    @debug "i: #{$i}";
 
-    .btn-large {
-        height: 54px;
-        line-height: 54px;
-    }
-
-    @each $name, $attributes in $button-colors {
-        .btn-#{$name} {
-            @include button-variant(map-get($attributes, 'color'), map-get($attributes, 'highlight'), map-get($attributes, 'text'));
-        }
+    .btn.#{$size} {
+        font-size: $control-font-size-min + $control-font-size-increment * ($i - 1);
+        height: $control-visual-size-min + $control-visual-size-increment * ($i - 1);
+        line-height: $control-visual-size-min + $control-visual-size-increment * ($i - 1);
     }
 }

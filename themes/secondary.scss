@@ -1,5 +1,9 @@
-$brand-color: #5926a6;
-$brand-color-highlight: lighten($brand-color, 10%);
+$brand-colors: (
+	default: #2A2D34, // Gunmetal
+	primary: #009DDC, // Vivid Cerulean
+	secondary: #6761A8, // Dark Blue-Gray
+	tertiary: #009B72, // Green (NCS)
+) !default;
 
 $ui-excludes: 'calendar.list';
 
@@ -20,7 +24,7 @@ $ui-excludes: 'calendar.list';
 			&,
 			&:hover,
 			&:focus {
-			    background-color: $brand-color;
+			    background-color: red;
 			    color: #fff;
 			}
 		}

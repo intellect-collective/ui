@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withState } from '@dump247/storybook-state';
 import Pagination from './index';
 
-storiesOf('Pagination', module)
+storiesOf('2 - Components / Pagination', module)
     .add('default', withState()(({ store }) => (
         <Pagination page={ store.state.page || 1 }
                 pageSize={ store.state.pageSize || 25 }

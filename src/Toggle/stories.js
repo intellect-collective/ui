@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { Toggle } from '../..';
 import width from '../../.storybook/decorators/width';
 
-storiesOf('Toggle', module)
+storiesOf('2 - Components / Form / Toggle', module)
     .addDecorator(width(200))
     .add('default', () => (
         <div>

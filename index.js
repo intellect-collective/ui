@@ -3,6 +3,7 @@ export { default as AccordionItem, AccordionItemContext } from './src/AccordionI
 export { default as AccordionItemBody } from './src/AccordionItemBody';
 export { default as AccordionItemTitle } from './src/AccordionItemTitle';
 export { default as AutoComplete } from './src/AutoComplete';
+export { default as Button } from './src/Button';
 export { default as Calendar } from './src/Calendar';
 export { default as CalendarEvent } from './src/CalendarEvent';
 export { default as CalendarEventContainer } from './src/CalendarEventContainer';
@@ -44,6 +45,7 @@ export { default as Row } from './src/GridRow';
 export { default as Select } from './src/Select';
 export { default as StateControlledAutoComplete } from './src/StateControlledAutoComplete';
 export { default as StateControlledForm } from './src/StateControlledForm';
+export { default as Swatch } from './src/Swatch';
 export { default as TableBody } from './src/TableBody';
 export { default as TableBodyCell } from './src/TableBodyCell';
 export { default as TableFooter } from './src/TableFooter';

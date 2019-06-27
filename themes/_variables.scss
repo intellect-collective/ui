@@ -1,41 +1,45 @@
-$theme: (
-	brand: (
-		color: #26a69a,
-		highlight: #2bbbad,
-		text: white
-	),
-	primary: (
-		color: #337ab7,
-		highlight: lighten(#337ab7, 10%),
-		text: white
-	),
-	success: (
-		color: #5cb85c,
-		highlight: lighten(#5cb85c, 10%),
-		text: white
-	),
-	info: (
-		color: #5bc0de,
-		highlight: lighten(#5bc0de, 10%),
-		text: white
-	),
-	warning: (
-		color: #f0ad4e,
-		highlight: lighten(#f0ad4e, 10%),
-		text: white
-	),
-	danger: (
-		color: #d9534f,
-		highlight: lighten(#d9534f, 10%),
-		text: white
-	)
+//
+// Color definitions
+//
+$brand-colors: (
+    default: #F9ECCC, // Blanched Almond
+    primary: #754668, // Twilight Lavender
+    secondary: #587D71, // Hooker's Green
+    tertiary: #B5DDA4 // Light Moss Green
 ) !default;
 
-$color-white:           #fff    !default;
-$color-red:             #f44336 !default;
-$color-divider:         #ccc    !default;
-$color-muted:           #666    !default;
+$action-colors: (
+    success: #4DAA57, // Middle Green
+    info: #5bc0de,
+    warning: #f0ad4e,
+    error: #d9534f
+) !default;
 
-$border-radius-base: 4px !default;
-$border-radius-lg:   6px !default;
-$border-radius-sm:   3px !default;
+$colors: map-merge($brand-colors, $action-colors) !default;
+
+$color-white: #fff !default;
+$color-divider: #ccc !default;
+$color-muted: #666 !default;
+
+//
+// Border radius
+//
+$border-radius: 4px !default;
+
+//
+// Define CSS variables
+//
+html {
+    @each $name, $color in $colors {
+        --color-#{$name}: #{$color};
+        --color-#{$name}-highlight: #{scale-color($color, $saturation: 30%)};
+        --color-#{$name}-contrast: #{get-contrast-color($color)};
+    }
+
+    @each $name, $color in $brand-colors {
+        @for $i from 1 to 10 {
+            --color-#{$name}-#{$i * 10}: #{scale-color($color, $lightness: 100 - (10% * $i))};
+            --color-#{$name}-#{$i * 10}-contrast: #{get-contrast-color(scale-color($color, $lightness: 100 - (10% * $i)))};
+        }
+    }
+}

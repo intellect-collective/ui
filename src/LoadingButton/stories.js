@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withState } from '@dump247/storybook-state';
 import LoadingButton from './index';
 
-storiesOf('LoadingButton', module)
+storiesOf('2 - Components / Form / LoadingButton', module)
     .add('default', withState()(({ store }) => {
         const handler = () => {
             onChange('loading', true);

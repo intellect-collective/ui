@@ -18,7 +18,7 @@ const calendars = [
     }
 ];
 
-storiesOf('CalendarList', module)
+storiesOf('2 - Components / CalendarList', module)
     .add('default', withState({ calendars })(({ store }) => (
         <CalendarList calendars={ store.state.calendars }
                 onChange={ (ev) => {

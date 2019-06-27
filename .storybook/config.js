@@ -19,9 +19,12 @@ setOptions({
 addDecorator(centered);
 addDecorator(styled);
 
+const guide = require.context('../guide', true, /stories\.js$/);
 const src = require.context('../src', true, /stories\.js$/);
 
 function loadStories() {
+    guide.keys()
+        .forEach((filename) => guide(filename));
     src.keys()
         .forEach((filename) => src(filename));
 }

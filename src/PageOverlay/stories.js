@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withState } from '@dump247/storybook-state';
 import PageOverlay from './index';
 
-storiesOf('PageOverlay', module)
+storiesOf('2 - Components / PageOverlay', module)
     .add('default', withState()(( { store }) => (
         <div>
             <button onClick={ () => (store.set({ open: true })) }>Open!</button>

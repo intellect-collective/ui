@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withState } from '@dump247/storybook-state';
 import FancyCheckbox from './index';
 
-storiesOf('FancyCheckbox', module)
+storiesOf('2 - Components / Form / FancyCheckbox', module)
     .add('default', withState()(({ store }) => (
         <FancyCheckbox name="test-check-1"
         		value="hotdogs"

@@ -1,0 +1,17 @@
+@import 'get-contrast-ratio';
+
+/**
+ * Determine whether to use dark or light text on top of given color.
+ * Returns black for dark text and white for light text.
+ */
+@function get-contrast-color($color) {
+  $lightContrast: get-contrast-ratio($color, white);
+  $darkContrast: get-contrast-ratio($color, black);
+
+  @if ($lightContrast > $darkContrast) {
+    @return white;
+  }
+  @else {
+    @return black;
+  }
+}

@@ -4,7 +4,7 @@ import { withState } from '@dump247/storybook-state';
 import width from '../../.storybook/decorators/width';
 import { Field, StateControlledForm, Text } from '../..';
 
-storiesOf('StateControlledForm', module)
+storiesOf('2 - Components / StateControlledForm', module)
     .addDecorator(width(200))
     .add('default', withState()(({ store }) => (
         <div>

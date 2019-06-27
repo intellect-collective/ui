@@ -77,5 +77,5 @@ class FormExample extends React.Component {
     }
 }
 
-storiesOf('Form', module)
+storiesOf('2 - Components / Form', module)
     .add('default', withState()(({ store }) => (<FormExample action="/" data={ store.state } onChange={ (ev) => store.set({ [ev.target.name]: ev.target.value}) } />)));

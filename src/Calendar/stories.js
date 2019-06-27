@@ -80,7 +80,7 @@ const events = [
     }
 ];
 
-storiesOf('Calendar', module)
+storiesOf('2 - Components / Calendar', module)
     .add('default', withState({ calendars, events, month: new Date() })(({ store }) => (
         <Calendar { ...store.state }
                 onCalendarVisibilityStateChange={ (ev) => {

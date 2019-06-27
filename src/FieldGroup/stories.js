@@ -5,7 +5,7 @@ import FieldGroup from './index';
 import Checkbox from '../Checkbox';
 import Radio from '../Radio';
 
-storiesOf('FieldGroup', module)
+storiesOf('2 - Components / Form / FieldGroup', module)
     .add('radio buttons', withState({ initialState: {} })(({ store }) => (
         <FieldGroup name="test" value={ store.state.test } onChange={ (ev) => store.set({ [ev.target.name]: ev.target.value }) }>
             First

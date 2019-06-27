@@ -35,7 +35,7 @@ const onHeaderClick = (onChange) => (col, dir) => {
     }
 };
 
-storiesOf('DataTable', module)
+storiesOf('2 - Components / DataTable', module)
     .addDecorator(style(`
         .style-wrapper {
             width: 768px;

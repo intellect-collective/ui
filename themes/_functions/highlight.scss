@@ -1,0 +1,6 @@
+/**
+ * Generate the highlight variation of the given color.
+ */
+@function highlight($color) {
+	@return scale-color($color, $lightness: 35%);
+}
