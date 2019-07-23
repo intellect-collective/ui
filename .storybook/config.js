@@ -1,5 +1,5 @@
 import React from 'react';
-import { configure, addDecorator } from '@storybook/react';
+import { configure, addDecorator, load } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
 // import centered from './decorators/centered';
 import styled from './decorators/styled';
@@ -20,7 +20,8 @@ addDecorator(centered);
 addDecorator(styled);
 
 const guide = require.context('../guide', true, /stories\.js$/);
-const src = require.context('../src', true, /stories\.js$/);
+const src = require.context('../src', true, /stories\.(js|mdx)$/);
+// load(require.context('../src', true, /\.stories\.(js|mdx)$/), module);
 
 function loadStories() {
     guide.keys()
