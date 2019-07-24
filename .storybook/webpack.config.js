@@ -7,10 +7,6 @@ const production = (config) => {
     console.log('=> Build Production');
     config.module.rules.push({
         test: /\.scss$/,
-        resolve: {
-            extensions: ['.scss', '.sass'],
-        },
-        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
             use: [{
                 loader: 'css-loader',
@@ -26,7 +22,6 @@ const production = (config) => {
 
     config.plugins.push(
         new ExtractTextPlugin({
-            // 'filename': '[name].[contenthash].css'
             'filename': 'css/[name].css'
         })
     );
@@ -38,19 +33,11 @@ const production = (config) => {
 }
 
 const development = (config) => {
+    console.log('=> Build Development');
     config.module.rules.push({
         test: /\.scss$/,
-        resolve: {
-            extensions: ['.scss', '.sass'],
-        },
-        exclude: /node_modules/,
         loader: [
-            {
-                loader: 'style-loader/useable',
-                options: {
-                    hmr: true
-                }
-            },
+            'style-loader/useable',
             'css-loader',
             'sass-loader'
         ]
@@ -70,12 +57,11 @@ const development = (config) => {
 module.exports = async ({ config, mode }) => {
     config.resolve = {
         extensions: ['.js', '.jsx']
-    }
+    };
 
     if (mode === 'DEVELOPMENT') {
         development(config);
-    }
-    if (mode === 'PRODUCTION') {
+    } else {
         production(config);
     }
     config.stats = true;
