@@ -1,0 +1,3 @@
+@function active($color) {
+    @return scale-color($color, $lightness: -10%);
+}

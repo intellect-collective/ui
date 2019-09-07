@@ -1,0 +1,51 @@
+.table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+    width: 100%;
+
+    > thead {
+        display: table-header-group;
+
+        > tr > td {
+            color: rgba(0, 0, 0, 0.54);
+            font-size: 0.75rem;
+            font-weight: 500;
+            line-height: 1.3125rem;
+        }
+    }
+
+    > tbody {
+        display: table-row-group;
+
+        > tr > td {
+            color: rgba(0, 0, 0, 0.87);
+            font-weight: 400;
+        }
+    }
+
+    > thead,
+    > tbody,
+    > tfoot,
+    & {
+        > tr {
+            color: inherit;
+            display: table-row;
+            outline: 0;
+            vertical-align: middle;
+
+            > td {
+                display: table-cell;
+                padding: 14px 40px 14px 16px;
+                font-size: 0.875rem;
+                text-align: left;
+                font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+                font-weight: 400;
+                line-height: 1.43;
+                border-bottom: 1px solid rgba(224, 224, 224, 1);
+                letter-spacing: 0.01071em;
+                vertical-align: inherit;
+            }
+        }
+    }
+}

@@ -1,0 +1,68 @@
+import Card from './index.js';
+import Content from '../Content';
+import Footer from '../Footer';
+import Header from '../Header';
+import Underlay from '../Underlay';
+import { Story, Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="2 - Components / Card" component={ Card } />
+
+
+# Card
+
+A card need not have any specially-structured content. A plain card might simply contain some text:
+
+<Story name="Basic">
+  	<Card>Test</Card>
+</Story>
+
+
+On the other hand, a card may contain complex content:
+
+<Story name="Complex">
+	<Card>
+		<Header slot="header">Test</Header>
+		<Content><p>You need to perform some actions here.</p></Content>
+		<Footer><button slot="footer">Done!</button></Footer>
+	</Card>
+</Story>
+
+
+Cards can have "underlays":
+
+
+<Story name="Top Popout">
+	<div style={{ display: 'flex', justifyContent: 'center' }}>
+		<Card>
+			<Content style={{ width: '250px' }}><p>Top</p></Content>
+			<Underlay position="top" color="primary"><i className="fa fa-info" style={{ padding: '1em' }} /></Underlay>
+		</Card>
+	</div>
+</Story>
+
+<Story name="Bottom Popout">
+	<div style={{ display: 'flex', justifyContent: 'center' }}>
+		<Card>
+			<Content style={{ width: '250px' }}><p>Bottom</p></Content>
+			<Underlay position="bottom" color="primary"><i className="fa fa-info" style={{ padding: '1em' }} /></Underlay>
+		</Card>
+	</div>
+</Story>
+
+<Story name="Left Popout">
+	<div style={{ display: 'flex', justifyContent: 'center' }}>
+		<Card>
+			<Content style={{ width: '250px' }}><p>Left</p></Content>
+			<Underlay position="left" color="primary"><i className="fa fa-info" style={{ padding: '1em' }} /></Underlay>
+		</Card>
+	</div>
+</Story>
+
+<Story name="Right Popout">
+	<div style={{ display: 'flex', justifyContent: 'center' }}>
+		<Card>
+			<Content style={{ width: '250px' }}><p>Right</p></Content>
+			<Underlay position="right" color="primary"><i className="fa fa-info" style={{ padding: '1em' }} /></Underlay>
+		</Card>
+	</div>
+</Story>

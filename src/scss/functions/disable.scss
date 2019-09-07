@@ -1,0 +1,3 @@
+@function disable($color) {
+    @return scale-color($color, $lightness: 30%);
+}

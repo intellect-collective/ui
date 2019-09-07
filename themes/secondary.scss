@@ -5,41 +5,6 @@ $brand-colors: (
 	tertiary: #009B72, // Green (NCS)
 ) !default;
 
-$ui-excludes: 'calendar.list';
+$header-background: map-get($brand-colors, 'primary');
 
-@import '_variables', '../src/_components';
-
-.pagination {
-	& > li {
-		& > a,
-		& > span {
-			border-radius: 5px;
-			margin: 0 .2em;
-		}
-	}
-
-	& > .active {
-		& > a,
-		& > span {
-			&,
-			&:hover,
-			&:focus {
-			    background-color: red;
-			    color: #fff;
-			}
-		}
-	}
-
-	& > .disabled {
-		a, span {
-			&,
-			&:focus,
-			&:hover {
-			    color: #777;
-			    cursor: not-allowed;
-			    background-color: #fff;
-			    border-color: #ddd;
-			}
-		}
-	}
-}
+@import 'default';

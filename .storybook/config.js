@@ -16,7 +16,8 @@ setOptions({
     sortStoriesByKind: false,
 });
 
-addDecorator(centered);
+// addDecorator(centered);
 addDecorator(styled);
 
 load(require.context('../src', true, /\.stories\.(js|mdx)$/), module);
+load(require.context('../guide', true, /story\.(js|mdx)$/), module);

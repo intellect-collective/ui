@@ -1,0 +1,11 @@
+version: "3.6"
+
+services:
+  web:
+    image: node:11-alpine
+    ports:
+      - "3001:3000"
+    volumes:
+      - .:/usr/src/
+    working_dir: /usr/src
+    command: 'sh -c "npm i && npm start"' # Hold it open

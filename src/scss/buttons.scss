@@ -1,0 +1,83 @@
+@import './functions/active';
+@import './functions/border';
+@import './functions/disable';
+@import './functions/highlight';
+
+@mixin button-state($background, $text, $border: $background) {
+    background-color: $background;
+    border: 1px solid border($border);
+    color: $text;
+
+    &:hover {
+        background-color: highlight($background);
+        border: 1px solid border(highlight($border));
+    }
+
+    &:active {
+        background-color: active($background);
+        border: 1px solid border(active($border));
+    }
+
+    &[disabled] {
+        background-color: disable($background);
+        border: 1px solid border(disable($border));
+    }
+}
+
+@mixin button-variant($color) {
+    @include button-state($color, white, $color);
+
+    &.btn-text {
+        @include button-state(transparent, $color);
+    }
+
+    &.btn-mute {
+        @include button-state(lighten($color, 30%), white, lighten($color, 30%));
+    }
+
+    &.btn-outline {
+        @include button-state(transparent, $color, $color);
+    }
+}
+
+
+button {
+    display: inline-block;
+    font-size: typo('button', 'size');
+    vertical-align: middle;
+}
+
+.btn {
+    @include button-variant(#e0e0e0);
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    justify-content: center;
+    letter-spacing: 0.02857em;
+    line-height: 1.5;
+    margin: 0;
+    padding: .375rem .75rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    vertical-align: middle;
+    white-space: nowrap;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+
+    @each $name, $color in $colors {
+        &.btn-#{ $name } {
+            @include button-variant($color);
+        }
+    }
+}
+
+

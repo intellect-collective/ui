@@ -1,0 +1,15 @@
+@function highlight($color) {
+    @return scale-color($color, $lightness: 10%);
+}
+
+@function active($color) {
+    @return scale-color($color, $lightness: -10%);
+}
+
+@function disable($color) {
+    @return scale-color($color, $lightness: 30%);
+}
+
+@function border($color) {
+    @return scale-color($color, $lightness: -10%);
+}

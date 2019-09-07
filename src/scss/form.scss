@@ -1,0 +1,124 @@
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-row {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    //margin-right: -15px;
+    //margin-left: -15px;
+}
+
+.col-form-label {
+    padding-top: calc(.375rem + 1px);
+    padding-bottom: calc(.375rem + 1px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5;
+}
+
+fieldset {
+    border: 0;
+    margin: 14px 0;
+}
+
+.btn-group,
+.btn-group-vertical {
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.btn-group .btn {
+    margin: 0;
+}
+.btn-group-vertical>.btn, .btn-group>.btn {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+.btn-rounded {
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+}
+.btn-cyan {
+    background-color: #00bcd4!important;
+    color: #fff;
+}
+
+[type=radio]:checked, [type=radio]:not(:checked) {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+.form-check-input {
+    position: absolute;
+    margin-top: .3rem;
+    margin-left: -1.25rem;
+}
+
+.btn-cyan:not([disabled]):not(.disabled).active, .btn-cyan:not([disabled]):not(.disabled):active, .show>.btn-cyan.dropdown-toggle {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    background-color: #00626e!important;
+}
+.btn:not([disabled]):not(.disabled).active, .btn:not([disabled]):not(.disabled):active {
+    box-shadow: 0 0 11px 0 rgba(0,0,0,.15);
+}
+.btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.btn-group>.btn-group:not(:first-child)>.btn, .btn-group>.btn:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.btn-group>.btn-group:not(:first-child), .btn-group>.btn:not(:first-child) {
+    margin-left: -1px;
+}
+.btn-group-vertical>.btn.active, .btn-group-vertical>.btn:active, .btn-group-vertical>.btn:focus, .btn-group>.btn.active, .btn-group>.btn:active, .btn-group>.btn:focus {
+    z-index: 1;
+}
+.btn-cyan.active, .btn-cyan:active, .btn-cyan:focus {
+    background-color: #00626e;
+}
+.btn-group .btn {
+    margin: 0;
+}
+.btn-group-vertical>.btn, .btn-group>.btn {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+.btn-rounded {
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+}
+.btn-cyan {
+    background-color: #00bcd4!important;
+    color: #fff;
+}
+.btn-group>.btn-group:not(:first-child)>.btn, .btn-group>.btn:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.btn-group>.btn-group:not(:first-child), .btn-group>.btn:not(:first-child) {
+    margin-left: -1px;
+}
+.btn-group .btn {
+    margin: 0;
+}
+.btn .fab, .btn .far, .btn .fas {
+    position: relative;
+    font-size: .9rem;
+}

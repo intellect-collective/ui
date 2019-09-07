@@ -18,7 +18,9 @@
     "build:storybook": "build-storybook -c .storybook -o .out",
     "deploy:storybook": "storybook-to-ghpages"
   },
-  "dependencies": {},
+  "dependencies": {
+    "font-awesome": "4.7.0"
+  },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-decorators": "^7.4.4",
@@ -29,9 +31,10 @@
     "@dump247/storybook-state": "^1.6.1",
     "@storybook/addon-a11y": "5.2.0-beta.6",
     "@storybook/addon-actions": "5.2.0-beta.6",
-    "@storybook/addon-docs": "5.2.0-beta.6",
+    "@storybook/addon-docs": "^5.2.0-beta.7",
     "@storybook/addon-options": "5.2.0-beta.6",
     "@storybook/react": "5.2.0-beta.6",
+    "@storybook/source-loader": "^5.2.0-alpha.14",
     "@storybook/storybook-deployer": "^2.8.1",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^10.0.2",

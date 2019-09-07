@@ -1,0 +1,6 @@
+$header-background: white !default;
+
+.header {
+	background: $header-background;
+	color: get-contrast-color($header-background);
+}

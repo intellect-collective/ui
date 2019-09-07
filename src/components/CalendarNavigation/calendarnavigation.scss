@@ -1,0 +1,86 @@
+.calendar-navigation {
+	display: table;
+	text-align: center;
+	width: 100%;
+
+	&-left {
+		display: table-cell;
+		text-align: left;
+		width: 25%;
+	}
+
+	&-center {
+		display: table-cell;
+		text-align: center;
+		width: 50%;
+	}
+
+	&-right {
+		display: table-cell;
+		text-align: right;
+		width: 25%;
+	}
+	
+	h2 {
+		color: #3c4043;
+	    font-family: Roboto,Arial,sans-serif;
+	    font-size: 22px;
+	    font-weight: 400;
+	    letter-spacing: 0;
+	    line-height: 28px;
+	    padding: 8px;
+	    white-space: nowrap;
+	}
+
+	button {
+		background: transparent;
+		border: 1px solid #ccc;
+		display: inline-block;
+		font-size: 1em;
+	    line-height: 1em;
+		padding: 6px 12px;
+	}
+
+	.calendar-button-group {
+		display: inline-block;
+
+		button {
+			+ button {
+				border-left-width: 0;
+			}
+		}
+
+		button:first-child {
+			border-top-left-radius: 2px;
+			border-bottom-left-radius: 2px;
+		}
+
+		button:last-child {
+			border-top-right-radius: 2px;
+			border-bottom-right-radius: 2px;
+		}
+	}
+
+	.calendar-icon {
+		display: block;
+		font-size: 200%;
+	    font-weight: bold;
+	    text-align: center;
+	    overflow: hidden;
+	    font-family: "Courier New", Courier, monospace;
+	    -webkit-touch-callout: none;
+	    -webkit-user-select: none;
+	    -khtml-user-select: none;
+	    -moz-user-select: none;
+	    -ms-user-select: none;
+	    user-select: none;
+
+	    &-left-arrow:after {
+		    content: "\2039";
+	    }
+
+	    &-right-arrow:after {
+	        content: "\203A";
+	    }
+	}
+}
